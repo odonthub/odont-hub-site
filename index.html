@@ -1873,23 +1873,43 @@ let TOKEN = localStorage.getItem('odont_token') || ''
 let USER  = JSON.parse(localStorage.getItem('odont_user') || 'null')
 
 // ── HELPERS ────────────────────────────────────────────────────────────────
-async function api(method, path, body) {
+// CORREÇÃO: timeout de 15s + retry automático (resolve "Load failed" Safari / cold-start Railway)
+async function api(method, path, body, _retries = 2) {
+  const controller = new AbortController()
+  const tid = setTimeout(() => controller.abort(), 15000)
   const opts = {
     method,
-    headers: { 'Content-Type': 'application/json', ...(TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {}) },
+    signal: controller.signal,
+    headers: {
+      'Content-Type': 'application/json',
+      ...(TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {}),
+    },
   }
   if (body) opts.body = JSON.stringify(body)
-  const res = await fetch(API + path, opts)
-  const data = await res.json().catch(() => ({}))
-  if (!res.ok) throw new Error(data.error || 'Erro na requisição')
-  return data
+  try {
+    const res = await fetch(API + path, opts)
+    clearTimeout(tid)
+    const data = await res.json().catch(() => ({}))
+    if (!res.ok) throw new Error(data.error || 'Erro na requisição')
+    return data
+  } catch (e) {
+    clearTimeout(tid)
+    if (_retries > 0 && (e.name === 'AbortError' || e.message.includes('Load failed') || e.message.includes('Failed to fetch'))) {
+      console.warn(`API retry (${_retries} left):`, e.message)
+      await new Promise(r => setTimeout(r, 2000))
+      return api(method, path, body, _retries - 1)
+    }
+    throw e
+  }
 }
 
-function setLoading(btnId, loading, text='') {
+function setLoading(btnId, loading, text = '') {
   const btn = document.getElementById(btnId)
   if (!btn) return
   btn.disabled = loading
-  btn.innerHTML = loading ? '<i class="ti ti-loader" style="animation:spin 1s linear infinite;display:inline-block;"></i> Aguarde...' : text
+  btn.innerHTML = loading
+    ? '<i class="ti ti-loader" style="animation:spin 1s linear infinite;display:inline-block;"></i> Aguarde...'
+    : text
 }
 
 function showError(elId, msg) {
@@ -1904,18 +1924,20 @@ function showError(elId, msg) {
 async function doLogin() {
   const email    = document.getElementById('login-email').value.trim()
   const password = document.getElementById('login-password').value
-
   if (!email || !password) { showError('login-error', 'Preencha e-mail e senha.'); return }
 
   setLoading('login-btn', true)
   try {
+    // CORREÇÃO: warmup acorda o Railway antes do login (elimina cold-start "Load failed")
+    try { await fetch(API + '/health') } catch (_) {}
+
     const res = await api('POST', '/api/auth/login', { email, password })
     TOKEN = res.token
     USER  = res.user
     localStorage.setItem('odont_token', TOKEN)
     localStorage.setItem('odont_user', JSON.stringify(USER))
     goApp()
-  } catch(e) {
+  } catch (e) {
     showError('login-error', e.message || 'E-mail ou senha incorretos.')
   } finally {
     setLoading('login-btn', false, '<i class="ti ti-login"></i> Entrar na plataforma')
@@ -1923,12 +1945,8 @@ async function doLogin() {
 }
 
 // ── REGISTER ───────────────────────────────────────────────────────────────
-function showRegister() {
-  document.getElementById('register-modal').style.display = 'flex'
-}
-function hideRegister() {
-  document.getElementById('register-modal').style.display = 'none'
-}
+function showRegister() { document.getElementById('register-modal').style.display = 'flex' }
+function hideRegister() { document.getElementById('register-modal').style.display = 'none' }
 
 async function doRegister() {
   const name      = document.getElementById('reg-name').value.trim()
@@ -1942,6 +1960,7 @@ async function doRegister() {
 
   setLoading('reg-btn', true)
   try {
+    try { await fetch(API + '/health') } catch (_) {}
     const res = await api('POST', '/api/auth/register', { name, email, password, cro, specialty })
     TOKEN = res.token
     USER  = res.user
@@ -1949,7 +1968,7 @@ async function doRegister() {
     localStorage.setItem('odont_user', JSON.stringify(USER))
     hideRegister()
     goApp()
-  } catch(e) {
+  } catch (e) {
     showError('reg-error', e.message || 'Erro ao criar conta.')
   } finally {
     setLoading('reg-btn', false, '<i class="ti ti-user-plus"></i> Criar conta')
@@ -1960,87 +1979,100 @@ async function doRegister() {
 function goApp() {
   document.getElementById('login-screen').style.display = 'none'
   document.getElementById('app-screen').style.display   = 'flex'
-
-  // Atualiza nome do usuário na sidebar
   if (USER) {
     const nameEl = document.querySelector('.user-name')
     const croEl  = document.querySelector('.user-cro')
     const avEls  = document.querySelectorAll('.av-grad-me')
     if (nameEl) nameEl.textContent = USER.name || 'Usuário'
     if (croEl)  croEl.textContent  = USER.cro ? `CRO/${USER.cro_uf || ''} ${USER.cro}` : 'CRO pendente'
-    avEls.forEach(el => { el.textContent = (USER.name || 'U').split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase() })
+    const ini = initials(USER.name)
+    avEls.forEach(el => { el.textContent = ini })
+    const feedAv = document.getElementById('feed-av')
+    if (feedAv) feedAv.textContent = ini
   }
 }
 
-// Se já tem token, vai direto para o app
+// Se já tem token válido, entra direto
 if (TOKEN && USER) {
-  window.addEventListener('DOMContentLoaded', () => goApp())
+  window.addEventListener('DOMContentLoaded', () => {
+    api('GET', '/api/auth/me')
+      .then(u => {
+        USER = u
+        localStorage.setItem('odont_user', JSON.stringify(u))
+        goApp()
+        loadFeed()
+      })
+      .catch(() => {
+        localStorage.removeItem('odont_token')
+        localStorage.removeItem('odont_user')
+        TOKEN = ''
+        USER  = null
+      })
+  })
 }
 
 // ── NAVEGAÇÃO ──────────────────────────────────────────────────────────────
-function nav(el,screen,title){
-  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  el.classList.add('active');
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById('screen-'+screen).classList.add('active');
-  document.getElementById('page-title').textContent=title;
+function nav(el, screen, title) {
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'))
+  el.classList.add('active')
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'))
+  document.getElementById('screen-' + screen).classList.add('active')
+  document.getElementById('page-title').textContent = title
+  // CORREÇÃO: carrega feed real ao navegar para Comunidade
+  if (screen === 'community') loadFeed()
 }
 
-function like(btn,countId){
-  const c=document.getElementById(countId);
-  const n=parseInt(c.textContent);
-  const on=btn.classList.toggle('liked');
-  c.textContent=on?n+1:n-1;
+function like(btn, countId) {
+  const c = document.getElementById(countId)
+  const n = parseInt(c.textContent)
+  const on = btn.classList.toggle('liked')
+  c.textContent = on ? n + 1 : n - 1
 }
 
-function filterMkt(el){
-  const parent = el.closest('.mkt-top') || el.closest('div')
-  parent.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('on'));
-  el.classList.add('on');
-}
-function filterExp(el){
-  el.closest('div').querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('on'));
-  el.classList.add('on');
+function filterMkt(el) {
+  const parent = el.closest('.mkt-top') || el.parentElement
+  parent.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('on'))
+  el.classList.add('on')
 }
 
-function switchTab(t){
-  ['vagas','offer','mine'].forEach(id=>{
-    document.getElementById('tab-'+id).classList.remove('on');
-    document.getElementById('tab-content-'+id).style.display='none';
-  });
-  document.getElementById('tab-'+t).classList.add('on');
-  document.getElementById('tab-content-'+t).style.display='block';
+function switchTab(t) {
+  ;['vagas', 'offer', 'mine'].forEach(id => {
+    document.getElementById('tab-' + id).classList.remove('on')
+    document.getElementById('tab-content-' + id).style.display = 'none'
+  })
+  document.getElementById('tab-' + t).classList.add('on')
+  document.getElementById('tab-content-' + t).style.display = 'block'
 }
 
-var chatName='';
-function openChat(name,spec){
-  chatName=name;
-  document.getElementById('chat-name').textContent=name;
-  document.getElementById('chat-spec').textContent=spec;
-  document.getElementById('chat-msgs').innerHTML=
-    '<div class="msg them"><div class="msg-bubble">Olá! Sou '+name+'. Posso ajudar com dúvidas sobre '+spec+'. O que você precisa?</div><div class="msg-time">agora</div></div>';
-  document.getElementById('chat-modal').classList.add('open');
-  document.getElementById('chat-input').focus();
+var chatName = ''
+function openChat(name, spec) {
+  chatName = name
+  document.getElementById('chat-name').textContent = name
+  document.getElementById('chat-spec').textContent = spec
+  document.getElementById('chat-msgs').innerHTML =
+    `<div class="msg them"><div class="msg-bubble">Olá! Sou ${name}. Posso ajudar com dúvidas sobre ${spec}. O que você precisa?</div><div class="msg-time">agora</div></div>`
+  document.getElementById('chat-modal').classList.add('open')
+  document.getElementById('chat-input').focus()
 }
-function closeChat(e){
-  if(e.target===document.getElementById('chat-modal'))
-    document.getElementById('chat-modal').classList.remove('open');
+function closeChat(e) {
+  if (e.target === document.getElementById('chat-modal'))
+    document.getElementById('chat-modal').classList.remove('open')
 }
-function sendMsg(){
-  const inp=document.getElementById('chat-input');
-  const txt=inp.value.trim(); if(!txt)return;
-  const msgs=document.getElementById('chat-msgs');
-  const now=new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
-  msgs.innerHTML+='<div class="msg me"><div class="msg-bubble">'+txt+'</div><div class="msg-time">'+now+'</div></div>';
-  inp.value='';
-  msgs.scrollTop=msgs.scrollHeight;
-  setTimeout(()=>{
-    const replies=['Entendido! Posso orientar sobre isso.','Ótima pergunta! Me manda mais detalhes.','Isso é muito comum na prática clínica.','Vou te ajudar com isso! Que tipo de caso?'];
-    const r=replies[Math.floor(Math.random()*replies.length)];
-    const t=new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
-    msgs.innerHTML+='<div class="msg them"><div class="msg-bubble">'+r+'</div><div class="msg-time">'+t+'</div></div>';
-    msgs.scrollTop=msgs.scrollHeight;
-  },1000);
+function sendMsg() {
+  const inp = document.getElementById('chat-input')
+  const txt = inp.value.trim(); if (!txt) return
+  const msgs = document.getElementById('chat-msgs')
+  const now = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
+  msgs.innerHTML += `<div class="msg me"><div class="msg-bubble">${txt}</div><div class="msg-time">${now}</div></div>`
+  inp.value = ''
+  msgs.scrollTop = msgs.scrollHeight
+  setTimeout(() => {
+    const replies = ['Entendido! Posso orientar sobre isso.', 'Ótima pergunta! Me manda mais detalhes.', 'Isso é muito comum na prática clínica.', 'Vou te ajudar com isso! Que tipo de caso?']
+    const r = replies[Math.floor(Math.random() * replies.length)]
+    const t = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
+    msgs.innerHTML += `<div class="msg them"><div class="msg-bubble">${r}</div><div class="msg-time">${t}</div></div>`
+    msgs.scrollTop = msgs.scrollHeight
+  }, 1000)
 }
 
 // ── FEED REAL ──────────────────────────────────────────────────────────────
@@ -2051,7 +2083,7 @@ function timeAgo(dateStr) {
   if (m < 60) return `${m}min atrás`
   const h = Math.floor(m / 60)
   if (h < 24) return `${h}h atrás`
-  return `${Math.floor(h/24)}d atrás`
+  return `${Math.floor(h / 24)}d atrás`
 }
 
 function initials(name) {
@@ -2061,11 +2093,11 @@ function initials(name) {
 function renderPost(post) {
   const author = post.author || {}
   const ini = initials(author.name)
-  const likes = post.likes_count?.[0]?.count || 0
-  const comments = post.comments_count?.[0]?.count || 0
-  const isMe = author.id === USER?.id
-  const gradients = ['av-grad-1','av-grad-2','av-grad-3','av-grad-4','av-grad-5','av-grad-6']
-  const grad = isMe ? 'av-grad-me' : gradients[Math.abs(ini.charCodeAt(0) - 65) % 6]
+  const likes = post.likes_count?.[0]?.count || post.likes_count || 0
+  const comments = post.comments_count?.[0]?.count || post.comments_count || 0
+  const isMe = (author.id === USER?.id) || (post.user_id === USER?.id)
+  const gradients = ['av-grad-1', 'av-grad-2', 'av-grad-3', 'av-grad-4', 'av-grad-5', 'av-grad-6']
+  const grad = isMe ? 'av-grad-me' : gradients[Math.abs((ini.charCodeAt(0) || 65) - 65) % 6]
 
   return `
   <div class="post" id="post-${post.id}">
@@ -2074,16 +2106,18 @@ function renderPost(post) {
       <div class="post-uinfo">
         <div class="post-name">${author.name || 'Dentista'}</div>
         <div class="post-meta">
-          ${author.cro ? `<span class="cro-badge">CRO/${author.cro_uf||''} ${author.cro}</span>·` : ''}
+          ${author.cro ? `<span class="cro-badge">CRO/${author.cro_uf || ''} ${author.cro}</span> · ` : ''}
           ${author.specialty || ''} · ${timeAgo(post.created_at)}
         </div>
       </div>
-      ${isMe ? `<div class="icon-btn" style="border:none;background:transparent;" onclick="deletePost('${post.id}')"><i class="ti ti-trash" style="color:#ef4444;"></i></div>` : '<div class="icon-btn" style="border:none;background:transparent;"><i class="ti ti-dots"></i></div>'}
+      ${isMe
+        ? `<div class="icon-btn" style="border:none;background:transparent;" onclick="deletePost('${post.id}')"><i class="ti ti-trash" style="color:#ef4444;"></i></div>`
+        : `<div class="icon-btn" style="border:none;background:transparent;"><i class="ti ti-dots"></i></div>`}
     </div>
     ${post.specialty_tag ? `<div class="tags"><span class="tag">#${post.specialty_tag}</span></div>` : ''}
     <div class="post-txt">${post.content.replace(/\n/g, '<br>')}</div>
     <div class="post-acts">
-      <button class="pact ${post.liked_by_me ? 'liked' : ''}" onclick="toggleLike(this,'${post.id}',${post.liked_by_me})">
+      <button class="pact ${post.liked_by_me ? 'liked' : ''}" onclick="toggleLike(this,'${post.id}',${!!post.liked_by_me})">
         <i class="ti ti-heart"></i><span>${likes}</span>
       </button>
       <button class="pact"><i class="ti ti-message-circle"></i>${comments} comentários</button>
@@ -2096,18 +2130,22 @@ function renderPost(post) {
 async function loadFeed() {
   const list = document.getElementById('feed-list')
   if (!list) return
+  list.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text3);">
+    <i class="ti ti-loader" style="font-size:32px;display:block;margin-bottom:10px;animation:spin 1s linear infinite;"></i>
+    Carregando posts...</div>`
   try {
     const posts = await api('GET', '/api/feed?page=1')
-    if (!posts || posts.length === 0) {
+    const arr = Array.isArray(posts) ? posts : (posts.posts || posts.data || [])
+    if (!arr.length) {
       list.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text3);">
         <i class="ti ti-messages" style="font-size:48px;display:block;margin-bottom:12px;"></i>
-        Nenhum post ainda. Seja o primeiro a compartilhar! 🦷
-      </div>`
+        Nenhum post ainda. Seja o primeiro a compartilhar! 🦷</div>`
       return
     }
-    list.innerHTML = posts.map(renderPost).join('')
-  } catch(e) {
-    list.innerHTML = `<div style="text-align:center;padding:30px;color:var(--text3);">Erro ao carregar posts. Tente novamente.</div>`
+    list.innerHTML = arr.map(renderPost).join('')
+  } catch (e) {
+    list.innerHTML = `<div style="text-align:center;padding:30px;color:var(--text3);">
+      Erro ao carregar posts: ${e.message}</div>`
   }
 }
 
@@ -2119,13 +2157,12 @@ async function submitPost() {
   const btn = document.getElementById('btn-pub')
   btn.disabled = true
   btn.textContent = 'Publicando...'
-
   try {
     await api('POST', '/api/feed', { content, specialty_tag: specialty || undefined })
     document.getElementById('post-content').value = ''
     document.getElementById('post-specialty').value = ''
     await loadFeed()
-  } catch(e) {
+  } catch (e) {
     alert('Erro ao publicar: ' + e.message)
   } finally {
     btn.disabled = false
@@ -2138,7 +2175,7 @@ async function toggleLike(btn, postId, currentlyLiked) {
   const count = parseInt(countEl.textContent)
   if (currentlyLiked) {
     btn.classList.remove('liked')
-    countEl.textContent = count - 1
+    countEl.textContent = Math.max(0, count - 1)
     btn.onclick = () => toggleLike(btn, postId, false)
     await api('DELETE', `/api/feed/${postId}/like`).catch(() => {})
   } else {
@@ -2155,35 +2192,21 @@ async function deletePost(postId) {
   document.getElementById(`post-${postId}`)?.remove()
 }
 
-// Carrega feed quando navega para Comunidade
-const _origNav = nav
-nav = function(el, screen, title) {
-  _origNav(el, screen, title)
-  if (screen === 'community') loadFeed()
-}
-
-// Publicar com Ctrl+Enter
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('post-content')?.addEventListener('keydown', e => {
-    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') submitPost()
-  })
-  // Atualiza iniciais do avatar no composer
-  if (USER) {
-    const av = document.getElementById('feed-av')
-    if (av) av.textContent = initials(USER.name)
-  }
-})
-// ── FIM FEED ───────────────────────────────────────────────────────────────
+// ── DOMContentLoaded ───────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('login-password')?.addEventListener('keydown', e => {
     if (e.key === 'Enter') doLogin()
   })
+  document.getElementById('post-content')?.addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') submitPost()
+  })
 })
 
-// CSS para animação de loading
-const style = document.createElement('style')
-style.textContent = '@keyframes spin { to { transform: rotate(360deg) } }'
-document.head.appendChild(style)
+// CSS para spin
+const _style = document.createElement('style')
+_style.textContent = '@keyframes spin { to { transform: rotate(360deg) } }'
+document.head.appendChild(_style)
+
 </script>
 </body>
 </html>

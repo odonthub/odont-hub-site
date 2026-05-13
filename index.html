@@ -772,88 +772,26 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
           <!-- Composer -->
           <div class="composer">
             <div class="comp-top">
-              <div class="av l av-grad-me">CM</div>
-              <textarea class="comp-ta" placeholder="Compartilhe um caso, dúvida ou novidade com a comunidade..."></textarea>
+              <div class="av l av-grad-me" id="feed-av">TM</div>
+              <textarea id="post-content" class="comp-ta" placeholder="Compartilhe um caso, dúvida ou novidade com a comunidade..."></textarea>
             </div>
             <div class="comp-ftr">
-              <button class="comp-btn"><i class="ti ti-photo"></i> Foto</button>
-              <button class="comp-btn"><i class="ti ti-video"></i> Vídeo</button>
-              <button class="comp-btn"><i class="ti ti-file"></i> Arquivo</button>
-              <button class="btn-pub">Publicar</button>
+              <select id="post-specialty" style="padding:6px 10px;border-radius:var(--rs);border:1.5px solid var(--border);font-size:12px;font-family:inherit;color:var(--text2);background:white;outline:none;">
+                <option value="">Especialidade (opcional)</option>
+                <option>Dentística</option><option>Clínica Geral</option><option>Implantodontia</option>
+                <option>Ortodontia</option><option>Endodontia</option><option>Periodontia</option>
+                <option>Prótese Dentária</option><option>Bucomaxilofacial</option>
+                <option>Harmonização Facial</option><option>Odontopediatria</option><option>Gestão & Marketing</option>
+              </select>
+              <button class="btn-pub" id="btn-pub" onclick="submitPost()">Publicar</button>
             </div>
           </div>
 
-          <!-- Post 1 — com imagem -->
-          <div class="post">
-            <div class="post-hdr">
-              <div class="av l av-grad-2">AP</div>
-              <div class="post-uinfo">
-                <div class="post-name">Dra. Ana Pereira</div>
-                <div class="post-meta"><span class="cro-badge">CRO/RJ 54321</span>· Implantodontista · 2h atrás</div>
-              </div>
-              <div class="icon-btn" style="border:none;background:transparent;"><i class="ti ti-dots"></i></div>
-            </div>
-            <div class="tags">
-              <span class="tag">#Implantes</span><span class="tag">#AllOn4</span><span class="tag">#ReabilitaçãoOral</span>
-            </div>
-            <div class="post-txt">Reabilitação total com protocolo All-on-4 finalizada hoje! Paciente com edentulismo total chegou sem perspectiva e saiu sorrindo. Prótese fixada com torque de 35N em implantes Straumann BL. Quem já trabalhou com esse sistema, o que acha dos resultados a longo prazo? Compartilhem experiências! 💪</div>
-            <div class="post-img-ph">
-              <i class="ti ti-camera"></i>
-              <span>Caso clínico — Fotos antes e depois</span>
-            </div>
-            <div class="post-acts">
-              <button class="pact liked" id="lb1" onclick="like(this,'lc1')"><i class="ti ti-heart"></i><span id="lc1">47</span></button>
-              <button class="pact"><i class="ti ti-message-circle"></i>12 comentários</button>
-              <button class="pact"><i class="ti ti-share"></i>Compartilhar</button>
-              <button class="pact ml"><i class="ti ti-bookmark"></i>Salvar</button>
-            </div>
-          </div>
-
-          <!-- Post 2 — texto puro -->
-          <div class="post">
-            <div class="post-hdr">
-              <div class="av l av-grad-1">FS</div>
-              <div class="post-uinfo">
-                <div class="post-name">Dr. Felipe Santos</div>
-                <div class="post-meta"><span class="cro-badge">CRO/MG 98765</span>· Endodontista · 5h atrás</div>
-              </div>
-              <div class="icon-btn" style="border:none;background:transparent;"><i class="ti ti-dots"></i></div>
-            </div>
-            <div class="tags"><span class="tag">#Endodontia</span><span class="tag">#Instrumentação</span></div>
-            <div class="post-txt">Alguém tem experiência com instrumentação reciprocante WaveOne Gold vs. Reciproc Blue? Estou migrando de rotatória e quero saber a opinião de quem usa no dia a dia. Tenho um caso de canal em S que me preocupa. Qualquer dica é bem-vinda!</div>
-            <div class="post-acts">
-              <button class="pact" id="lb2" onclick="like(this,'lc2')"><i class="ti ti-heart"></i><span id="lc2">23</span></button>
-              <button class="pact"><i class="ti ti-message-circle"></i>8 comentários</button>
-              <button class="pact"><i class="ti ti-share"></i>Compartilhar</button>
-              <button class="pact ml"><i class="ti ti-bookmark"></i>Salvar</button>
-            </div>
-          </div>
-
-          <!-- Post 3 — com arquivo -->
-          <div class="post">
-            <div class="post-hdr">
-              <div class="av l av-grad-3">RB</div>
-              <div class="post-uinfo">
-                <div class="post-name">Dra. Renata Barbosa</div>
-                <div class="post-meta"><span class="cro-badge">CRO/SP 77432</span>· Ortodontista · 8h atrás</div>
-              </div>
-              <div class="icon-btn" style="border:none;background:transparent;"><i class="ti ti-dots"></i></div>
-            </div>
-            <div class="tags"><span class="tag">#Ortodontia</span><span class="tag">#Alinhadores</span></div>
-            <div class="post-txt">Compartilhando meu protocolo de contenção pós-ortodôntico em PDF. Documento que preparo para todos os pacientes ao final do tratamento com alinhadores. Sinta-se à vontade para adaptar!</div>
-            <div class="post-file">
-              <div class="file-ico"><i class="ti ti-file-type-pdf"></i></div>
-              <div style="flex:1;min-width:0;">
-                <div class="file-name">protocolo-contencao-pos-ortodontico.pdf</div>
-                <div class="file-size">2.4 MB · PDF</div>
-              </div>
-              <button class="btn-dl"><i class="ti ti-download" style="font-size:14px;"></i> Baixar</button>
-            </div>
-            <div class="post-acts">
-              <button class="pact" id="lb3" onclick="like(this,'lc3')"><i class="ti ti-heart"></i><span id="lc3">61</span></button>
-              <button class="pact"><i class="ti ti-message-circle"></i>19 comentários</button>
-              <button class="pact"><i class="ti ti-share"></i>Compartilhar</button>
-              <button class="pact ml"><i class="ti ti-bookmark"></i>Salvar</button>
+          <!-- Feed dinâmico -->
+          <div id="feed-list">
+            <div style="text-align:center;padding:40px;color:var(--text3);">
+              <i class="ti ti-loader" style="font-size:32px;display:block;margin-bottom:10px;animation:spin 1s linear infinite;"></i>
+              Carregando posts...
             </div>
           </div>
         </div>
@@ -2105,7 +2043,137 @@ function sendMsg(){
   },1000);
 }
 
-// Pressionar Enter no login
+// ── FEED REAL ──────────────────────────────────────────────────────────────
+function timeAgo(dateStr) {
+  const diff = Date.now() - new Date(dateStr).getTime()
+  const m = Math.floor(diff / 60000)
+  if (m < 1) return 'agora'
+  if (m < 60) return `${m}min atrás`
+  const h = Math.floor(m / 60)
+  if (h < 24) return `${h}h atrás`
+  return `${Math.floor(h/24)}d atrás`
+}
+
+function initials(name) {
+  return (name || 'U').split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase()
+}
+
+function renderPost(post) {
+  const author = post.author || {}
+  const ini = initials(author.name)
+  const likes = post.likes_count?.[0]?.count || 0
+  const comments = post.comments_count?.[0]?.count || 0
+  const isMe = author.id === USER?.id
+  const gradients = ['av-grad-1','av-grad-2','av-grad-3','av-grad-4','av-grad-5','av-grad-6']
+  const grad = isMe ? 'av-grad-me' : gradients[Math.abs(ini.charCodeAt(0) - 65) % 6]
+
+  return `
+  <div class="post" id="post-${post.id}">
+    <div class="post-hdr">
+      <div class="av l ${grad}">${ini}</div>
+      <div class="post-uinfo">
+        <div class="post-name">${author.name || 'Dentista'}</div>
+        <div class="post-meta">
+          ${author.cro ? `<span class="cro-badge">CRO/${author.cro_uf||''} ${author.cro}</span>·` : ''}
+          ${author.specialty || ''} · ${timeAgo(post.created_at)}
+        </div>
+      </div>
+      ${isMe ? `<div class="icon-btn" style="border:none;background:transparent;" onclick="deletePost('${post.id}')"><i class="ti ti-trash" style="color:#ef4444;"></i></div>` : '<div class="icon-btn" style="border:none;background:transparent;"><i class="ti ti-dots"></i></div>'}
+    </div>
+    ${post.specialty_tag ? `<div class="tags"><span class="tag">#${post.specialty_tag}</span></div>` : ''}
+    <div class="post-txt">${post.content.replace(/\n/g, '<br>')}</div>
+    <div class="post-acts">
+      <button class="pact ${post.liked_by_me ? 'liked' : ''}" onclick="toggleLike(this,'${post.id}',${post.liked_by_me})">
+        <i class="ti ti-heart"></i><span>${likes}</span>
+      </button>
+      <button class="pact"><i class="ti ti-message-circle"></i>${comments} comentários</button>
+      <button class="pact"><i class="ti ti-share"></i>Compartilhar</button>
+      <button class="pact ml"><i class="ti ti-bookmark"></i>Salvar</button>
+    </div>
+  </div>`
+}
+
+async function loadFeed() {
+  const list = document.getElementById('feed-list')
+  if (!list) return
+  try {
+    const posts = await api('GET', '/api/feed?page=1')
+    if (!posts || posts.length === 0) {
+      list.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text3);">
+        <i class="ti ti-messages" style="font-size:48px;display:block;margin-bottom:12px;"></i>
+        Nenhum post ainda. Seja o primeiro a compartilhar! 🦷
+      </div>`
+      return
+    }
+    list.innerHTML = posts.map(renderPost).join('')
+  } catch(e) {
+    list.innerHTML = `<div style="text-align:center;padding:30px;color:var(--text3);">Erro ao carregar posts. Tente novamente.</div>`
+  }
+}
+
+async function submitPost() {
+  const content   = document.getElementById('post-content').value.trim()
+  const specialty = document.getElementById('post-specialty').value
+  if (!content) { alert('Escreva algo antes de publicar!'); return }
+
+  const btn = document.getElementById('btn-pub')
+  btn.disabled = true
+  btn.textContent = 'Publicando...'
+
+  try {
+    await api('POST', '/api/feed', { content, specialty_tag: specialty || undefined })
+    document.getElementById('post-content').value = ''
+    document.getElementById('post-specialty').value = ''
+    await loadFeed()
+  } catch(e) {
+    alert('Erro ao publicar: ' + e.message)
+  } finally {
+    btn.disabled = false
+    btn.textContent = 'Publicar'
+  }
+}
+
+async function toggleLike(btn, postId, currentlyLiked) {
+  const countEl = btn.querySelector('span')
+  const count = parseInt(countEl.textContent)
+  if (currentlyLiked) {
+    btn.classList.remove('liked')
+    countEl.textContent = count - 1
+    btn.onclick = () => toggleLike(btn, postId, false)
+    await api('DELETE', `/api/feed/${postId}/like`).catch(() => {})
+  } else {
+    btn.classList.add('liked')
+    countEl.textContent = count + 1
+    btn.onclick = () => toggleLike(btn, postId, true)
+    await api('POST', `/api/feed/${postId}/like`).catch(() => {})
+  }
+}
+
+async function deletePost(postId) {
+  if (!confirm('Remover este post?')) return
+  await api('DELETE', `/api/feed/${postId}`).catch(() => {})
+  document.getElementById(`post-${postId}`)?.remove()
+}
+
+// Carrega feed quando navega para Comunidade
+const _origNav = nav
+nav = function(el, screen, title) {
+  _origNav(el, screen, title)
+  if (screen === 'community') loadFeed()
+}
+
+// Publicar com Ctrl+Enter
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('post-content')?.addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') submitPost()
+  })
+  // Atualiza iniciais do avatar no composer
+  if (USER) {
+    const av = document.getElementById('feed-av')
+    if (av) av.textContent = initials(USER.name)
+  }
+})
+// ── FIM FEED ───────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('login-password')?.addEventListener('keydown', e => {
     if (e.key === 'Enter') doLogin()

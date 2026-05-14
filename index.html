@@ -2118,9 +2118,10 @@ function renderPost(post) {
           ${author.specialty || ''} · ${timeAgo(post.created_at)}
         </div>
       </div>
-      ${isMe
-        ? `<div class="icon-btn" style="border:none;background:transparent;" onclick="deletePost('${post.id}')"><i class="ti ti-trash" style="color:#ef4444;"></i></div>`
-        : `<div class="icon-btn" style="border:none;background:transparent;"><i class="ti ti-dots"></i></div>`}
+      <div style="display:flex;gap:4px;">
+        ${isMe ? `<div class="icon-btn" style="border:none;background:transparent;width:28px;height:28px;cursor:pointer;" onclick="editPost('${post.id}','${post.content.replace(/'/g,"'")}')"><i class="ti ti-pencil" style="color:#336699;font-size:15px;"></i></div>` : ''}
+        ${(isMe||USER?.email==='odont.hub@gmail.com') ? `<div class="icon-btn" style="border:none;background:transparent;width:28px;height:28px;cursor:pointer;" onclick="deletePost('${post.id}')"><i class="ti ti-trash" style="color:#ef4444;font-size:15px;"></i></div>` : ''}
+      </div>
     </div>
     ${post.specialty_tag ? `<div class="tags"><span class="tag">#${post.specialty_tag}</span></div>` : ''}
     <div class="post-txt">${post.content.replace(/\n/g, '<br>')}</div>

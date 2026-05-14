@@ -2238,6 +2238,16 @@ async function uploadImageToServer(file) {
   return data.url
 }
 
+
+function editPost(postId, currentContent) {
+  const novoTexto = window.prompt('Editar post:', currentContent)
+  if (novoTexto === null) return
+  if (novoTexto.trim() === '') { alert('Post nao pode ser vazio.'); return }
+  api('PUT', '/api/feed/' + postId, { content: novoTexto.trim() })
+    .then(() => loadFeed())
+    .catch(e => alert('Erro ao editar: ' + e.message))
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('login-password')?.addEventListener('keydown', e => {
     if (e.key === 'Enter') doLogin()

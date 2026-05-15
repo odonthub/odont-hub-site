@@ -2245,20 +2245,12 @@ function removeImage() {
 
 async function uploadImageToServer(file) {
   const token = localStorage.getItem('odont_token') || TOKEN
-  // Converte para base64
-  const base64 = await new Promise((resolve, reject) => {
-    const reader = new FileReader()
-    reader.onload = () => resolve(reader.result.split(',')[1])
-    reader.onerror = reject
-    reader.readAsDataURL(file)
-  })
-  const res = await fetch(API + '/api/uploads/base64', {
+  const formData = new FormData()
+  formData.append('file', file)
+  const res = await fetch(API + '/api/uploads/image', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + token
-    },
-    body: JSON.stringify({ image: base64, type: file.type })
+    headers: { Authorization: 'Bearer ' + token },
+    body: formData
   })
   const data = await res.json().catch(()=>({}))
   if (!res.ok) throw new Error(data.message || data.error || 'Erro ' + res.status)

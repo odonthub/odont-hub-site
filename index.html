@@ -2172,9 +2172,22 @@ async function submitPost() {
   btn.disabled = true
   btn.textContent = 'Publicando...'
   try {
-    await api('POST', '/api/feed', { content, specialty_tag: specialty || undefined })
+    let image_url = null
+    if (selectedImageFile) {
+      btn.textContent = 'Enviando foto...'
+      try {
+        image_url = await uploadImageToServer(selectedImageFile)
+      } catch(uploadErr) {
+        alert('Erro no upload da foto: ' + uploadErr.message)
+        btn.disabled = false
+        btn.textContent = 'Publicar'
+        return
+      }
+    }
+    await api('POST', '/api/feed', { content, specialty_tag: specialty || undefined, image_url })
     document.getElementById('post-content').value = ''
     document.getElementById('post-specialty').value = ''
+    removeImage()
     await loadFeed()
   } catch (e) {
     alert('Erro ao publicar: ' + e.message)

@@ -669,13 +669,18 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
     </nav>
 
     <div class="sb-footer">
-      <div class="user-row">
-        <div class="av m av-grad-me">CM</div>
+      <div class="user-row" onclick="toggleLogoutMenu()">
+        <div class="av m av-grad-me" id="sb-av">TM</div>
         <div style="flex:1;min-width:0;">
-          <div class="user-name">Dr. Carlos Mendes</div>
-          <div class="user-cro">CRO/SP 12345</div>
+          <div class="user-name">Taisa Maeshiro</div>
+          <div class="user-cro">CRO 110889</div>
         </div>
         <i class="ti ti-dots-vertical" style="color:rgba(255,255,255,.35);font-size:16px;"></i>
+      </div>
+      <div id="logout-menu" style="display:none;background:white;border-radius:8px;margin:6px 0 0;overflow:hidden;">
+        <div onclick="doLogout()" style="padding:11px 14px;font-size:13px;font-weight:600;color:#ef4444;cursor:pointer;display:flex;align-items:center;gap:8px;">
+          <i class="ti ti-logout" style="font-size:16px;"></i> Sair da conta
+        </div>
       </div>
     </div>
   </aside>
@@ -2246,6 +2251,21 @@ function editPost(postId, currentContent) {
   api('PUT', '/api/feed/' + postId, { content: novoTexto.trim() })
     .then(() => loadFeed())
     .catch(e => alert('Erro ao editar: ' + e.message))
+}
+
+
+function toggleLogoutMenu() {
+  const menu = document.getElementById('logout-menu')
+  if (menu) menu.style.display = menu.style.display === 'none' ? 'block' : 'none'
+}
+
+function doLogout() {
+  localStorage.removeItem('odont_token')
+  localStorage.removeItem('odont_user')
+  TOKEN = ''
+  USER = null
+  document.getElementById('app-screen').style.display = 'none'
+  document.getElementById('login-screen').style.display = 'flex'
 }
 
 document.addEventListener('DOMContentLoaded', () => {

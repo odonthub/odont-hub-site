@@ -2108,7 +2108,7 @@ function renderPost(post) {
   const ini = initials(author.name)
   const likes = post.likes_count?.[0]?.count || post.likes_count || 0
   const comments = post.comments_count?.[0]?.count || post.comments_count || 0
-  const isMe = (author.id === USER?.id) || (post.user_id === USER?.id)
+  const isMe = (author.id && USER && author.id === USER.id) || (post.user_id && USER && post.user_id === USER.id)
   const gradients = ['av-grad-1', 'av-grad-2', 'av-grad-3', 'av-grad-4', 'av-grad-5', 'av-grad-6']
   const grad = isMe ? 'av-grad-me' : gradients[Math.abs((ini.charCodeAt(0) || 65) - 65) % 6]
 

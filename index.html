@@ -2243,7 +2243,7 @@ async function compressImage(f){
       c.width=w;c.height=h;
       c.getContext('2d').drawImage(img,0,0,w,h);
       URL.revokeObjectURL(u);
-      c.toBlob(function(b){r(b)},'image'image/jpeg',0.50;
+      c.toBlob(function(b){r(b)},'image/jpeg',0.50);
     };
     img.src=u;
   });

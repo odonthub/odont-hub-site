@@ -1942,8 +1942,6 @@ async function doLogin() {
   setLoading('login-btn', true)
   try {
     // CORREÇÃO: warmup acorda o Railway antes do login (elimina cold-start "Load failed")
-    try { await fetch(API + '/health') } catch (_) {}
-
     const res = await api('POST', '/api/auth/login', { email, password })
     TOKEN = res.token
     USER  = res.user

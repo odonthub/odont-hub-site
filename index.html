@@ -2019,7 +2019,8 @@ function nav(el, screen, title) {
   document.getElementById('screen-' + screen).classList.add('active')
   document.getElementById('page-title').textContent = title
   // CORREÇÃO: carrega feed real ao navegar para Comunidade
-  if (screen === 'community') loadFeed()
+ if (screen === 'community') loadFeed()
+if (screen === 'cursos') loadCursos()
 }
 
 function like(btn, countId) {
@@ -2131,7 +2132,51 @@ function renderPost(post) {
     </div>
   </div>`
 }
-
+// ── CURSOS REAIS ──────────────────────────────────────────────────────────
+async function loadCursos() {
+  const grid = document.getElementById('cursos-grid')
+  if (!grid) return
+  grid.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text3);grid-column:1/-1;">
+    <i class="ti ti-loader" style="font-size:32px;display:block;margin-bottom:10px;animation:spin 1s linear infinite;"></i>
+    Carregando cursos...</div>`
+  try {
+    const cursos = await api('GET', '/api/courses')
+    if (!cursos?.length) {
+      grid.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text3);grid-column:1/-1;">
+        <i class="ti ti-school" style="font-size:48px;display:block;margin-bottom:12px;"></i>
+        Nenhum curso publicado ainda. Seja o primeiro!</div>`
+      return
+    }
+    grid.innerHTML = cursos.map(c => {
+      const wa = c.whatsapp ? c.whatsapp.replace(/\D/g,'') : null
+      const waLink = wa ? `https://wa.me/55${wa}?text=Olá! Vi seu curso "${c.title}" no ODONT HUB e tenho interesse.` : null
+      return `
+      <div class="card" style="padding:0;overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(1,2,103,.13)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="height:116px;background:linear-gradient(135deg,#542F62,#7a3d92);display:flex;align-items:center;justify-content:center;position:relative;">
+          ${c.cover_url ? `<img src="${c.cover_url}" style="width:100%;height:100%;object-fit:cover;">` : `<i class="ti ti-school" style="font-size:52px;color:rgba(255,255,255,.4);"></i>`}
+          <div style="position:absolute;top:10px;left:10px;background:rgba(255,255,255,.2);color:white;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">${c.specialty}</div>
+        </div>
+        <div style="padding:15px 16px 18px;">
+          <div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:5px;">${c.title}</div>
+          <div style="font-size:12px;color:var(--text3);margin-bottom:8px;display:flex;align-items:center;gap:5px;">
+            <i class="ti ti-user" style="font-size:13px;"></i> ${c.instructor?.name || 'Professor'}
+          </div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:11px;">
+            <span style="background:rgba(84,47,98,.08);color:var(--purple);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(84,47,98,.2);">${c.modality}</span>
+            ${c.city ? `<span style="background:rgba(1,2,103,.06);color:var(--navy);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(1,2,103,.12);">${c.city}, ${c.state||''}</span>` : ''}
+            ${c.hours ? `<span style="background:rgba(51,102,153,.08);color:var(--blue);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(51,102,153,.2);">${c.hours}h</span>` : ''}
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="font-size:17px;font-weight:800;color:var(--navy);">R$ ${Number(c.price||0).toLocaleString('pt-BR')}</div>
+            ${waLink ? `<a href="${waLink}" target="_blank" style="background:#25d366;color:white;border:none;padding:7px 14px;border-radius:var(--rs);font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px;text-decoration:none;"><i class="ti ti-brand-whatsapp" style="font-size:15px;"></i> WhatsApp</a>` : `<button class="btn-apply" onclick="alert('Contato não disponível.')">Inscrever-se</button>`}
+          </div>
+        </div>
+      </div>`
+    }).join('')
+  } catch(e) {
+    grid.innerHTML = `<div style="text-align:center;padding:30px;color:var(--text3);grid-column:1/-1;">Erro ao carregar cursos: ${e.message}</div>`
+  }
+}
 async function loadFeed() {
   const list = document.getElementById('feed-list')
   if (!list) return

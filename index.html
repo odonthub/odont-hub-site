@@ -2117,8 +2117,8 @@ function renderPost(post) {
         </div>
       </div>
       <div style="display:flex;gap:4px;">
-        ${isMe ? `<div class="icon-btn" style="border:none;background:#eef2ff;border-radius:6px;width:28px;height:28px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;" onclick="editPost('${post.id}','${post.content.replace(/'/g,"'")}')"><i class="ti ti-pencil" style="color:#336699;font-size:15px;"></i></div>` : ''}
-        ${canDelete ? `<div class="icon-btn" style="border:none;background:#fff0f0;border-radius:6px;width:28px;height:28px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;" onclick="deletePost('${post.id}')"><i class="ti ti-trash" style="color:#ef4444;font-size:15px;"></i></div>` : ''}
+        ${(post.user_id === (JSON.parse(localStorage.getItem("odont_user")||"{}").id||"")) ? `<div style="border:none;background:#eef2ff;border-radius:6px;width:28px;height:28px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;" onclick="editPost('${post.id}','${post.content.replace(/'/g,"'")}')"><i class="ti ti-pencil" style="color:#336699;font-size:15px;"></i></div>` : ''}
+        ${(post.user_id === (JSON.parse(localStorage.getItem("odont_user")||"{}").id||"")) ? `<div style="border:none;background:#fff0f0;border-radius:6px;width:28px;height:28px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;" onclick="deletePost('${post.id}')"><i class="ti ti-trash" style="color:#ef4444;font-size:15px;"></i></div>` : ''}
       </div>
     </div>
     ${post.specialty_tag ? `<div class="tags"><span class="tag">#${post.specialty_tag}</span></div>` : ''}
@@ -2304,3 +2304,4 @@ document.head.appendChild(_style)
 </body>
 </html>
 sex 15 mai 2026 21:13:04 -03
+sáb 16 mai 2026 14:22:27 -03

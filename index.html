@@ -2097,7 +2097,11 @@ function renderPost(post) {
   const ini = initials(author.name)
   const likes = post.likes_count?.[0]?.count || post.likes_count || 0
   const comments = post.comments_count?.[0]?.count || post.comments_count || 0
-  const isMe = (author.id && USER && author.id === USER.id) || (post.user_id && USER && post.user_id === USER.id)
+  const userEmail = USER ? USER.email : (JSON.parse(localStorage.getItem('odont_user')||'{}').email || '')
+  const userId = USER ? USER.id : (JSON.parse(localStorage.getItem('odont_user')||'{}').id || '')
+  const isMe = (author.id && userId && author.id === userId) || (post.user_id && userId && post.user_id === userId)
+  const isAdmin = userEmail === 'odont.hub@gmail.com'
+  const canDelete = isMe || isAdmin
   const gradients = ['av-grad-1', 'av-grad-2', 'av-grad-3', 'av-grad-4', 'av-grad-5', 'av-grad-6']
   const grad = isMe ? 'av-grad-me' : gradients[Math.abs((ini.charCodeAt(0) || 65) - 65) % 6]
 
@@ -2114,7 +2118,7 @@ function renderPost(post) {
       </div>
       <div style="display:flex;gap:4px;">
         ${isMe ? `<div class="icon-btn" style="border:none;background:#eef2ff;border-radius:6px;width:28px;height:28px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;" onclick="editPost('${post.id}','${post.content.replace(/'/g,"'")}')"><i class="ti ti-pencil" style="color:#336699;font-size:15px;"></i></div>` : ''}
-        ${(isMe||USER?.email==='odont.hub@gmail.com') ? `<div class="icon-btn" style="border:none;background:#fff0f0;border-radius:6px;width:28px;height:28px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;" onclick="deletePost('${post.id}')"><i class="ti ti-trash" style="color:#ef4444;font-size:15px;"></i></div>` : ''}
+        ${canDelete ? `<div class="icon-btn" style="border:none;background:#fff0f0;border-radius:6px;width:28px;height:28px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;" onclick="deletePost('${post.id}')"><i class="ti ti-trash" style="color:#ef4444;font-size:15px;"></i></div>` : ''}
       </div>
     </div>
     ${post.specialty_tag ? `<div class="tags"><span class="tag">#${post.specialty_tag}</span></div>` : ''}

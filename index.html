@@ -2006,21 +2006,10 @@ function goApp() {
 }
 
 // Se já tem token válido, entra direto
-if (TOKEN && USER) {
+if (if (TOKEN && USER) {
   window.addEventListener('DOMContentLoaded', () => {
-    api('GET', '/api/auth/me')
-      .then(u => {
-        USER = u
-        localStorage.setItem('odont_user', JSON.stringify(u))
-        goApp()
-        loadFeed()
-      })
-      .catch(() => {
-        localStorage.removeItem('odont_token')
-        localStorage.removeItem('odont_user')
-        TOKEN = ''
-        USER  = null
-      })
+    goApp()
+    loadFeed()
   })
 }
 

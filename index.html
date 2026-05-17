@@ -956,6 +956,45 @@ async function submitCurso() {
   const description = document.getElementById('curso-desc').value.trim()
   if (!title) { alert('Preencha o título do curso.'); return }
   try {
+    let cover_url = null
+    const coverFile = document.getElementById('curso-cover-input').files[0]
+    if (coverFile) {
+      document.querySelector('[onclick="submitCurso()"]').textContent = 'Enviando foto...'
+      cover_url = await uploadImageToServer(coverFile)
+    }
+    await api('POST', '/api/courses', { title, specialty, modality, hours: Number(hours)||null, city, price: Number(price)||0, whatsapp, description, cover_url })
+    document.getElementById('modal-curso').classList.remove('open')
+    document.getElementById('curso-cover-preview').style.display = 'none'
+    document.getElementById('curso-cover-label').textContent = 'Clique para enviar imagem de capa'
+    document.getElementById('curso-cover-input').value = ''
+    alert('Curso publicado com sucesso! ✅')
+    loadCursos()
+  } catch(e) {
+    alert('Erro ao publicar curso: ' + e.message)
+  }
+}
+
+function previewCursoCover(input) {
+  const file = input.files[0]; if (!file) return
+  const reader = new FileReader()
+  reader.onload = e => {
+    const preview = document.getElementById('curso-cover-preview')
+    preview.src = e.target.result
+    preview.style.display = 'block'
+    document.getElementById('curso-cover-label').textContent = '✅ ' + file.name
+  }
+  reader.readAsDataURL(file)
+}{
+  const title    = document.getElementById('curso-title').value.trim()
+  const specialty= document.getElementById('curso-specialty').value
+  const modality = document.getElementById('curso-modality').value
+  const hours    = document.getElementById('curso-hours').value
+  const city     = document.getElementById('curso-city').value.trim()
+  const price    = document.getElementById('curso-price').value
+  const whatsapp = document.getElementById('curso-whatsapp').value.trim()
+  const description = document.getElementById('curso-desc').value.trim()
+  if (!title) { alert('Preencha o título do curso.'); return }
+  try {
     await api('POST', '/api/courses', { title, specialty, modality, hours: Number(hours)||null, city, price: Number(price)||0, whatsapp, description })
     document.getElementById('modal-curso').classList.remove('open')
     alert('Curso publicado com sucesso! ✅')

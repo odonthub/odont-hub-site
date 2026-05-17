@@ -91,6 +91,29 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
 .page{padding:22px 28px;flex:1;display:none;}
 .page.active{display:block;}
 .card{background:white;border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow);border:1px solid var(--border);}
+.card-neon{background:white;border-radius:14px;padding:13px;border:1.5px solid;position:relative;overflow:hidden;}
+.card-neon::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.card-neon-purple{border-color:rgba(84,47,98,.3);box-shadow:0 4px 16px rgba(84,47,98,.12),0 0 20px rgba(84,47,98,.05);}
+.card-neon-purple::before{background:linear-gradient(90deg,transparent,#542F62,transparent);}
+.card-neon-blue{border-color:rgba(51,102,153,.3);box-shadow:0 4px 16px rgba(51,102,153,.12),0 0 20px rgba(51,102,153,.05);}
+.card-neon-blue::before{background:linear-gradient(90deg,transparent,#336699,transparent);}
+.card-neon-navy{border-color:rgba(1,2,103,.25);box-shadow:0 4px 16px rgba(1,2,103,.1),0 0 20px rgba(1,2,103,.04);}
+.card-neon-navy::before{background:linear-gradient(90deg,transparent,#010267,transparent);}
+.card-neon-violet{border-color:rgba(122,61,146,.3);box-shadow:0 4px 16px rgba(122,61,146,.12),0 0 20px rgba(122,61,146,.05);}
+.card-neon-violet::before{background:linear-gradient(90deg,transparent,#7a3d92,transparent);}
+.card-neon-teal{border-color:rgba(77,130,184,.3);box-shadow:0 4px 16px rgba(77,130,184,.12),0 0 20px rgba(77,130,184,.05);}
+.card-neon-teal::before{background:linear-gradient(90deg,transparent,#4d82b8,transparent);}
+.ic-neon-purple{background:linear-gradient(135deg,#f0eaf6,#e8d8f0);color:#542F62;box-shadow:0 0 14px rgba(84,47,98,.2);}
+.ic-neon-blue{background:linear-gradient(135deg,#e8eeff,#d8e8ff);color:#336699;box-shadow:0 0 14px rgba(51,102,153,.2);}
+.ic-neon-navy{background:linear-gradient(135deg,#e8eaf8,#d8dcf5);color:#010267;box-shadow:0 0 14px rgba(1,2,103,.15);}
+.ic-neon-violet{background:linear-gradient(135deg,#f5eeff,#ead8ff);color:#7a3d92;box-shadow:0 0 14px rgba(122,61,146,.2);}
+.ic-neon-teal{background:linear-gradient(135deg,#e8f4ff,#d8eeff);color:#4d82b8;box-shadow:0 0 14px rgba(77,130,184,.2);}
+.btn-electric{font-size:10px;font-weight:800;display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:20px;margin-top:9px;border:none;cursor:pointer;}
+.btn-electric-purple{background:linear-gradient(135deg,#542F62,#7a3d92);color:white;box-shadow:0 2px 12px rgba(84,47,98,.5),0 0 20px rgba(84,47,98,.2);}
+.btn-electric-blue{background:linear-gradient(135deg,#336699,#4d82b8);color:white;box-shadow:0 2px 12px rgba(51,102,153,.5),0 0 20px rgba(51,102,153,.2);}
+.btn-electric-navy{background:linear-gradient(135deg,#010267,#0a0e9a);color:white;box-shadow:0 2px 12px rgba(1,2,103,.5),0 0 20px rgba(1,2,103,.2);}
+.btn-electric-violet{background:linear-gradient(135deg,#7a3d92,#9b5db5);color:white;box-shadow:0 2px 12px rgba(122,61,146,.5),0 0 20px rgba(122,61,146,.2);}
+.btn-electric-teal{background:linear-gradient(135deg,#4d82b8,#336699);color:white;box-shadow:0 2px 12px rgba(77,130,184,.5),0 0 20px rgba(77,130,184,.2);}
 .welcome{background:linear-gradient(135deg,#010267 0%,#542F62 55%,#336699 100%);border-radius:var(--r);padding:22px 26px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden;}
 .welcome::after{content:'';position:absolute;right:-40px;top:-60px;width:220px;height:220px;background:rgba(255,255,255,.04);border-radius:50%;}
 .welcome h2{font-size:18px;font-weight:700;color:white;}
@@ -299,10 +322,24 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
   <div class="login-card">
     <div class="login-logo">
       <div class="login-logomark">
-        <svg width="126" height="56" viewBox="0 0 200 92" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="lg1" x1="24" y1="46" x2="176" y2="46" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#542F62"/><stop offset="48%" stop-color="#9b59b6"/><stop offset="100%" stop-color="#336699"/></linearGradient></defs>
-          <path d="M 100,36 C 110,14 148,8 162,26 C 176,44 166,68 148,74 C 130,80 108,68 100,52 C 92,36 70,12 52,18 C 34,24 24,48 38,66 C 52,84 82,80 100,52" stroke="#7a3a9a" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"/>
-          <path d="M 100,36 C 110,14 148,8 162,26 C 176,44 166,68 148,74 C 130,80 108,68 100,52 C 92,36 70,12 52,18 C 34,24 24,48 38,66 C 52,84 82,80 100,52" stroke="url(#lg1)" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg width="160" height="72" viewBox="0 0 260 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="lg1" x1="0" y1="55" x2="260" y2="55" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#542F62"/>
+              <stop offset="45%" stop-color="#7a3d92"/>
+              <stop offset="75%" stop-color="#010267"/>
+              <stop offset="100%" stop-color="#336699"/>
+            </linearGradient>
+          </defs>
+          <path d="M 130,42 C 142,16 184,8 202,28 C 220,48 208,76 188,84 C 168,92 142,78 130,60 C 118,42 92,14 72,22 C 52,30 40,58 56,78 C 72,98 106,92 130,60"
+                stroke="#7a3d92" stroke-width="18" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.2"/>
+          <path d="M 130,42 C 142,16 184,8 202,28 C 220,48 208,76 188,84 C 168,92 142,78 130,60 C 118,42 92,14 72,22 C 52,30 40,58 56,78 C 72,98 106,92 130,60"
+                stroke="url(#lg1)" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M 130,42 C 142,16 184,8 202,28 C 220,48 208,76 188,84 C 168,92 142,78 130,60 C 118,42 92,14 72,22 C 52,30 40,58 56,78 C 72,98 106,92 130,60"
+                stroke="rgba(255,255,255,0.4)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 20" stroke-dashoffset="4"/>
+          <circle cx="56" cy="78" r="6" fill="#542F62" opacity="0.8"/>
+          <circle cx="202" cy="28" r="6" fill="#336699" opacity="0.8"/>
+          <circle cx="130" cy="51" r="4" fill="#7a3d92" opacity="0.6"/>
         </svg>
       </div>
       <h1>ODONT <span>HUB</span></h1>
@@ -345,7 +382,25 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
 <div id="app-screen" style="display:none;">
   <!-- MOBILE TOPBAR -->
   <div class="mobile-topbar" id="mobile-topbar">
-    <svg width="28" height="13" viewBox="0 0 200 92" fill="none"><path d="M 100,36 C 110,14 148,8 162,26 C 176,44 166,68 148,74 C 130,80 108,68 100,52 C 92,36 70,12 52,18 C 34,24 24,48 38,66 C 52,84 82,80 100,52" stroke="#010267" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg width="44" height="20" viewBox="0 0 260 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="mg1" x1="0" y1="55" x2="260" y2="55" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#542F62"/>
+          <stop offset="45%" stop-color="#7a3d92"/>
+          <stop offset="75%" stop-color="#010267"/>
+          <stop offset="100%" stop-color="#336699"/>
+        </linearGradient>
+      </defs>
+      <path d="M 130,42 C 142,16 184,8 202,28 C 220,48 208,76 188,84 C 168,92 142,78 130,60 C 118,42 92,14 72,22 C 52,30 40,58 56,78 C 72,98 106,92 130,60"
+            stroke="#7a3d92" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.2"/>
+      <path d="M 130,42 C 142,16 184,8 202,28 C 220,48 208,76 188,84 C 168,92 142,78 130,60 C 118,42 92,14 72,22 C 52,30 40,58 56,78 C 72,98 106,92 130,60"
+            stroke="url(#mg1)" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 130,42 C 142,16 184,8 202,28 C 220,48 208,76 188,84 C 168,92 142,78 130,60 C 118,42 92,14 72,22 C 52,30 40,58 56,78 C 72,98 106,92 130,60"
+            stroke="rgba(255,255,255,0.3)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 20" stroke-dashoffset="4"/>
+      <circle cx="56" cy="78" r="5" fill="#542F62" opacity="0.8"/>
+      <circle cx="202" cy="28" r="5" fill="#336699" opacity="0.8"/>
+      <circle cx="130" cy="51" r="3.5" fill="#7a3d92" opacity="0.6"/>
+    </svg>
     <span style="color:var(--navy);font-weight:800;font-size:15px;flex:1;">ODONT HUB</span>
     <div style="display:flex;align-items:center;gap:10px;">
       <i class="ti ti-bell" style="font-size:20px;color:var(--text2);"></i>
@@ -409,11 +464,43 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
         <div><h2>Bom dia! 👋</h2><p>Sua comunidade tem novas interações.</p></div>
         <button class="btn-white-outline" onclick="nav(document.querySelector('[data-s=community]'),'community','Comunidade')">Ver Comunidade →</button>
       </div>
-      <div class="stats">
-        <div class="stat"><div class="stat-ico ico-purple"><i class="ti ti-users"></i></div><div class="stat-val">1.247</div><div class="stat-lbl">Dentistas na plataforma</div><div class="stat-chg">↑ +38 esta semana</div></div>
-        <div class="stat"><div class="stat-ico ico-blue"><i class="ti ti-heart"></i></div><div class="stat-val">84</div><div class="stat-lbl">Curtidas nos seus posts</div><div class="stat-chg">↑ +12 este mês</div></div>
-        <div class="stat"><div class="stat-ico ico-navy"><i class="ti ti-eye"></i></div><div class="stat-val">320</div><div class="stat-lbl">Visualizações do perfil</div><div class="stat-chg">↑ +45 esta semana</div></div>
-        <div class="stat"><div class="stat-ico ico-green"><i class="ti ti-briefcase"></i></div><div class="stat-val">7</div><div class="stat-lbl">Vagas relevantes</div><div class="stat-chg">2 novas hoje</div></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px;">
+        <div class="card-neon card-neon-purple" onclick="nav(document.querySelector('[data-s=community]'),'community','Comunidade')" style="cursor:pointer;">
+          <div class="stat-ico ic-neon-purple" style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;"><i class="ti ti-messages"></i></div>
+          <div style="font-size:13px;font-weight:700;color:#12133a;margin-bottom:2px;">Comunidade</div>
+          <div style="font-size:11px;color:#8889aa;">3 novas interações</div>
+          <div class="btn-electric btn-electric-purple" style="margin-top:10px;"><i class="ti ti-arrow-right" style="font-size:11px;"></i> Ver feed</div>
+        </div>
+        <div class="card-neon card-neon-blue" onclick="nav(document.querySelector('[data-s=experts]'),'experts','Ajuda do Especialista')" style="cursor:pointer;">
+          <div class="stat-ico ic-neon-blue" style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;"><i class="ti ti-message-question"></i></div>
+          <div style="font-size:12px;font-weight:700;color:#12133a;margin-bottom:2px;">Dúvidas com<br>Especialistas</div>
+          <div style="font-size:11px;color:#8889aa;">Planej. e ajuda</div>
+          <div class="btn-electric btn-electric-blue" style="margin-top:10px;"><i class="ti ti-arrow-right" style="font-size:11px;"></i> Consultar</div>
+        </div>
+        <div class="card-neon card-neon-navy" onclick="nav(document.querySelector('[data-s=jobs]'),'jobs','Vagas & Oportunidades')" style="cursor:pointer;">
+          <div class="stat-ico ic-neon-navy" style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;"><i class="ti ti-briefcase"></i></div>
+          <div style="font-size:13px;font-weight:700;color:#12133a;margin-bottom:2px;">Vagas</div>
+          <div style="font-size:11px;color:#8889aa;">7 vagas abertas</div>
+          <div class="btn-electric btn-electric-navy" style="margin-top:10px;"><i class="ti ti-arrow-right" style="font-size:11px;"></i> Ver vagas</div>
+        </div>
+        <div class="card-neon card-neon-violet" onclick="nav(document.querySelector('[data-s=cursos]'),'cursos','Anúncios de Cursos')" style="cursor:pointer;">
+          <div class="stat-ico ic-neon-violet" style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;"><i class="ti ti-school"></i></div>
+          <div style="font-size:13px;font-weight:700;color:#12133a;margin-bottom:2px;">Cursos</div>
+          <div style="font-size:11px;color:#8889aa;">12 disponíveis</div>
+          <div class="btn-electric btn-electric-violet" style="margin-top:10px;"><i class="ti ti-arrow-right" style="font-size:11px;"></i> Explorar</div>
+        </div>
+        <div class="card-neon card-neon-teal" onclick="nav(document.querySelector('[data-s=market]'),'market','Marketplace')" style="cursor:pointer;">
+          <div class="stat-ico ic-neon-teal" style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;"><i class="ti ti-shopping-cart"></i></div>
+          <div style="font-size:13px;font-weight:700;color:#12133a;margin-bottom:2px;">Marketplace</div>
+          <div style="font-size:11px;color:#8889aa;">Equip. e materiais</div>
+          <div class="btn-electric btn-electric-teal" style="margin-top:10px;"><i class="ti ti-arrow-right" style="font-size:11px;"></i> Anúncios</div>
+        </div>
+        <div class="card-neon card-neon-purple" style="border-color:#e3e5f0;box-shadow:0 2px 8px rgba(0,0,0,.04);">
+          <div class="stat-ico" style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;background:#f3f4f9;color:#8889aa;"><i class="ti ti-calendar"></i></div>
+          <div style="font-size:13px;font-weight:700;color:#12133a;margin-bottom:2px;">Agenda</div>
+          <div style="font-size:11px;color:#8889aa;">Em breve</div>
+          <div style="font-size:10px;color:#c0c2d8;margin-top:10px;font-weight:600;">Brevemente</div>
+        </div>
       </div>
       <div class="grid2">
         <div class="card">

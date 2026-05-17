@@ -960,9 +960,7 @@ async function submitCurso() {
     const coverFile = document.getElementById('curso-cover-input').files[0]
     if (coverFile) {
       document.querySelector('[onclick="submitCurso()"]').textContent = 'Enviando foto...'
-      const compressedCover = await compressImage(coverFile)
-const coverBlob = new File([compressedCover], 'capa.jpg', { type: 'image/jpeg' })
-cover_url = await uploadImageToServer(coverBlob)
+     cover_url = await uploadImageToServer(coverFile)
     }
     await api('POST', '/api/courses', { title, specialty, modality, hours: Number(hours)||null, city, price: Number(price)||0, whatsapp, description, cover_url })
     document.getElementById('modal-curso').classList.remove('open')

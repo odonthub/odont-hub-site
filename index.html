@@ -471,7 +471,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
     <!-- DASHBOARD -->
     <div id="screen-dashboard" class="page active">
       <div class="welcome">
-        <div><h2>Bom dia! 👋</h2><p>Sua comunidade tem novas interações.</p></div>
+        <div><h2 id="welcome-msg">Bem-vindo(a)! 🦷</h2><p>Sua comunidade tem novas interações.</p></div>
         <button class="btn-white-outline" onclick="nav(document.querySelector('[data-s=community]'),'community','Comunidade')">Ver Comunidade →</button>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px;" id="recursos-grid">
@@ -966,6 +966,12 @@ function goApp() {
     if (feedAv) feedAv.textContent = ini
     const mobileAv = document.getElementById('mobile-av')
     if (mobileAv) mobileAv.textContent = ini
+    const welcomeMsg = document.getElementById('welcome-msg')
+    if (welcomeMsg) {
+      const firstName = (USER.name || '').split(' ')[0]
+      const title = USER.specialty && USER.specialty.toLowerCase().includes('dra') ? 'Dra.' : 'Dr.'
+      welcomeMsg.textContent = `Bem-vindo(a), ${title} ${firstName}! 🦷`
+    }
   }
 }
 

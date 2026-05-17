@@ -21,100 +21,43 @@
   font-family:'Plus Jakarta Sans',system-ui,sans-serif;
 }
 body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-height:100vh}
-
-/* ===== LOGIN ===== */
-#login-screen{
-  min-height:100vh;display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(140deg,#010267 0%,#542F62 55%,#336699 100%);
-  position:relative;overflow:hidden;
-}
-#login-screen::before{content:'';position:absolute;width:700px;height:700px;
-  background:rgba(255,255,255,.03);border-radius:50%;top:-250px;right:-180px;}
-#login-screen::after{content:'';position:absolute;width:500px;height:500px;
-  background:rgba(255,255,255,.04);border-radius:50%;bottom:-150px;left:-120px;}
-
-.login-card{
-  background:white;border-radius:20px;padding:48px 44px;width:430px;
-  box-shadow:0 32px 80px rgba(0,0,0,.22);position:relative;z-index:1;
-}
+#login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(140deg,#010267 0%,#542F62 55%,#336699 100%);position:relative;overflow:hidden;}
+#login-screen::before{content:'';position:absolute;width:700px;height:700px;background:rgba(255,255,255,.03);border-radius:50%;top:-250px;right:-180px;}
+#login-screen::after{content:'';position:absolute;width:500px;height:500px;background:rgba(255,255,255,.04);border-radius:50%;bottom:-150px;left:-120px;}
+.login-card{background:white;border-radius:20px;padding:48px 44px;width:430px;box-shadow:0 32px 80px rgba(0,0,0,.22);position:relative;z-index:1;}
 .login-logo{text-align:center;margin-bottom:32px;}
-.login-logomark{
-  display:inline-block;
-  margin-bottom:12px;
-  line-height:1;
-}
+.login-logomark{display:inline-block;margin-bottom:12px;line-height:1;}
 .login-logo h1{font-size:22px;font-weight:800;color:var(--navy);letter-spacing:-.5px;}
 .login-logo h1 span{color:var(--purple);}
 .login-logo p{font-size:12px;color:var(--text3);margin-top:3px;}
-.lbl{display:block;font-size:11px;font-weight:700;color:var(--text2);
-  margin-bottom:6px;letter-spacing:.06em;text-transform:uppercase;}
-.inp{
-  width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--rs);
-  font-size:14px;font-family:inherit;color:var(--text);outline:none;
-  margin-bottom:16px;transition:border-color .2s;
-}
+.lbl{display:block;font-size:11px;font-weight:700;color:var(--text2);margin-bottom:6px;letter-spacing:.06em;text-transform:uppercase;}
+.inp{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--rs);font-size:14px;font-family:inherit;color:var(--text);outline:none;margin-bottom:16px;transition:border-color .2s;}
 .inp:focus{border-color:var(--blue);}
-.btn-primary{
-  width:100%;padding:13px;background:linear-gradient(135deg,#010267,#542F62);
-  color:white;border:none;border-radius:var(--rs);font-size:15px;font-weight:700;
-  font-family:inherit;cursor:pointer;transition:opacity .2s,transform .1s;margin-top:4px;
-  display:flex;align-items:center;justify-content:center;gap:8px;
-}
+.btn-primary{width:100%;padding:13px;background:linear-gradient(135deg,#010267,#542F62);color:white;border:none;border-radius:var(--rs);font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;transition:opacity .2s,transform .1s;margin-top:4px;display:flex;align-items:center;justify-content:center;gap:8px;}
 .btn-primary:hover{opacity:.9;transform:translateY(-1px);}
 .login-divider{text-align:center;margin:18px 0;position:relative;}
 .login-divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:var(--border);}
 .login-divider span{position:relative;background:white;padding:0 12px;font-size:12px;color:var(--text3);}
-.login-register{
-  text-align:center;padding:10px;border:1.5px solid var(--border);border-radius:var(--rs);
-  font-size:13px;color:var(--text2);cursor:pointer;transition:all .15s;
-}
+.login-register{text-align:center;padding:10px;border:1.5px solid var(--border);border-radius:var(--rs);font-size:13px;color:var(--text2);cursor:pointer;transition:all .15s;}
 .login-register:hover{border-color:var(--blue);color:var(--blue);}
 .login-register strong{color:var(--navy);}
-.free-tag{
-  display:inline-flex;align-items:center;gap:5px;background:#f0fdf4;
-  color:#16a34a;border:1px solid #bbf7d0;border-radius:20px;
-  padding:5px 12px;font-size:11px;font-weight:700;margin-top:18px;
-}
-
-/* ===== APP ===== */
+.free-tag{display:inline-flex;align-items:center;gap:5px;background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;border-radius:20px;padding:5px 12px;font-size:11px;font-weight:700;margin-top:18px;}
 #app-screen{display:flex;min-height:100vh;}
-
-.sidebar{
-  width:var(--sidebar);background:var(--navy);
-  position:fixed;top:0;left:0;height:100vh;z-index:10;
-  display:flex;flex-direction:column;
-}
+.sidebar{width:var(--sidebar);background:var(--navy);position:fixed;top:0;left:0;height:100vh;z-index:10;display:flex;flex-direction:column;}
 .sb-logo{padding:22px 18px 16px;border-bottom:1px solid rgba(255,255,255,.08);}
 .sb-logo-row{display:flex;align-items:center;gap:10px;}
-.logomark{
-  flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-  line-height:1;
-}
+.logomark{flex-shrink:0;display:flex;align-items:center;justify-content:center;line-height:1;}
 .logo-name{font-size:16px;font-weight:800;color:white;letter-spacing:-.3px;line-height:1.1;}
 .logo-name span{color:#8ab4d4;}
-.logo-plan{
-  font-size:9px;font-weight:700;letter-spacing:.08em;
-  background:rgba(255,255,255,.12);color:rgba(255,255,255,.65);
-  padding:2px 7px;border-radius:4px;margin-top:3px;display:inline-block;
-}
+.logo-plan{font-size:9px;font-weight:700;letter-spacing:.08em;background:rgba(255,255,255,.12);color:rgba(255,255,255,.65);padding:2px 7px;border-radius:4px;margin-top:3px;display:inline-block;}
 .sb-nav{flex:1;overflow-y:auto;padding:14px 10px;}
-.sb-section{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(255,255,255,.3);padding:0 8px;margin-top:16px;margin-bottom:5px;}
+.sb-section{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:0 8px;margin-top:16px;margin-bottom:5px;}
 .sb-section:first-child{margin-top:0;}
-.nav-item{
-  display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:9px;
-  cursor:pointer;color:rgba(255,255,255,.55);font-size:13.5px;font-weight:500;
-  transition:all .15s;margin-bottom:1px;user-select:none;
-}
+.nav-item{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:9px;cursor:pointer;color:rgba(255,255,255,.55);font-size:13.5px;font-weight:500;transition:all .15s;margin-bottom:1px;user-select:none;}
 .nav-item:hover{background:rgba(255,255,255,.08);color:rgba(255,255,255,.9);}
-.nav-item.active{
-  background:linear-gradient(135deg,rgba(84,47,98,.7),rgba(51,102,153,.45));
-  color:white;
-}
+.nav-item.active{background:linear-gradient(135deg,rgba(84,47,98,.7),rgba(51,102,153,.45));color:white;}
 .nav-item i{font-size:18px;flex-shrink:0;}
-.nb{margin-left:auto;background:#ef4444;color:white;font-size:10px;font-weight:700;
-  padding:1px 6px;border-radius:10px;min-width:18px;text-align:center;}
+.nb{margin-left:auto;background:#ef4444;color:white;font-size:10px;font-weight:700;padding:1px 6px;border-radius:10px;min-width:18px;text-align:center;}
 .sb-footer{padding:12px 10px;border-top:1px solid rgba(255,255,255,.08);}
 .user-row{display:flex;align-items:center;gap:9px;padding:8px;border-radius:9px;cursor:pointer;transition:background .15s;}
 .user-row:hover{background:rgba(255,255,255,.07);}
@@ -132,69 +75,31 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
 .av-grad-me{background:linear-gradient(135deg,#010267,#542F62);}
 .user-name{font-size:13px;font-weight:600;color:white;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .user-cro{font-size:10px;color:rgba(255,255,255,.4);}
-
 .main{margin-left:var(--sidebar);flex:1;display:flex;flex-direction:column;min-height:100vh;}
-.free-bar{
-  background:rgba(16,185,129,.08);border-bottom:1px solid rgba(16,185,129,.2);
-  padding:7px 28px;display:flex;align-items:center;gap:10px;font-size:12px;color:#065f46;
-}
+.free-bar{background:rgba(16,185,129,.08);border-bottom:1px solid rgba(16,185,129,.2);padding:7px 28px;display:flex;align-items:center;gap:10px;font-size:12px;color:#065f46;}
 .free-bar i{font-size:15px;color:#059669;}
 .free-bar a{color:var(--blue);font-weight:600;text-decoration:none;cursor:pointer;margin-left:auto;font-size:11px;}
-
-.topbar{
-  background:white;border-bottom:1px solid var(--border);
-  padding:12px 28px;display:flex;align-items:center;gap:14px;
-  position:sticky;top:0;z-index:5;
-}
+.topbar{background:white;border-bottom:1px solid var(--border);padding:12px 28px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:5;}
 .page-title{font-size:16px;font-weight:700;color:var(--navy);flex:1;}
-.search{
-  display:flex;align-items:center;gap:8px;background:var(--bg);
-  border:1.5px solid var(--border);border-radius:9px;padding:7px 12px;width:230px;
-}
-.search input{border:none;background:transparent;font-size:13px;font-family:inherit;
-  color:var(--text);outline:none;width:100%;}
+.search{display:flex;align-items:center;gap:8px;background:var(--bg);border:1.5px solid var(--border);border-radius:9px;padding:7px 12px;width:230px;}
+.search input{border:none;background:transparent;font-size:13px;font-family:inherit;color:var(--text);outline:none;width:100%;}
 .search input::placeholder{color:var(--text3);}
 .search i{color:var(--text3);font-size:16px;}
-.icon-btn{
-  width:36px;height:36px;border-radius:9px;background:var(--bg);
-  border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;
-  cursor:pointer;color:var(--text2);font-size:18px;transition:all .15s;position:relative;
-}
+.icon-btn{width:36px;height:36px;border-radius:9px;background:var(--bg);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text2);font-size:18px;transition:all .15s;position:relative;}
 .icon-btn:hover{background:var(--border);}
-.notif-dot{position:absolute;top:6px;right:6px;width:7px;height:7px;
-  background:#ef4444;border-radius:50%;border:1.5px solid white;}
-
+.notif-dot{position:absolute;top:6px;right:6px;width:7px;height:7px;background:#ef4444;border-radius:50%;border:1.5px solid white;}
 .page{padding:22px 28px;flex:1;display:none;}
 .page.active{display:block;}
-
-/* ===== CARDS ===== */
-.card{background:white;border-radius:var(--r);padding:18px 20px;
-  box-shadow:var(--shadow);border:1px solid var(--border);}
-
-/* ===== DASHBOARD ===== */
-.welcome{
-  background:linear-gradient(135deg,#010267 0%,#542F62 55%,#336699 100%);
-  border-radius:var(--r);padding:22px 26px;margin-bottom:20px;
-  display:flex;align-items:center;justify-content:space-between;
-  position:relative;overflow:hidden;
-}
-.welcome::after{content:'';position:absolute;right:-40px;top:-60px;
-  width:220px;height:220px;background:rgba(255,255,255,.04);border-radius:50%;}
+.card{background:white;border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow);border:1px solid var(--border);}
+.welcome{background:linear-gradient(135deg,#010267 0%,#542F62 55%,#336699 100%);border-radius:var(--r);padding:22px 26px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden;}
+.welcome::after{content:'';position:absolute;right:-40px;top:-60px;width:220px;height:220px;background:rgba(255,255,255,.04);border-radius:50%;}
 .welcome h2{font-size:18px;font-weight:700;color:white;}
 .welcome p{font-size:13px;color:rgba(255,255,255,.7);margin-top:4px;}
-.btn-white-outline{
-  background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);
-  color:white;padding:8px 16px;border-radius:var(--rs);font-size:13px;font-weight:600;
-  font-family:inherit;cursor:pointer;transition:all .15s;white-space:nowrap;
-  position:relative;z-index:1;
-}
+.btn-white-outline{background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);color:white;padding:8px 16px;border-radius:var(--rs);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;transition:all .15s;white-space:nowrap;position:relative;z-index:1;}
 .btn-white-outline:hover{background:rgba(255,255,255,.25);}
-
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
-.stat{background:white;border-radius:var(--r);padding:18px 20px;
-  box-shadow:var(--shadow);border:1px solid var(--border);}
-.stat-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;
-  justify-content:center;font-size:20px;margin-bottom:11px;}
+.stat{background:white;border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow);border:1px solid var(--border);}
+.stat-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:11px;}
 .ico-purple{background:rgba(84,47,98,.1);color:var(--purple);}
 .ico-blue{background:rgba(51,102,153,.1);color:var(--blue);}
 .ico-navy{background:rgba(1,2,103,.08);color:var(--navy2);}
@@ -202,7 +107,6 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
 .stat-val{font-size:26px;font-weight:800;color:var(--navy);line-height:1;}
 .stat-lbl{font-size:12px;color:var(--text3);margin-top:3px;}
 .stat-chg{font-size:11px;color:#10b981;font-weight:600;margin-top:5px;}
-
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 .card-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px;}
 .card-ttl{font-size:14px;font-weight:700;color:var(--navy);}
@@ -215,89 +119,39 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
 .act-txt{font-size:13px;color:var(--text2);flex:1;line-height:1.45;}
 .act-txt strong{color:var(--text);font-weight:600;}
 .act-time{font-size:11px;color:var(--text3);flex-shrink:0;}
-
 .bar-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
 .bar-lbl{font-size:12px;color:var(--text2);width:130px;}
 .bar-track{flex:1;background:var(--bg);border-radius:4px;height:8px;overflow:hidden;}
 .bar-fill{height:100%;border-radius:4px;}
 .bar-pct{font-size:11px;color:var(--text3);width:30px;text-align:right;}
-
-/* ===== COMMUNITY ===== */
 .comm-layout{display:grid;grid-template-columns:1fr 290px;gap:18px;}
-.composer{background:white;border-radius:var(--r);padding:16px;
-  box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:14px;}
+.composer{background:white;border-radius:var(--r);padding:16px;box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:14px;}
 .comp-top{display:flex;gap:12px;align-items:flex-start;}
-.comp-ta{
-  flex:1;min-height:72px;border:1.5px solid var(--border);border-radius:var(--rs);
-  padding:10px 14px;font-family:inherit;font-size:13px;color:var(--text);
-  resize:none;outline:none;transition:border-color .2s;
-}
+.comp-ta{flex:1;min-height:72px;border:1.5px solid var(--border);border-radius:var(--rs);padding:10px 14px;font-family:inherit;font-size:13px;color:var(--text);resize:none;outline:none;transition:border-color .2s;}
 .comp-ta:focus{border-color:var(--blue);}
 .comp-ta::placeholder{color:var(--text3);}
 .comp-ftr{display:flex;align-items:center;gap:6px;margin-top:9px;padding-left:48px;}
-.comp-btn{
-  display:flex;align-items:center;gap:5px;padding:6px 11px;border-radius:var(--rs);
-  border:1.5px solid var(--border);background:transparent;font-size:12px;
-  color:var(--text2);font-family:inherit;cursor:pointer;font-weight:500;transition:all .15s;
-}
+.comp-btn{display:flex;align-items:center;gap:5px;padding:6px 11px;border-radius:var(--rs);border:1.5px solid var(--border);background:transparent;font-size:12px;color:var(--text2);font-family:inherit;cursor:pointer;font-weight:500;transition:all .15s;}
 .comp-btn:hover{background:var(--bg);}
 .comp-btn i{font-size:15px;}
-.btn-pub{
-  margin-left:auto;background:var(--navy);color:white;border:none;
-  padding:7px 18px;border-radius:var(--rs);font-size:13px;font-weight:700;
-  font-family:inherit;cursor:pointer;transition:opacity .15s;
-}
+.btn-pub{margin-left:auto;background:var(--navy);color:white;border:none;padding:7px 18px;border-radius:var(--rs);font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;transition:opacity .15s;}
 .btn-pub:hover{opacity:.85;}
-
-.post{background:white;border-radius:var(--r);padding:18px;
-  box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:13px;}
+.post{background:white;border-radius:var(--r);padding:18px;box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:13px;}
 .post-hdr{display:flex;align-items:center;gap:10px;margin-bottom:11px;}
 .post-uinfo{flex:1;}
 .post-name{font-size:13.5px;font-weight:700;color:var(--text);}
 .post-meta{font-size:11px;color:var(--text3);display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:2px;}
-.cro-badge{
-  background:rgba(1,2,103,.07);color:var(--navy2);
-  padding:1px 6px;border-radius:4px;font-size:10px;font-weight:600;
-}
+.cro-badge{background:rgba(1,2,103,.07);color:var(--navy2);padding:1px 6px;border-radius:4px;font-size:10px;font-weight:600;}
 .tags{margin-bottom:9px;}
-.tag{
-  display:inline-block;background:rgba(51,102,153,.1);color:var(--blue);
-  font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;
-  margin-right:5px;margin-bottom:5px;
-}
+.tag{display:inline-block;background:rgba(51,102,153,.1);color:var(--blue);font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;margin-right:5px;margin-bottom:5px;}
 .post-txt{font-size:13.5px;color:var(--text2);line-height:1.65;margin-bottom:11px;}
-.post-img-ph{
-  width:100%;height:190px;background:linear-gradient(135deg,#e8e9f8,#dde8f5);
-  border-radius:var(--rs);margin-bottom:11px;display:flex;align-items:center;
-  justify-content:center;color:var(--text3);font-size:12px;gap:8px;flex-direction:column;
-}
-.post-img-ph i{font-size:32px;color:#c0c2d8;}
-.post-file{
-  background:var(--bg);border:1.5px solid var(--border);border-radius:var(--rs);
-  padding:11px 14px;display:flex;align-items:center;gap:11px;margin-bottom:11px;
-}
-.file-ico{width:40px;height:40px;background:rgba(84,47,98,.1);border-radius:8px;
-  display:flex;align-items:center;justify-content:center;color:var(--purple);font-size:20px;flex-shrink:0;}
-.file-name{font-size:13px;font-weight:600;color:var(--text);}
-.file-size{font-size:11px;color:var(--text3);margin-top:2px;}
-.btn-dl{
-  padding:6px 12px;border-radius:var(--rs);border:1.5px solid var(--border);
-  background:white;font-size:12px;font-weight:600;color:var(--text2);
-  cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px;margin-left:auto;
-}
 .post-acts{display:flex;align-items:center;gap:3px;padding-top:9px;border-top:1px solid var(--border);}
-.pact{
-  display:flex;align-items:center;gap:5px;padding:6px 11px;border-radius:var(--rs);
-  border:none;background:transparent;font-size:12px;color:var(--text3);
-  font-family:inherit;cursor:pointer;font-weight:500;transition:all .15s;
-}
+.pact{display:flex;align-items:center;gap:5px;padding:6px 11px;border-radius:var(--rs);border:none;background:transparent;font-size:12px;color:var(--text3);font-family:inherit;cursor:pointer;font-weight:500;transition:all .15s;}
 .pact:hover{background:var(--bg);color:var(--purple);}
 .pact.liked{color:#ef4444;}
 .pact i{font-size:17px;}
 .pact.ml{margin-left:auto;}
-
-.side-card{background:white;border-radius:var(--r);padding:15px;
-  box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:13px;}
+.side-card{background:white;border-radius:var(--r);padding:15px;box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:13px;}
 .side-card h3{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:11px;}
 .trend{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid var(--border);cursor:pointer;}
 .trend:last-child{border-bottom:none;}
@@ -306,38 +160,18 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
 .trend-cnt{font-size:11px;color:var(--text3);}
 .sugg{display:flex;align-items:center;gap:9px;margin-bottom:9px;}
 .sugg:last-child{margin-bottom:0;}
-.btn-follow{
-  padding:4px 10px;border-radius:6px;border:1.5px solid var(--blue);
-  background:transparent;font-size:11px;font-weight:700;color:var(--blue);
-  cursor:pointer;font-family:inherit;transition:all .15s;
-}
+.btn-follow{padding:4px 10px;border-radius:6px;border:1.5px solid var(--blue);background:transparent;font-size:11px;font-weight:700;color:var(--blue);cursor:pointer;font-family:inherit;transition:all .15s;}
 .btn-follow:hover{background:var(--blue);color:white;}
-
-/* ===== MARKETPLACE ===== */
 .mkt-top{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
-.filter-btn{
-  padding:7px 14px;border-radius:20px;border:1.5px solid var(--border);
-  background:white;font-size:12px;font-weight:600;color:var(--text2);
-  cursor:pointer;font-family:inherit;transition:all .15s;
-}
+.filter-btn{padding:7px 14px;border-radius:20px;border:1.5px solid var(--border);background:white;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;font-family:inherit;transition:all .15s;}
 .filter-btn:hover{border-color:var(--blue);color:var(--blue);}
 .filter-btn.on{background:var(--navy);border-color:var(--navy);color:white;}
-.btn-new{
-  margin-left:auto;background:linear-gradient(135deg,#542F62,#336699);color:white;
-  padding:8px 16px;border-radius:var(--rs);border:none;font-size:13px;font-weight:700;
-  font-family:inherit;cursor:pointer;display:flex;align-items:center;gap:6px;transition:opacity .15s;
-}
+.btn-new{margin-left:auto;background:linear-gradient(135deg,#542F62,#336699);color:white;padding:8px 16px;border-radius:var(--rs);border:none;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;display:flex;align-items:center;gap:6px;transition:opacity .15s;}
 .btn-new:hover{opacity:.88;}
 .mkt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.mkt-card{
-  background:white;border-radius:var(--r);box-shadow:var(--shadow);
-  border:1px solid var(--border);overflow:hidden;transition:box-shadow .2s,transform .2s;cursor:pointer;
-}
+.mkt-card{background:white;border-radius:var(--r);box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden;transition:box-shadow .2s,transform .2s;cursor:pointer;}
 .mkt-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
-.mkt-img{
-  width:100%;height:155px;display:flex;align-items:center;justify-content:center;
-  flex-direction:column;gap:6px;position:relative;
-}
+.mkt-img{width:100%;height:155px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;position:relative;}
 .mkt-img i{font-size:40px;}
 .cond{position:absolute;top:10px;left:10px;padding:3px 8px;border-radius:5px;font-size:10px;font-weight:700;}
 .cond.new{background:#dcfce7;color:#16a34a;}
@@ -347,34 +181,16 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
 .mkt-price{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:7px;}
 .mkt-loc{font-size:12px;color:var(--text3);display:flex;align-items:center;gap:4px;margin-bottom:11px;}
 .mkt-loc i{font-size:14px;}
-.btn-interest{
-  width:100%;padding:8px;border-radius:var(--rs);
-  background:rgba(1,2,103,.07);border:1.5px solid rgba(1,2,103,.12);color:var(--navy);
-  font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;gap:5px;transition:all .15s;
-}
+.btn-interest{width:100%;padding:8px;border-radius:var(--rs);background:rgba(1,2,103,.07);border:1.5px solid rgba(1,2,103,.12);color:var(--navy);font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;transition:all .15s;}
 .btn-interest:hover{background:var(--navy);color:white;}
-
-/* ===== VAGAS ===== */
-.tabs-wrap{display:flex;gap:0;background:var(--bg);border-radius:10px;
-  padding:4px;margin-bottom:20px;border:1px solid var(--border);width:fit-content;}
-.tab{padding:7px 20px;border-radius:7px;border:none;background:transparent;
-  font-size:13px;font-weight:600;color:var(--text3);font-family:inherit;
-  cursor:pointer;transition:all .15s;}
+.tabs-wrap{display:flex;gap:0;background:var(--bg);border-radius:10px;padding:4px;margin-bottom:20px;border:1px solid var(--border);width:fit-content;}
+.tab{padding:7px 20px;border-radius:7px;border:none;background:transparent;font-size:13px;font-weight:600;color:var(--text3);font-family:inherit;cursor:pointer;transition:all .15s;}
 .tab.on{background:white;color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,.1);}
 .jobs-layout{display:grid;grid-template-columns:1fr 300px;gap:18px;}
-.job{
-  background:white;border-radius:var(--r);padding:18px;
-  box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:12px;
-  cursor:pointer;transition:box-shadow .15s;
-}
+.job{background:white;border-radius:var(--r);padding:18px;box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:12px;cursor:pointer;transition:box-shadow .15s;}
 .job:hover{box-shadow:var(--shadow-md);}
 .job-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px;}
-.clinic-av{
-  width:44px;height:44px;border-radius:10px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;color:white;
-  font-size:13px;font-weight:800;
-}
+.clinic-av{width:44px;height:44px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800;}
 .job-ttl{font-size:15px;font-weight:700;color:var(--text);}
 .job-clinic{font-size:12px;color:var(--text3);margin-top:2px;}
 .job-loc{margin-left:auto;font-size:11px;color:var(--text3);white-space:nowrap;}
@@ -384,74 +200,23 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
 .jtag.ct{background:rgba(51,102,153,.08);color:var(--blue);border-color:rgba(51,102,153,.2);}
 .jtag.lc{background:rgba(1,2,103,.06);color:var(--navy2);border-color:rgba(1,2,103,.12);}
 .job-desc{font-size:13px;color:var(--text2);line-height:1.55;margin-bottom:11px;}
-.job-ftr{display:flex;align-items:center;justify-content:space-between;
-  padding-top:9px;border-top:1px solid var(--border);}
+.job-ftr{display:flex;align-items:center;justify-content:space-between;padding-top:9px;border-top:1px solid var(--border);}
 .job-sal{font-size:13px;color:var(--text2);}
 .job-sal strong{color:var(--navy);font-weight:700;}
-.btn-apply{
-  background:var(--purple);color:white;border:none;
-  padding:7px 16px;border-radius:var(--rs);font-size:12px;font-weight:700;
-  font-family:inherit;cursor:pointer;transition:opacity .15s;
-}
+.btn-apply{background:var(--purple);color:white;border:none;padding:7px 16px;border-radius:var(--rs);font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;transition:opacity .15s;}
 .btn-apply:hover{opacity:.85;}
-
-.upgrade-card{
-  background:linear-gradient(135deg,#542F62,#336699);border-radius:var(--r);
-  padding:18px;color:white;margin-bottom:13px;
-}
+.upgrade-card{background:linear-gradient(135deg,#542F62,#336699);border-radius:var(--r);padding:18px;color:white;margin-bottom:13px;}
 .upgrade-card h4{font-size:14px;font-weight:700;margin-bottom:5px;}
 .upgrade-card p{font-size:12px;opacity:.8;margin-bottom:13px;line-height:1.5;}
-.btn-upgrade{
-  background:white;color:var(--purple);border:none;padding:8px;border-radius:var(--rs);
-  font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;width:100%;transition:opacity .15s;
-}
+.btn-upgrade{background:white;color:var(--purple);border:none;padding:8px;border-radius:var(--rs);font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;width:100%;transition:opacity .15s;}
 .btn-upgrade:hover{opacity:.9;}
-
-/* ===== ESPECIALISTAS ===== */
 .exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px;}
-.exp-card{
-  background:white;border-radius:var(--r);padding:20px;
-  box-shadow:var(--shadow);border:1px solid var(--border);
-  text-align:center;transition:box-shadow .2s,transform .2s;
-}
+.exp-card{background:white;border-radius:var(--r);padding:20px;box-shadow:var(--shadow);border:1px solid var(--border);text-align:center;transition:box-shadow .2s,transform .2s;}
 .exp-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
-.exp-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px;}
-.exp-spec{font-size:12px;color:var(--purple);font-weight:600;margin-bottom:3px;}
-.exp-cro{font-size:11px;color:var(--text3);margin-bottom:6px;}
-.verified{
-  display:inline-flex;align-items:center;gap:3px;background:rgba(16,185,129,.1);
-  color:#059669;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;margin-bottom:9px;
-}
-.exp-rating{display:flex;align-items:center;justify-content:center;gap:3px;
-  font-size:12px;color:#f59e0b;font-weight:600;margin-bottom:13px;}
-.exp-acts{display:flex;gap:8px;}
-.btn-wa{
-  flex:1;padding:8px;background:#25d366;color:white;border:none;border-radius:var(--rs);
-  font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;gap:4px;transition:opacity .15s;
-}
-.btn-wa:hover{opacity:.88;}
-.btn-chat{
-  flex:1;padding:8px;background:rgba(1,2,103,.07);border:1.5px solid rgba(1,2,103,.12);
-  color:var(--navy);border-radius:var(--rs);font-size:12px;font-weight:700;
-  font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;
-  gap:4px;transition:all .15s;
-}
-.btn-chat:hover{background:var(--navy);color:white;}
-
-/* ===== CHAT MODAL ===== */
-.modal-overlay{
-  position:fixed;inset:0;background:rgba(1,2,103,.4);z-index:100;
-  display:none;align-items:center;justify-content:center;
-}
+.modal-overlay{position:fixed;inset:0;background:rgba(1,2,103,.4);z-index:100;display:none;align-items:center;justify-content:center;}
 .modal-overlay.open{display:flex;}
-.modal{
-  background:white;border-radius:var(--r);width:400px;height:560px;
-  box-shadow:0 24px 60px rgba(0,0,0,.2);display:flex;flex-direction:column;overflow:hidden;
-}
-.modal-hdr{
-  padding:14px 18px;background:var(--navy);display:flex;align-items:center;gap:10px;
-}
+.modal{background:white;border-radius:var(--r);width:400px;height:560px;box-shadow:0 24px 60px rgba(0,0,0,.2);display:flex;flex-direction:column;overflow:hidden;}
+.modal-hdr{padding:14px 18px;background:var(--navy);display:flex;align-items:center;gap:10px;}
 .modal-hdr-info{flex:1;}
 .modal-hdr-name{font-size:14px;font-weight:700;color:white;}
 .modal-hdr-spec{font-size:11px;color:rgba(255,255,255,.6);}
@@ -460,136 +225,72 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
 .modal-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--bg);}
 .msg{max-width:75%;}
 .msg.me{align-self:flex-end;}
-.msg-bubble{
-  padding:9px 13px;border-radius:12px;font-size:13px;line-height:1.45;
-}
+.msg-bubble{padding:9px 13px;border-radius:12px;font-size:13px;line-height:1.45;}
 .msg.them .msg-bubble{background:white;color:var(--text);border-bottom-left-radius:4px;}
 .msg.me .msg-bubble{background:var(--navy);color:white;border-bottom-right-radius:4px;}
 .msg-time{font-size:10px;color:var(--text3);margin-top:3px;text-align:right;}
 .msg.them .msg-time{text-align:left;}
 .modal-input{padding:12px 16px;border-top:1px solid var(--border);display:flex;gap:10px;align-items:center;}
-.modal-input input{
-  flex:1;padding:9px 13px;border:1.5px solid var(--border);border-radius:20px;
-  font-size:13px;font-family:inherit;outline:none;
-}
+.modal-input input{flex:1;padding:9px 13px;border:1.5px solid var(--border);border-radius:20px;font-size:13px;font-family:inherit;outline:none;}
 .modal-input input:focus{border-color:var(--blue);}
-.btn-send{
-  width:36px;height:36px;border-radius:50%;background:var(--navy);color:white;
-  border:none;display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;
-  transition:opacity .15s;flex-shrink:0;
-}
+.btn-send{width:36px;height:36px;border-radius:50%;background:var(--navy);color:white;border:none;display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;transition:opacity .15s;flex-shrink:0;}
 .btn-send:hover{opacity:.85;}
-
-/* ===== PEDIR AJUDA ===== */
-.help-banner{
-  background:linear-gradient(135deg,#010267 0%,#542F62 55%,#336699 100%);
-  border-radius:var(--r);padding:22px 26px;margin-bottom:24px;
-  display:flex;align-items:center;gap:20px;position:relative;overflow:hidden;
-}
-.help-banner::after{content:'';position:absolute;right:-50px;top:-60px;
-  width:200px;height:200px;background:rgba(255,255,255,.04);border-radius:50%;}
+.help-banner{background:linear-gradient(135deg,#010267 0%,#542F62 55%,#336699 100%);border-radius:var(--r);padding:22px 26px;margin-bottom:24px;display:flex;align-items:center;gap:20px;position:relative;overflow:hidden;}
+.help-banner::after{content:'';position:absolute;right:-50px;top:-60px;width:200px;height:200px;background:rgba(255,255,255,.04);border-radius:50%;}
 .help-banner-ico{font-size:40px;line-height:1;}
 .help-banner h2{font-size:17px;font-weight:800;color:white;margin-bottom:4px;}
 .help-banner p{font-size:13px;color:rgba(255,255,255,.72);line-height:1.55;}
-
 .spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-.spec-card{
-  background:white;border-radius:16px;overflow:hidden;
-  box-shadow:var(--shadow);border:1px solid var(--border);
-  cursor:pointer;transition:box-shadow .22s,transform .22s;
-}
+.spec-card{background:white;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--border);cursor:pointer;transition:box-shadow .22s,transform .22s;}
 .spec-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px);}
-.spec-top{
-  height:148px;display:flex;align-items:center;justify-content:center;
-  position:relative;overflow:hidden;flex-direction:column;gap:6px;
-}
+.spec-top{height:148px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-direction:column;gap:6px;}
 .spec-top i{font-size:72px !important;color:rgba(255,255,255,.92);filter:drop-shadow(0 2px 8px rgba(0,0,0,.25));}
 .spec-body{padding:16px 18px 18px;}
 .spec-name{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:5px;}
 .spec-desc{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:14px;min-height:38px;}
-.btn-help{
-  width:100%;padding:10px;border-radius:var(--rs);border:none;font-size:13px;
-  font-weight:700;font-family:inherit;cursor:pointer;display:flex;
-  align-items:center;justify-content:center;gap:7px;transition:opacity .15s,transform .1s;
-}
+.btn-help{width:100%;padding:10px;border-radius:var(--rs);border:none;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:opacity .15s,transform .1s;}
 .btn-help:hover{opacity:.88;transform:translateY(-1px);}
 .btn-help i{font-size:16px;}
-
-/* scrollbar */
 ::-webkit-scrollbar{width:5px;}
 ::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px;}
-
-/* proto badge */
-.proto{
-  position:fixed;bottom:14px;right:14px;z-index:200;
-  background:rgba(84,47,98,.92);color:white;font-size:10px;font-weight:700;
-  letter-spacing:.07em;padding:5px 11px;border-radius:6px;pointer-events:none;
-}
+.proto{position:fixed;bottom:14px;right:14px;z-index:200;background:rgba(84,47,98,.92);color:white;font-size:10px;font-weight:700;letter-spacing:.07em;padding:5px 11px;border-radius:6px;pointer-events:none;}
 </style>
 </head>
 <body>
-
 <div class="proto">PROTÓTIPO MVP — ODONT HUB</div>
 
-<!-- ============ LOGIN ============ -->
+<!-- LOGIN -->
 <div id="login-screen">
   <div class="login-card">
     <div class="login-logo">
       <div class="login-logomark">
         <svg width="126" height="56" viewBox="0 0 200 92" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="lg1" x1="24" y1="46" x2="176" y2="46" gradientUnits="userSpaceOnUse">
-              <stop offset="0%"   stop-color="#542F62"/>
-              <stop offset="48%"  stop-color="#9b59b6"/>
-              <stop offset="100%" stop-color="#336699"/>
-            </linearGradient>
-          </defs>
-          <!-- sombra suave -->
-          <path d="M 100,36 C 110,14 148,8 162,26 C 176,44 166,68 148,74 C 130,80 108,68 100,52 C 92,36 70,12 52,18 C 34,24 24,48 38,66 C 52,84 82,80 100,52"
-                stroke="#7a3a9a" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"/>
-          <!-- traço principal com gradiente -->
-          <path d="M 100,36 C 110,14 148,8 162,26 C 176,44 166,68 148,74 C 130,80 108,68 100,52 C 92,36 70,12 52,18 C 34,24 24,48 38,66 C 52,84 82,80 100,52"
-                stroke="url(#lg1)" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs><linearGradient id="lg1" x1="24" y1="46" x2="176" y2="46" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#542F62"/><stop offset="48%" stop-color="#9b59b6"/><stop offset="100%" stop-color="#336699"/></linearGradient></defs>
+          <path d="M 100,36 C 110,14 148,8 162,26 C 176,44 166,68 148,74 C 130,80 108,68 100,52 C 92,36 70,12 52,18 C 34,24 24,48 38,66 C 52,84 82,80 100,52" stroke="#7a3a9a" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"/>
+          <path d="M 100,36 C 110,14 148,8 162,26 C 176,44 166,68 148,74 C 130,80 108,68 100,52 C 92,36 70,12 52,18 C 34,24 24,48 38,66 C 52,84 82,80 100,52" stroke="url(#lg1)" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
       <h1>ODONT <span>HUB</span></h1>
       <p>O ecossistema digital para dentistas brasileiros</p>
     </div>
-
     <label class="lbl">E-mail profissional</label>
     <input id="login-email" class="inp" type="email" placeholder="dr.seunome@email.com">
-
     <label class="lbl">Senha</label>
     <input id="login-password" class="inp" type="password" placeholder="Sua senha">
-
     <label class="lbl">CRO <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text3)">(opcional no login)</span></label>
     <input id="login-cro" class="inp" type="text" placeholder="SP-12345" style="margin-bottom:8px;">
-
     <div id="login-error" style="display:none;background:#fef2f2;border:1px solid #fecaca;color:#dc2626;padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:12px;"></div>
-
-    <button class="btn-primary" id="login-btn" onclick="doLogin()">
-      <i class="ti ti-login"></i> Entrar na plataforma
-    </button>
-
+    <button class="btn-primary" id="login-btn" onclick="doLogin()"><i class="ti ti-login"></i> Entrar na plataforma</button>
     <div class="login-divider"><span>ou</span></div>
-
-    <div class="login-register" onclick="showRegister()">
-      Ainda não tem conta? <strong>Criar conta gratuita</strong> →
-    </div>
-
-    <!-- MODAL CADASTRO -->
-    <div id="register-modal" style="display:none;position:fixed;inset:0;background:rgba(1,2,103,.5);z-index:999;display:none;align-items:center;justify-content:center;">
+    <div class="login-register" onclick="showRegister()">Ainda não tem conta? <strong>Criar conta gratuita</strong> →</div>
+    <div id="register-modal" style="display:none;position:fixed;inset:0;background:rgba(1,2,103,.5);z-index:999;align-items:center;justify-content:center;">
       <div style="background:white;border-radius:16px;padding:32px;width:420px;max-height:90vh;overflow-y:auto;">
         <h2 style="font-size:18px;font-weight:800;color:#010267;margin-bottom:20px;">Criar conta gratuita</h2>
-        <label class="lbl">Nome completo</label>
-        <input id="reg-name" class="inp" type="text" placeholder="Dr. Seu Nome">
-        <label class="lbl">E-mail</label>
-        <input id="reg-email" class="inp" type="email" placeholder="dr.seunome@email.com">
-        <label class="lbl">Senha (mín. 8 caracteres)</label>
-        <input id="reg-password" class="inp" type="password" placeholder="••••••••">
-        <label class="lbl">CRO</label>
-        <input id="reg-cro" class="inp" type="text" placeholder="SP-12345">
+        <label class="lbl">Nome completo</label><input id="reg-name" class="inp" type="text" placeholder="Dr. Seu Nome">
+        <label class="lbl">E-mail</label><input id="reg-email" class="inp" type="email" placeholder="dr.seunome@email.com">
+        <label class="lbl">Senha (mín. 8 caracteres)</label><input id="reg-password" class="inp" type="password" placeholder="••••••••">
+        <label class="lbl">CRO</label><input id="reg-cro" class="inp" type="text" placeholder="SP-12345">
         <label class="lbl">Especialidade</label>
         <select id="reg-specialty" class="inp" style="background:white;">
           <option value="">Selecione...</option>
@@ -602,103 +303,55 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
         <div style="text-align:center;margin-top:12px;font-size:13px;color:#8889aa;cursor:pointer;" onclick="hideRegister()">← Voltar ao login</div>
       </div>
     </div>
-
-    <div style="text-align:center;">
-      <div class="free-tag"><i class="ti ti-check" style="font-size:12px;"></i> Beta aberto — totalmente gratuito</div>
-    </div>
+    <div style="text-align:center;"><div class="free-tag"><i class="ti ti-check" style="font-size:12px;"></i> Beta aberto — totalmente gratuito</div></div>
   </div>
 </div>
 
-<!-- ============ APP ============ -->
+<!-- APP -->
 <div id="app-screen" style="display:none;">
-
-  <!-- Sidebar -->
   <aside class="sidebar">
     <div class="sb-logo">
       <div class="sb-logo-row">
         <div class="logomark">
           <svg width="44" height="20" viewBox="0 0 200 92" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- sombra branca -->
-            <path d="M 100,36 C 110,14 148,8 162,26 C 176,44 166,68 148,74 C 130,80 108,68 100,52 C 92,36 70,12 52,18 C 34,24 24,48 38,66 C 52,84 82,80 100,52"
-                  stroke="rgba(255,255,255,0.25)" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- traço branco principal -->
-            <path d="M 100,36 C 110,14 148,8 162,26 C 176,44 166,68 148,74 C 130,80 108,68 100,52 C 92,36 70,12 52,18 C 34,24 24,48 38,66 C 52,84 82,80 100,52"
-                  stroke="white" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 100,36 C 110,14 148,8 162,26 C 176,44 166,68 148,74 C 130,80 108,68 100,52 C 92,36 70,12 52,18 C 34,24 24,48 38,66 C 52,84 82,80 100,52" stroke="rgba(255,255,255,0.25)" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 100,36 C 110,14 148,8 162,26 C 176,44 166,68 148,74 C 130,80 108,68 100,52 C 92,36 70,12 52,18 C 34,24 24,48 38,66 C 52,84 82,80 100,52" stroke="white" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <div>
-          <div class="logo-name">ODONT <span>HUB</span></div>
-          <div class="logo-plan">PLANO GRATUITO</div>
-        </div>
+        <div><div class="logo-name">ODONT <span>HUB</span></div><div class="logo-plan">PLANO GRATUITO</div></div>
       </div>
     </div>
-
     <nav class="sb-nav">
       <div class="sb-section">Principal</div>
-      <div class="nav-item active" data-s="dashboard" onclick="nav(this,'dashboard','Dashboard')">
-        <i class="ti ti-layout-dashboard"></i> Dashboard
-      </div>
-      <div class="nav-item" data-s="community" onclick="nav(this,'community','Comunidade')">
-        <i class="ti ti-messages"></i> Comunidade <span class="nb">3</span>
-      </div>
-
+      <div class="nav-item active" data-s="dashboard" onclick="nav(this,'dashboard','Dashboard')"><i class="ti ti-layout-dashboard"></i> Dashboard</div>
+      <div class="nav-item" data-s="community" onclick="nav(this,'community','Comunidade')"><i class="ti ti-messages"></i> Comunidade <span class="nb">3</span></div>
       <div class="sb-section">Recursos</div>
-      <div class="nav-item" data-s="market" onclick="nav(this,'market','Marketplace')">
-        <i class="ti ti-shopping-cart"></i> Marketplace
-      </div>
-      <div class="nav-item" data-s="jobs" onclick="nav(this,'jobs','Vagas & Oportunidades')">
-        <i class="ti ti-briefcase"></i> Vagas <span class="nb">2</span>
-      </div>
-      <div class="nav-item" data-s="experts" onclick="nav(this,'experts','Ajuda do Especialista')">
-        Ajuda do Especialista
-      </div>
-      <div class="nav-item" data-s="cursos" onclick="nav(this,'cursos','Anúncios de Cursos')">
-        <i class="ti ti-school"></i> Cursos <span class="nb" style="background:#f59e0b;">N</span>
-      </div>
-
+      <div class="nav-item" data-s="market" onclick="nav(this,'market','Marketplace')"><i class="ti ti-shopping-cart"></i> Marketplace</div>
+      <div class="nav-item" data-s="jobs" onclick="nav(this,'jobs','Vagas & Oportunidades')"><i class="ti ti-briefcase"></i> Vagas <span class="nb">2</span></div>
+      <div class="nav-item" data-s="experts" onclick="nav(this,'experts','Ajuda do Especialista')"><i class="ti ti-stethoscope"></i> Especialistas</div>
+      <div class="nav-item" data-s="cursos" onclick="nav(this,'cursos','Anúncios de Cursos')"><i class="ti ti-school"></i> Cursos <span class="nb" style="background:#f59e0b;">N</span></div>
       <div class="sb-section">Conta</div>
-      <div class="nav-item" onclick="alert('Perfil em construção no próximo sprint! 🚧')">
-        <i class="ti ti-user"></i> Meu perfil
-      </div>
-      <div class="nav-item" onclick="alert('Central de notificações em breve!')">
-        <i class="ti ti-bell"></i> Notificações <span class="nb">5</span>
-      </div>
-      <div class="nav-item" onclick="alert('Configurações em breve!')">
-        <i class="ti ti-settings"></i> Configurações
-      </div>
+      <div class="nav-item" onclick="alert('Perfil em construção! 🚧')"><i class="ti ti-user"></i> Meu perfil</div>
+      <div class="nav-item" onclick="alert('Notificações em breve!')"><i class="ti ti-bell"></i> Notificações <span class="nb">5</span></div>
+      <div class="nav-item" onclick="alert('Configurações em breve!')"><i class="ti ti-settings"></i> Configurações</div>
     </nav>
-
     <div class="sb-footer">
       <div class="user-row" onclick="toggleLogoutMenu()">
         <div class="av m av-grad-me" id="sb-av">TM</div>
-        <div style="flex:1;min-width:0;">
-          <div class="user-name">Taisa Maeshiro</div>
-          <div class="user-cro">CRO 110889</div>
-        </div>
+        <div style="flex:1;min-width:0;"><div class="user-name">Taisa Maeshiro</div><div class="user-cro">CRO 110889</div></div>
         <i class="ti ti-dots-vertical" style="color:rgba(255,255,255,.35);font-size:16px;"></i>
       </div>
       <div id="logout-menu" style="display:none;background:white;border-radius:8px;margin:6px 0 0;overflow:hidden;">
-        <div onclick="doLogout()" style="padding:11px 14px;font-size:13px;font-weight:600;color:#ef4444;cursor:pointer;display:flex;align-items:center;gap:8px;">
-          <i class="ti ti-logout" style="font-size:16px;"></i> Sair da conta
-        </div>
+        <div onclick="doLogout()" style="padding:11px 14px;font-size:13px;font-weight:600;color:#ef4444;cursor:pointer;display:flex;align-items:center;gap:8px;"><i class="ti ti-logout" style="font-size:16px;"></i> Sair da conta</div>
       </div>
     </div>
   </aside>
 
-  <!-- Main -->
   <div class="main">
-    <div class="free-bar">
-      <i class="ti ti-rocket"></i>
-      Você está no <strong style="margin:0 3px;">plano gratuito</strong> — acesso completo durante o beta.
-      <a href="#">Conhecer os planos futuros →</a>
-    </div>
-
+    <div class="free-bar"><i class="ti ti-rocket"></i> Você está no <strong style="margin:0 3px;">plano gratuito</strong> — acesso completo durante o beta. <a href="#">Conhecer os planos futuros →</a></div>
     <div class="topbar">
       <span class="page-title" id="page-title">Dashboard</span>
-      <div class="search">
-        <i class="ti ti-search"></i>
-        <input placeholder="Buscar na plataforma...">
-      </div>
+      <div class="search"><i class="ti ti-search"></i><input placeholder="Buscar na plataforma..."></div>
       <div style="display:flex;align-items:center;gap:8px;">
         <div class="icon-btn"><i class="ti ti-bell"></i><div class="notif-dot"></div></div>
         <div class="icon-btn"><i class="ti ti-message"></i></div>
@@ -706,83 +359,49 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
       </div>
     </div>
 
-    <!-- ===== DASHBOARD ===== -->
+    <!-- DASHBOARD -->
     <div id="screen-dashboard" class="page active">
       <div class="welcome">
-        <div>
-          <h2>Bom dia, Dr. Carlos! 👋</h2>
-          <p>Sua comunidade tem 3 novas interações desde ontem.</p>
-        </div>
-        <button class="btn-white-outline" onclick="nav(document.querySelector('[data-s=community]'),'community','Comunidade')">
-          Ver Comunidade →
-        </button>
+        <div><h2>Bom dia! 👋</h2><p>Sua comunidade tem novas interações.</p></div>
+        <button class="btn-white-outline" onclick="nav(document.querySelector('[data-s=community]'),'community','Comunidade')">Ver Comunidade →</button>
       </div>
-
       <div class="stats">
-        <div class="stat">
-          <div class="stat-ico ico-purple"><i class="ti ti-users"></i></div>
-          <div class="stat-val">1.247</div>
-          <div class="stat-lbl">Dentistas na plataforma</div>
-          <div class="stat-chg">↑ +38 esta semana</div>
-        </div>
-        <div class="stat">
-          <div class="stat-ico ico-blue"><i class="ti ti-heart"></i></div>
-          <div class="stat-val">84</div>
-          <div class="stat-lbl">Curtidas nos seus posts</div>
-          <div class="stat-chg">↑ +12 este mês</div>
-        </div>
-        <div class="stat">
-          <div class="stat-ico ico-navy"><i class="ti ti-eye"></i></div>
-          <div class="stat-val">320</div>
-          <div class="stat-lbl">Visualizações do perfil</div>
-          <div class="stat-chg">↑ +45 esta semana</div>
-        </div>
-        <div class="stat">
-          <div class="stat-ico ico-green"><i class="ti ti-briefcase"></i></div>
-          <div class="stat-val">7</div>
-          <div class="stat-lbl">Vagas relevantes</div>
-          <div class="stat-chg">2 novas hoje</div>
-        </div>
+        <div class="stat"><div class="stat-ico ico-purple"><i class="ti ti-users"></i></div><div class="stat-val">1.247</div><div class="stat-lbl">Dentistas na plataforma</div><div class="stat-chg">↑ +38 esta semana</div></div>
+        <div class="stat"><div class="stat-ico ico-blue"><i class="ti ti-heart"></i></div><div class="stat-val">84</div><div class="stat-lbl">Curtidas nos seus posts</div><div class="stat-chg">↑ +12 este mês</div></div>
+        <div class="stat"><div class="stat-ico ico-navy"><i class="ti ti-eye"></i></div><div class="stat-val">320</div><div class="stat-lbl">Visualizações do perfil</div><div class="stat-chg">↑ +45 esta semana</div></div>
+        <div class="stat"><div class="stat-ico ico-green"><i class="ti ti-briefcase"></i></div><div class="stat-val">7</div><div class="stat-lbl">Vagas relevantes</div><div class="stat-chg">2 novas hoje</div></div>
       </div>
-
       <div class="grid2">
         <div class="card">
-          <div class="card-hdr">
-            <span class="card-ttl">Atividade recente</span>
-            <a class="card-lnk">Ver tudo</a>
-          </div>
+          <div class="card-hdr"><span class="card-ttl">Atividade recente</span><a class="card-lnk">Ver tudo</a></div>
           <div class="act"><div class="dot p"></div><div class="act-txt"><strong>Dra. Ana Pereira</strong> curtiu seu post sobre implantes Straumann</div><div class="act-time">2m</div></div>
-          <div class="act"><div class="dot b"></div><div class="act-txt"><strong>Dr. Felipe Santos</strong> comentou: "Ótima técnica! Qual torque você usa?"</div><div class="act-time">15m</div></div>
-          <div class="act"><div class="dot o"></div><div class="act-txt">Alguém demonstrou interesse no seu anúncio de <strong>Compressor NSK</strong></div><div class="act-time">1h</div></div>
-          <div class="act"><div class="dot g"></div><div class="act-txt"><strong>Clínica OdontoPrime</strong> visualizou seu perfil de candidato</div><div class="act-time">3h</div></div>
-          <div class="act"><div class="dot p"></div><div class="act-txt"><strong>Dra. Lucia Ferreira</strong> respondeu sua dúvida sobre prótese total</div><div class="act-time">5h</div></div>
+          <div class="act"><div class="dot b"></div><div class="act-txt"><strong>Dr. Felipe Santos</strong> comentou: "Ótima técnica!"</div><div class="act-time">15m</div></div>
+          <div class="act"><div class="dot o"></div><div class="act-txt">Interesse no seu anúncio de <strong>Compressor NSK</strong></div><div class="act-time">1h</div></div>
+          <div class="act"><div class="dot g"></div><div class="act-txt"><strong>Clínica OdontoPrime</strong> visualizou seu perfil</div><div class="act-time">3h</div></div>
         </div>
-
         <div class="card">
           <div class="card-hdr"><span class="card-ttl">Especialidades em alta</span></div>
           <div class="bar-row"><div class="bar-lbl">Implantodontia</div><div class="bar-track"><div class="bar-fill" style="width:85%;background:linear-gradient(90deg,#010267,#542F62);"></div></div><div class="bar-pct">85%</div></div>
           <div class="bar-row"><div class="bar-lbl">Ortodontia</div><div class="bar-track"><div class="bar-fill" style="width:72%;background:linear-gradient(90deg,#542F62,#336699);"></div></div><div class="bar-pct">72%</div></div>
           <div class="bar-row"><div class="bar-lbl">Endodontia</div><div class="bar-track"><div class="bar-fill" style="width:61%;background:linear-gradient(90deg,#336699,#4d82b8);"></div></div><div class="bar-pct">61%</div></div>
           <div class="bar-row"><div class="bar-lbl">Prótese dentária</div><div class="bar-track"><div class="bar-fill" style="width:54%;background:linear-gradient(90deg,#4d82b8,#6aabcc);"></div></div><div class="bar-pct">54%</div></div>
-          <div class="bar-row"><div class="bar-lbl">Cirurgia BMF</div><div class="bar-track"><div class="bar-fill" style="width:38%;background:linear-gradient(90deg,#6aabcc,#8bbfd8);"></div></div><div class="bar-pct">38%</div></div>
           <div class="bar-row" style="margin-bottom:0;"><div class="bar-lbl">Odontopediatria</div><div class="bar-track"><div class="bar-fill" style="width:30%;background:#8bbfd8;"></div></div><div class="bar-pct">30%</div></div>
         </div>
       </div>
     </div>
 
-    <!-- ===== COMUNIDADE ===== -->
+    <!-- COMUNIDADE -->
     <div id="screen-community" class="page">
       <div class="comm-layout">
         <div>
-          <!-- Composer -->
           <div class="composer">
             <div id="image-preview" style="display:none;margin:8px 0 0 48px;position:relative;">
-  <img id="preview-img" style="max-width:100%;max-height:200px;border-radius:8px;border:1px solid var(--border);">
-  <button onclick="removeImage()" style="position:absolute;top:6px;right:6px;background:rgba(0,0,0,.5);color:white;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:14px;">×</button>
-</div>
-<div class="comp-top">
+              <img id="preview-img" style="max-width:100%;max-height:200px;border-radius:8px;border:1px solid var(--border);">
+              <button onclick="removeImage()" style="position:absolute;top:6px;right:6px;background:rgba(0,0,0,.5);color:white;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:14px;">×</button>
+            </div>
+            <div class="comp-top">
               <div class="av l av-grad-me" id="feed-av">TM</div>
-              <textarea id="post-content" class="comp-ta" placeholder="Compartilhe um caso, dúvida ou novidade com a comunidade..."></textarea>
+              <textarea id="post-content" class="comp-ta" placeholder="Compartilhe um caso, dúvida ou novidade..."></textarea>
             </div>
             <div class="comp-ftr">
               <select id="post-specialty" style="padding:6px 10px;border-radius:var(--rs);border:1.5px solid var(--border);font-size:12px;font-family:inherit;color:var(--text2);background:white;outline:none;">
@@ -793,14 +412,12 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
                 <option>Harmonização Facial</option><option>Odontopediatria</option><option>Gestão & Marketing</option>
               </select>
               <label style="display:flex;align-items:center;gap:5px;padding:6px 11px;border-radius:var(--rs);border:1.5px solid var(--border);background:transparent;font-size:12px;color:var(--text2);cursor:pointer;font-weight:500;">
-  <i class="ti ti-photo" style="font-size:15px;"></i> Foto
-  <input type="file" id="post-image" accept="image/*" style="display:none;" onchange="previewImage(this)">
-</label>
-<button class="btn-pub" id="btn-pub" onclick="submitPost()">Publicar</button>
+                <i class="ti ti-photo" style="font-size:15px;"></i> Foto
+                <input type="file" id="post-image" accept="image/*" style="display:none;" onchange="previewImage(this)">
+              </label>
+              <button class="btn-pub" id="btn-pub" onclick="submitPost()">Publicar</button>
             </div>
           </div>
-
-          <!-- Feed dinâmico -->
           <div id="feed-list">
             <div style="text-align:center;padding:40px;color:var(--text3);">
               <i class="ti ti-loader" style="font-size:32px;display:block;margin-bottom:10px;animation:spin 1s linear infinite;"></i>
@@ -808,8 +425,6 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
             </div>
           </div>
         </div>
-
-        <!-- Sidebar direito -->
         <div>
           <div class="side-card">
             <h3>Tópicos em alta</h3>
@@ -829,229 +444,67 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
       </div>
     </div>
 
-    <!-- ===== MARKETPLACE ===== -->
+    <!-- MARKETPLACE -->
     <div id="screen-market" class="page">
       <div class="mkt-top">
         <button class="filter-btn on" onclick="filterMkt(this)">Todos</button>
         <button class="filter-btn" onclick="filterMkt(this)">Equipamentos</button>
         <button class="filter-btn" onclick="filterMkt(this)">Materiais</button>
-        <button class="filter-btn" onclick="filterMkt(this)">Mobiliário</button>
-        <button class="filter-btn" onclick="filterMkt(this)">Tecnologia</button>
         <button class="filter-btn" onclick="filterMkt(this)">Novos</button>
         <button class="filter-btn" onclick="filterMkt(this)">Usados</button>
         <button class="btn-new" onclick="openChat('Vendedor','Meu anúncio')"><i class="ti ti-plus"></i> Anunciar produto</button>
       </div>
-
       <div class="mkt-grid">
         <div class="mkt-card" onclick="openChat('Dr. Paulo Ribeiro','Ultrassom Cavitron')">
-          <div class="mkt-img" style="background:linear-gradient(135deg,#e8e9f8,#dde8f5);">
-            <i class="ti ti-device-desktop-analytics" style="color:#a0a5cc;"></i>
-            <span class="cond used">Usado</span>
-          </div>
-          <div class="mkt-body">
-            <div class="mkt-name">Ultrassom Cavitron Dentsply</div>
-            <div class="mkt-price">R$ 2.800</div>
-            <div class="mkt-loc"><i class="ti ti-map-pin"></i> São Paulo, SP</div>
-            <button class="btn-interest"><i class="ti ti-message"></i> Tenho interesse</button>
-          </div>
+          <div class="mkt-img" style="background:linear-gradient(135deg,#e8e9f8,#dde8f5);"><i class="ti ti-device-desktop-analytics" style="color:#a0a5cc;"></i><span class="cond used">Usado</span></div>
+          <div class="mkt-body"><div class="mkt-name">Ultrassom Cavitron Dentsply</div><div class="mkt-price">R$ 2.800</div><div class="mkt-loc"><i class="ti ti-map-pin"></i> São Paulo, SP</div><button class="btn-interest"><i class="ti ti-message"></i> Tenho interesse</button></div>
         </div>
-
         <div class="mkt-card" onclick="openChat('Dra. Carla Nunes','Compressor NSK')">
-          <div class="mkt-img" style="background:linear-gradient(135deg,#e0f2f0,#d5eae8);">
-            <i class="ti ti-wind" style="color:#5aada0;"></i>
-            <span class="cond new">Novo</span>
-          </div>
-          <div class="mkt-body">
-            <div class="mkt-name">Compressor sem óleo NSK</div>
-            <div class="mkt-price">R$ 1.200</div>
-            <div class="mkt-loc"><i class="ti ti-map-pin"></i> Rio de Janeiro, RJ</div>
-            <button class="btn-interest"><i class="ti ti-message"></i> Tenho interesse</button>
-          </div>
+          <div class="mkt-img" style="background:linear-gradient(135deg,#e0f2f0,#d5eae8);"><i class="ti ti-wind" style="color:#5aada0;"></i><span class="cond new">Novo</span></div>
+          <div class="mkt-body"><div class="mkt-name">Compressor sem óleo NSK</div><div class="mkt-price">R$ 1.200</div><div class="mkt-loc"><i class="ti ti-map-pin"></i> Rio de Janeiro, RJ</div><button class="btn-interest"><i class="ti ti-message"></i> Tenho interesse</button></div>
         </div>
-
         <div class="mkt-card" onclick="openChat('Dr. Marcos Alves','Cadeira Gnatus')">
-          <div class="mkt-img" style="background:linear-gradient(135deg,#fef3e8,#fde8d0);">
-            <i class="ti ti-armchair" style="color:#d4835a;"></i>
-            <span class="cond used">Usado</span>
-          </div>
-          <div class="mkt-body">
-            <div class="mkt-name">Cadeira Odontológica Gnatus</div>
-            <div class="mkt-price">R$ 8.500</div>
-            <div class="mkt-loc"><i class="ti ti-map-pin"></i> Belo Horizonte, MG</div>
-            <button class="btn-interest"><i class="ti ti-message"></i> Tenho interesse</button>
-          </div>
-        </div>
-
-        <div class="mkt-card" onclick="openChat('Dra. Camila Torres','Fotopolimerizador Valo')">
-          <div class="mkt-img" style="background:linear-gradient(135deg,#fdf9e3,#faf0c0);">
-            <i class="ti ti-bulb" style="color:#d4a827;"></i>
-            <span class="cond new">Novo</span>
-          </div>
-          <div class="mkt-body">
-            <div class="mkt-name">Fotopolimerizador Valo Grand</div>
-            <div class="mkt-price">R$ 1.850</div>
-            <div class="mkt-loc"><i class="ti ti-map-pin"></i> Curitiba, PR</div>
-            <button class="btn-interest"><i class="ti ti-message"></i> Tenho interesse</button>
-          </div>
-        </div>
-
-        <div class="mkt-card" onclick="openChat('Dr. Bruno Maia','Scanner 3Shape Trios')">
-          <div class="mkt-img" style="background:linear-gradient(135deg,#e8effc,#d8e6f8);">
-            <i class="ti ti-scan" style="color:#5a7ec0;"></i>
-            <span class="cond used">Usado</span>
-          </div>
-          <div class="mkt-body">
-            <div class="mkt-name">Scanner Intraoral 3Shape Trios</div>
-            <div class="mkt-price">R$ 42.000</div>
-            <div class="mkt-loc"><i class="ti ti-map-pin"></i> Porto Alegre, RS</div>
-            <button class="btn-interest"><i class="ti ti-message"></i> Tenho interesse</button>
-          </div>
-        </div>
-
-        <div class="mkt-card" onclick="openChat('Dra. Fernanda Costa','Microscópio Carl Zeiss')">
-          <div class="mkt-img" style="background:linear-gradient(135deg,#ede8f8,#e4dcf5);">
-            <i class="ti ti-microscope" style="color:#7a5aaa;"></i>
-            <span class="cond new">Novo</span>
-          </div>
-          <div class="mkt-body">
-            <div class="mkt-name">Microscópio Endodôntico Carl Zeiss</div>
-            <div class="mkt-price">R$ 28.000</div>
-            <div class="mkt-loc"><i class="ti ti-map-pin"></i> Campinas, SP</div>
-            <button class="btn-interest"><i class="ti ti-message"></i> Tenho interesse</button>
-          </div>
+          <div class="mkt-img" style="background:linear-gradient(135deg,#fef3e8,#fde8d0);"><i class="ti ti-armchair" style="color:#d4835a;"></i><span class="cond used">Usado</span></div>
+          <div class="mkt-body"><div class="mkt-name">Cadeira Odontológica Gnatus</div><div class="mkt-price">R$ 8.500</div><div class="mkt-loc"><i class="ti ti-map-pin"></i> Belo Horizonte, MG</div><button class="btn-interest"><i class="ti ti-message"></i> Tenho interesse</button></div>
         </div>
       </div>
     </div>
 
-    <!-- ===== VAGAS ===== -->
+    <!-- VAGAS -->
     <div id="screen-jobs" class="page">
       <div class="tabs-wrap">
         <button class="tab on" id="tab-vagas" onclick="switchTab('vagas')">Vagas abertas</button>
         <button class="tab" id="tab-offer" onclick="switchTab('offer')">Estou disponível</button>
         <button class="tab" id="tab-mine" onclick="switchTab('mine')">Minhas candidaturas</button>
       </div>
-
       <div class="jobs-layout">
         <div>
-          <!-- Vagas abertas -->
           <div id="tab-content-vagas">
             <div class="job">
-              <div class="job-top">
-                <div class="clinic-av" style="background:linear-gradient(135deg,#010267,#336699);">OP</div>
-                <div><div class="job-ttl">Ortodontista — CLT ou PJ</div><div class="job-clinic">Clínica OdontoPrime · 2 dias atrás</div></div>
-                <div class="job-loc">São Paulo, SP</div>
-              </div>
-              <div class="jtags">
-                <span class="jtag sp">Ortodontia</span>
-                <span class="jtag ct">CLT ou PJ</span>
-                <span class="jtag lc">SP Capital</span>
-              </div>
-              <div class="job-desc">Buscamos ortodontista para integrar nossa equipe. Carteira de pacientes já formada. Espaço moderno com scanner intraoral e software Dolphin. CRO ativo e especialização comprovada.</div>
-              <div class="job-ftr">
-                <div class="job-sal">A combinar · <strong>Clínica est. 2008</strong></div>
-                <button class="btn-apply" onclick="alert('Candidatura enviada! ✅')">Candidatar-se</button>
-              </div>
+              <div class="job-top"><div class="clinic-av" style="background:linear-gradient(135deg,#010267,#336699);">OP</div><div><div class="job-ttl">Ortodontista — CLT ou PJ</div><div class="job-clinic">Clínica OdontoPrime · 2 dias atrás</div></div><div class="job-loc">São Paulo, SP</div></div>
+              <div class="jtags"><span class="jtag sp">Ortodontia</span><span class="jtag ct">CLT ou PJ</span><span class="jtag lc">SP Capital</span></div>
+              <div class="job-desc">Buscamos ortodontista para integrar nossa equipe. Carteira de pacientes já formada. Espaço moderno com scanner intraoral.</div>
+              <div class="job-ftr"><div class="job-sal">A combinar · <strong>Clínica est. 2008</strong></div><button class="btn-apply" onclick="alert('Candidatura enviada! ✅')">Candidatar-se</button></div>
             </div>
-
             <div class="job">
-              <div class="job-top">
-                <div class="clinic-av" style="background:linear-gradient(135deg,#542F62,#7a3d92);">DS</div>
-                <div><div class="job-ttl">Auxiliar em Saúde Bucal (ASB)</div><div class="job-clinic">Dr. Sorriso Clínicas · Publicado hoje</div></div>
-                <div class="job-loc">Campinas, SP</div>
-              </div>
-              <div class="jtags">
-                <span class="jtag sp">ASB</span>
-                <span class="jtag ct">CLT</span>
-                <span class="jtag lc">Campinas</span>
-              </div>
-              <div class="job-desc">Vaga para ASB com certificado SENAC ou equivalente. Horário: seg a sex, 8h às 18h. Benefícios: VT, VR, plano de saúde. Experiência mínima de 1 ano na área.</div>
-              <div class="job-ftr">
-                <div class="job-sal"><strong>R$ 2.100 – R$ 2.600/mês</strong></div>
-                <button class="btn-apply" onclick="alert('Candidatura enviada! ✅')">Candidatar-se</button>
-              </div>
-            </div>
-
-            <div class="job">
-              <div class="job-top">
-                <div class="clinic-av" style="background:linear-gradient(135deg,#336699,#4d82b8);">CS</div>
-                <div><div class="job-ttl">Cirurgião Bucomaxilofacial</div><div class="job-clinic">Centro Odonto Saúde · 5 dias atrás</div></div>
-                <div class="job-loc">Rio de Janeiro, RJ</div>
-              </div>
-              <div class="jtags">
-                <span class="jtag sp">Cirurgia BMF</span>
-                <span class="jtag ct">PJ</span>
-                <span class="jtag lc">Rio de Janeiro</span>
-              </div>
-              <div class="job-desc">Procuramos especialista em Cirurgia Bucomaxilofacial para atuar 3× por semana. Foco em cirurgias eletivas e implantes. Centro credenciado com principais planos de saúde.</div>
-              <div class="job-ftr">
-                <div class="job-sal"><strong>% por produção</strong> — alta demanda</div>
-                <button class="btn-apply" onclick="alert('Candidatura enviada! ✅')">Candidatar-se</button>
-              </div>
-            </div>
-
-            <div class="job">
-              <div class="job-top">
-                <div class="clinic-av" style="background:linear-gradient(135deg,#065f46,#059669);">VP</div>
-                <div><div class="job-ttl">Recepcionista / Atendente</div><div class="job-clinic">Vida & Prótese Odonto · 1 dia atrás</div></div>
-                <div class="job-loc">Salvador, BA</div>
-              </div>
-              <div class="jtags">
-                <span class="jtag sp">Recepção</span>
-                <span class="jtag ct">CLT</span>
-                <span class="jtag lc">Salvador</span>
-              </div>
-              <div class="job-desc">Vaga para recepcionista com experiência em clínica odontológica. Conhecimento em software Dental Office. Boa comunicação, organização e atendimento humanizado.</div>
-              <div class="job-ftr">
-                <div class="job-sal"><strong>R$ 1.800 – R$ 2.200/mês</strong> + comissões</div>
-                <button class="btn-apply" onclick="alert('Candidatura enviada! ✅')">Candidatar-se</button>
-              </div>
+              <div class="job-top"><div class="clinic-av" style="background:linear-gradient(135deg,#542F62,#7a3d92);">DS</div><div><div class="job-ttl">Auxiliar em Saúde Bucal (ASB)</div><div class="job-clinic">Dr. Sorriso Clínicas · Publicado hoje</div></div><div class="job-loc">Campinas, SP</div></div>
+              <div class="jtags"><span class="jtag sp">ASB</span><span class="jtag ct">CLT</span><span class="jtag lc">Campinas</span></div>
+              <div class="job-desc">Vaga para ASB com certificado SENAC. Horário: seg a sex, 8h às 18h. Benefícios: VT, VR, plano de saúde.</div>
+              <div class="job-ftr"><div class="job-sal"><strong>R$ 2.100 – R$ 2.600/mês</strong></div><button class="btn-apply" onclick="alert('Candidatura enviada! ✅')">Candidatar-se</button></div>
             </div>
           </div>
-
-          <!-- Estou disponível -->
           <div id="tab-content-offer" style="display:none;">
             <div style="background:white;border-radius:var(--r);padding:20px;box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:12px;">
               <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
                 <div class="av l av-grad-2">JV</div>
-                <div style="flex:1;">
-                  <div style="font-size:15px;font-weight:700;color:var(--text);">Dr. João Viana</div>
-                  <div style="font-size:12px;color:var(--text3);margin-top:2px;">CRO/SP 44231 · Periodontia</div>
-                </div>
-                <div style="display:inline-flex;align-items:center;gap:4px;background:rgba(16,185,129,.1);color:#059669;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid rgba(16,185,129,.25);">
-                  <i class="ti ti-check" style="font-size:13px;"></i> Disponível
-                </div>
+                <div style="flex:1;"><div style="font-size:15px;font-weight:700;color:var(--text);">Dr. João Viana</div><div style="font-size:12px;color:var(--text3);margin-top:2px;">CRO/SP 44231 · Periodontia</div></div>
+                <div style="display:inline-flex;align-items:center;gap:4px;background:rgba(16,185,129,.1);color:#059669;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid rgba(16,185,129,.25);"><i class="ti ti-check" style="font-size:13px;"></i> Disponível</div>
               </div>
-              <div class="jtags">
-                <span class="jtag sp">Periodontia</span>
-                <span class="jtag ct">PJ</span>
-                <span class="jtag lc">São Paulo, SP</span>
-              </div>
-              <div class="job-desc">Periodontista com 8 anos de experiência. Disponível para sociedade ou parceria em clínica. Especialista em tratamento de implantes e cirurgias periodontais complexas.</div>
+              <div class="jtags"><span class="jtag sp">Periodontia</span><span class="jtag ct">PJ</span><span class="jtag lc">São Paulo, SP</span></div>
+              <div class="job-desc">Periodontista com 8 anos de experiência. Disponível para sociedade ou parceria em clínica.</div>
               <button class="btn-apply" style="background:var(--blue);" onclick="openChat('Dr. João Viana','Oportunidade de parceria')">Entrar em contato</button>
             </div>
-
-            <div style="background:white;border-radius:var(--r);padding:20px;box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:12px;">
-              <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
-                <div class="av l av-grad-5">SS</div>
-                <div style="flex:1;">
-                  <div style="font-size:15px;font-weight:700;color:var(--text);">Sandra Sousa</div>
-                  <div style="font-size:12px;color:var(--text3);margin-top:2px;">CRSP 12876 · ASB</div>
-                </div>
-                <div style="display:inline-flex;align-items:center;gap:4px;background:rgba(16,185,129,.1);color:#059669;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid rgba(16,185,129,.25);">
-                  <i class="ti ti-check" style="font-size:13px;"></i> Disponível
-                </div>
-              </div>
-              <div class="jtags">
-                <span class="jtag sp">ASB</span>
-                <span class="jtag ct">CLT</span>
-                <span class="jtag lc">Campinas, SP</span>
-              </div>
-              <div class="job-desc">ASB com 5 anos de experiência em clínicas de médio e grande porte. Certificado SENAC. Disponível para período integral. Referências disponíveis.</div>
-              <button class="btn-apply" style="background:var(--blue);" onclick="alert('Contato iniciado! ✅')">Entrar em contato</button>
-            </div>
           </div>
-
-          <!-- Minhas candidaturas -->
           <div id="tab-content-mine" style="display:none;">
             <div style="background:white;border-radius:var(--r);padding:20px;box-shadow:var(--shadow);border:1px solid var(--border);text-align:center;">
               <i class="ti ti-file-search" style="font-size:48px;color:var(--border);display:block;margin-bottom:12px;"></i>
@@ -1061,47 +514,13 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
             </div>
           </div>
         </div>
-
-        <!-- Sidebar vagas -->
         <div>
-          <div class="upgrade-card">
-            <h4>🚀 Em breve: Plano Pro</h4>
-            <p>Publique vagas ilimitadas, destaque seu perfil e acesse relatórios de candidaturas com o plano profissional.</p>
-            <button class="btn-upgrade" onclick="alert('Plano Pro em breve! Durante o beta tudo é gratuito 🎉')">Quero ser avisado</button>
-          </div>
-
-          <div class="card" style="margin-bottom:13px;">
-            <div class="card-hdr"><span class="card-ttl">Meu currículo</span></div>
-            <div style="text-align:center;padding:4px 0 12px;">
-              <div class="av xl av-grad-me" style="margin:0 auto 10px;">CM</div>
-              <div style="font-size:13px;font-weight:700;color:var(--text);">Dr. Carlos Mendes</div>
-              <div style="font-size:11px;color:var(--text3);margin-top:2px;">Implantodontista · CRO/SP 12345</div>
-              <div style="display:inline-flex;align-items:center;gap:4px;background:rgba(16,185,129,.1);color:#059669;font-size:10px;font-weight:700;padding:3px 9px;border-radius:4px;margin-top:9px;margin-bottom:13px;border:1px solid rgba(16,185,129,.25);">
-                <i class="ti ti-check" style="font-size:12px;"></i> Disponível para oportunidades
-              </div>
-            </div>
-            <button style="width:100%;padding:9px;border-radius:var(--rs);border:1.5px solid var(--border);background:white;font-size:12px;font-weight:700;color:var(--text2);cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:6px;">
-              <i class="ti ti-pencil" style="font-size:14px;"></i> Editar currículo
-            </button>
-          </div>
-
+          <div class="upgrade-card"><h4>🚀 Em breve: Plano Pro</h4><p>Publique vagas ilimitadas, destaque seu perfil e acesse relatórios de candidaturas.</p><button class="btn-upgrade" onclick="alert('Plano Pro em breve! Durante o beta tudo é gratuito 🎉')">Quero ser avisado</button></div>
           <div class="card">
             <div class="card-hdr"><span class="card-ttl">Filtrar vagas</span></div>
             <div style="display:flex;flex-direction:column;gap:8px;">
-              <select style="padding:8px 10px;border-radius:var(--rs);border:1.5px solid var(--border);font-family:inherit;font-size:12px;color:var(--text2);background:white;outline:none;">
-                <option>Todas as especialidades</option>
-                <option>Dentística</option><option>Clínica Geral</option><option>Ortodontia</option><option>Implantodontia</option>
-                <option>Endodontia</option><option>Cirurgia BMF</option>
-                <option>Prótese Dentária</option><option>ASB / USG</option>
-              </select>
-              <select style="padding:8px 10px;border-radius:var(--rs);border:1.5px solid var(--border);font-family:inherit;font-size:12px;color:var(--text2);background:white;outline:none;">
-                <option>Todo o Brasil</option>
-                <option>São Paulo</option><option>Rio de Janeiro</option>
-                <option>Minas Gerais</option><option>Paraná</option><option>Bahia</option>
-              </select>
-              <select style="padding:8px 10px;border-radius:var(--rs);border:1.5px solid var(--border);font-family:inherit;font-size:12px;color:var(--text2);background:white;outline:none;">
-                <option>CLT ou PJ</option><option>CLT</option><option>PJ</option><option>% Produção</option>
-              </select>
+              <select style="padding:8px 10px;border-radius:var(--rs);border:1.5px solid var(--border);font-family:inherit;font-size:12px;color:var(--text2);background:white;outline:none;"><option>Todas as especialidades</option><option>Ortodontia</option><option>Implantodontia</option><option>Endodontia</option></select>
+              <select style="padding:8px 10px;border-radius:var(--rs);border:1.5px solid var(--border);font-family:inherit;font-size:12px;color:var(--text2);background:white;outline:none;"><option>Todo o Brasil</option><option>São Paulo</option><option>Rio de Janeiro</option><option>Minas Gerais</option></select>
               <button style="padding:9px;border-radius:var(--rs);background:var(--navy);color:white;border:none;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;">Buscar vagas</button>
             </div>
           </div>
@@ -1109,766 +528,111 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
       </div>
     </div>
 
-    <!-- ===== ESPECIALISTAS ===== -->
+    <!-- ESPECIALISTAS -->
     <div id="screen-experts" class="page">
-
       <div class="help-banner">
         <div class="help-banner-ico">🆘</div>
-        <div>
-          <h2>🩺 Ajuda do Especialista</h2>
-          <p>Escolha a especialidade e inicie uma consulta para segunda opinião, diagnóstico, planejamento, laudos periciais, questões jurídicas ou de gestão.</p>
-        </div>
+        <div><h2>🩺 Ajuda do Especialista</h2><p>Escolha a especialidade e inicie uma consulta para segunda opinião, diagnóstico e planejamento.</p></div>
       </div>
-
       <div class="spec-grid">
-
-        <!-- 1. Clínico Geral — DENTE -->
         <div class="spec-card" onclick="openChat('Consulta — Clínico Geral','Diagnóstico e dúvidas clínicas gerais')">
-                              <div class="spec-top" style="background:linear-gradient(145deg,#010267 0%,#1a2bbf 100%);">
-            <svg width="90" height="95" viewBox="0 0 90 95" fill="none">
-  <!-- Coroa molar -->
-  <path d="M15 12 Q8 12 6 26 L4 50 Q8 58 22 60 Q32 62 36 55 Q38 60 40 62 Q42 60 44 55 Q48 62 58 60 Q72 58 76 50 L74 26 Q72 12 65 12 Z" stroke="white" stroke-width="2.4" fill="rgba(255,255,255,.18)"/>
-  <!-- Cúspides principais -->
-  <ellipse cx="21" cy="22" rx="6" ry="5" fill="rgba(255,255,255,.30)"/>
-  <ellipse cx="40" cy="16" rx="6" ry="5" fill="rgba(255,255,255,.30)"/>
-  <ellipse cx="59" cy="22" rx="6" ry="5" fill="rgba(255,255,255,.30)"/>
-  <!-- Cúspides secundárias -->
-  <ellipse cx="28" cy="32" rx="4" ry="3.5" fill="rgba(255,255,255,.18)"/>
-  <ellipse cx="52" cy="32" rx="4" ry="3.5" fill="rgba(255,255,255,.18)"/>
-  <!-- Sulco oclusal -->
-  <path d="M21 30 Q30 36 40 34 Q50 32 59 30" stroke="rgba(255,255,255,.35)" stroke-width="1.5" fill="none"/>
-  <!-- Crista marginal -->
-  <path d="M14 48 Q40 52 66 48" stroke="rgba(255,255,255,.25)" stroke-width="1.2" fill="none"/>
-  <!-- Raiz mesial -->
-  <path d="M22 60 Q18 74 16 86" stroke="white" stroke-width="2.6" stroke-linecap="round" fill="none"/>
-  <!-- Raiz distal -->
-  <path d="M58 60 Q62 74 64 86" stroke="white" stroke-width="2.6" stroke-linecap="round" fill="none"/>
-  <!-- Raiz palatina central -->
-  <path d="M40 62 Q40 74 40 84" stroke="white" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-  <!-- Câmara pulpar -->
-  <path d="M28 48 Q40 50 52 48 L50 38 Q40 40 30 38 Z" stroke="rgba(255,255,255,.4)" stroke-width="1" fill="rgba(255,255,255,.08)"/>
-</svg>
-          </div>
-          <div class="spec-body">
-            <div class="spec-name">Clínico Geral</div>
-            <div class="spec-desc">Diagnóstico inicial, triagem clínica e dúvidas do dia a dia da prática odontológica.</div>
-            <button class="btn-help" style="background:linear-gradient(135deg,#010267,#0d1faa);color:white;"><i class="ti ti-send"></i> Consultar agora</button>
-          </div>
+          <div class="spec-top" style="background:linear-gradient(145deg,#010267 0%,#1a2bbf 100%);"><i class="ti ti-tooth"></i></div>
+          <div class="spec-body"><div class="spec-name">Clínico Geral</div><div class="spec-desc">Diagnóstico inicial, triagem clínica e dúvidas do dia a dia da prática odontológica.</div><button class="btn-help" style="background:linear-gradient(135deg,#010267,#0d1faa);color:white;"><i class="ti ti-send"></i> Consultar agora</button></div>
         </div>
-
-        <!-- 2. Implantodontista — PINO + COROA -->
         <div class="spec-card" onclick="openChat('Consulta — Implantodontista','Planejamento de implantes e cirurgia')">
-                              <div class="spec-top" style="background:linear-gradient(145deg,#542F62 0%,#8b2fc9 100%);">
-            <svg width="80" height="100" viewBox="0 0 80 100" fill="none">
-  <!-- Coroa protética -->
-  <path d="M16 6 Q10 6 8 18 L6 36 Q12 44 40 44 Q68 44 74 36 L72 18 Q70 6 64 6 Z" stroke="white" stroke-width="2.4" fill="rgba(255,255,255,.20)"/>
-  <!-- Cúspides coroa -->
-  <ellipse cx="22" cy="17" rx="5" ry="4" fill="rgba(255,255,255,.35)"/>
-  <ellipse cx="40" cy="12" rx="5" ry="4" fill="rgba(255,255,255,.35)"/>
-  <ellipse cx="58" cy="17" rx="5" ry="4" fill="rgba(255,255,255,.35)"/>
-  <!-- Linha cervical coroa -->
-  <path d="M14 38 Q40 42 66 38" stroke="rgba(255,255,255,.4)" stroke-width="1.5" fill="none"/>
-  <!-- Abutment (conector) -->
-  <path d="M30 44 L27 56 L53 56 L50 44 Z" fill="rgba(255,255,255,.28)" stroke="white" stroke-width="1.8"/>
-  <!-- Linha de conexão -->
-  <line x1="30" y1="50" x2="50" y2="50" stroke="rgba(255,255,255,.4)" stroke-width="1"/>
-  <!-- Corpo do implante (fixture hexagonal topo) -->
-  <rect x="30" y="56" width="20" height="5" rx="2" fill="rgba(255,255,255,.35)" stroke="white" stroke-width="1.5"/>
-  <!-- Corpo principal -->
-  <path d="M30 61 L28 95 Q40 100 52 95 L50 61 Z" stroke="white" stroke-width="2.2" fill="rgba(255,255,255,.15)"/>
-  <!-- Roscas (threads) -->
-  <line x1="28.5" y1="66" x2="51.5" y2="66" stroke="white" stroke-width="1.4" opacity=".7"/>
-  <line x1="28" y1="72" x2="52" y2="72" stroke="white" stroke-width="1.4" opacity=".7"/>
-  <line x1="28" y1="78" x2="52" y2="78" stroke="white" stroke-width="1.4" opacity=".7"/>
-  <line x1="28.5" y1="84" x2="51.5" y2="84" stroke="white" stroke-width="1.4" opacity=".7"/>
-  <line x1="29.5" y1="90" x2="50.5" y2="90" stroke="white" stroke-width="1.4" opacity=".7"/>
-  <!-- Ponta apical cônica -->
-  <path d="M29 94 Q40 100 51 94" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
-</svg>
-          </div>
-          <div class="spec-body">
-            <div class="spec-name">Implantodontista</div>
-            <div class="spec-desc">Planejamento de implantes, pino, coroa, carga imediata e enxertos ósseos.</div>
-            <button class="btn-help" style="background:linear-gradient(135deg,#542F62,#7a3d92);color:white;"><i class="ti ti-send"></i> Consultar agora</button>
-          </div>
+          <div class="spec-top" style="background:linear-gradient(145deg,#542F62 0%,#8b2fc9 100%);"><i class="ti ti-plus-minus"></i></div>
+          <div class="spec-body"><div class="spec-name">Implantodontista</div><div class="spec-desc">Planejamento de implantes, pino, coroa, carga imediata e enxertos ósseos.</div><button class="btn-help" style="background:linear-gradient(135deg,#542F62,#7a3d92);color:white;"><i class="ti ti-send"></i> Consultar agora</button></div>
         </div>
-
-        <!-- 3. Ortodontista -->
         <div class="spec-card" onclick="openChat('Consulta — Ortodontista','Planejamento ortodôntico e alinhadores')">
-                              <div class="spec-top" style="background:linear-gradient(145deg,#336699 0%,#2d8ecf 100%);">
-            <svg width="100" height="80" viewBox="0 0 100 80" fill="none">
-  <!-- Dente esquerdo -->
-  <path d="M6 10 Q4 10 3 18 L2 46 Q5 52 20 52 Q26 52 27 45 L28 18 Q27 10 24 10 Z" stroke="white" stroke-width="2.2" fill="rgba(255,255,255,.18)"/>
-  <!-- Dente central (maior) -->
-  <path d="M33 6 Q31 6 30 14 L29 50 Q32 58 50 58 Q68 58 71 50 L70 14 Q69 6 67 6 Z" stroke="white" stroke-width="2.4" fill="rgba(255,255,255,.18)"/>
-  <!-- Dente direito -->
-  <path d="M76 10 Q74 10 73 18 L72 46 Q75 52 80 52 Q95 52 97 45 L98 18 Q97 10 94 10 Z" stroke="white" stroke-width="2.2" fill="rgba(255,255,255,.18)"/>
-  <!-- Braquete esquerdo -->
-  <rect x="10" y="28" width="12" height="9" rx="1.5" fill="white" opacity=".9"/>
-  <rect x="12" y="30" width="8" height="5" rx="1" fill="rgba(51,102,153,.6)"/>
-  <line x1="13" y1="32.5" x2="20" y2="32.5" stroke="white" stroke-width="1"/>
-  <!-- Braquete central -->
-  <rect x="42" y="26" width="16" height="10" rx="1.5" fill="white" opacity=".9"/>
-  <rect x="44" y="28" width="12" height="6" rx="1" fill="rgba(51,102,153,.6)"/>
-  <line x1="45" y1="31" x2="56" y2="31" stroke="white" stroke-width="1"/>
-  <!-- Braquete direito -->
-  <rect x="78" y="28" width="12" height="9" rx="1.5" fill="white" opacity=".9"/>
-  <rect x="80" y="30" width="8" height="5" rx="1" fill="rgba(51,102,153,.6)"/>
-  <line x1="81" y1="32.5" x2="88" y2="32.5" stroke="white" stroke-width="1"/>
-  <!-- Fio ortodôntico -->
-  <path d="M4 32.5 Q16 30 22 32.5 Q28 33 38 31 Q44 31 50 31 Q56 31 62 31 Q72 33 78 32.5 Q84 30 96 32.5" stroke="white" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-  <!-- Raízes -->
-  <path d="M11 52 Q9 62 8 70" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity=".7"/>
-  <path d="M22 52 Q24 62 25 70" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity=".7"/>
-  <path d="M42 58 Q40 68 39 76" stroke="white" stroke-width="2" stroke-linecap="round" opacity=".7"/>
-  <path d="M58 58 Q60 68 61 76" stroke="white" stroke-width="2" stroke-linecap="round" opacity=".7"/>
-  <path d="M79 52 Q77 62 76 70" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity=".7"/>
-  <path d="M90 52 Q92 62 93 70" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity=".7"/>
-</svg>
-          </div>
-          <div class="spec-body">
-            <div class="spec-name">Ortodontista</div>
-            <div class="spec-desc">Planejamento de aparelhos fixos, alinhadores, mordida e correções esqueléticas.</div>
-            <button class="btn-help" style="background:linear-gradient(135deg,#336699,#4d82b8);color:white;"><i class="ti ti-send"></i> Consultar agora</button>
-          </div>
+          <div class="spec-top" style="background:linear-gradient(145deg,#336699 0%,#2d8ecf 100%);"><i class="ti ti-align-center"></i></div>
+          <div class="spec-body"><div class="spec-name">Ortodontista</div><div class="spec-desc">Planejamento de aparelhos fixos, alinhadores, mordida e correções esqueléticas.</div><button class="btn-help" style="background:linear-gradient(135deg,#336699,#4d82b8);color:white;"><i class="ti ti-send"></i> Consultar agora</button></div>
         </div>
-
-        <!-- 4. Endodontista -->
         <div class="spec-card" onclick="openChat('Consulta — Endodontista','Tratamentos de canal e dor pulpar')">
-                              <div class="spec-top" style="background:linear-gradient(145deg,#0f6e56 0%,#0fb87a 100%);">
-            <svg width="80" height="100" viewBox="0 0 80 100" fill="none">
-  <!-- Contorno externo do dente -->
-  <path d="M12 8 Q6 8 4 22 L3 46 Q8 56 40 56 Q72 56 77 46 L76 22 Q74 8 68 8 Z" stroke="white" stroke-width="2.4" fill="rgba(255,255,255,.12)"/>
-  <!-- Esmalte (layer clara) -->
-  <path d="M16 12 Q12 12 10 24 L9 44 Q14 52 40 52 Q66 52 71 44 L70 24 Q68 12 64 12 Z" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.3)" stroke-width="1"/>
-  <!-- Dentina (layer interna) -->
-  <path d="M22 18 Q20 18 19 28 L18 42 Q22 48 40 48 Q58 48 62 42 L61 28 Q60 18 58 18 Z" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
-  <!-- Câmara pulpar -->
-  <path d="M28 26 Q40 24 52 26 L50 44 Q40 46 30 44 Z" fill="rgba(255,100,100,.25)" stroke="rgba(255,200,200,.5)" stroke-width="1.2"/>
-  <!-- Canal radicular (forma de gota) -->
-  <path d="M34 44 Q33 60 32 90 Q40 95 48 90 Q47 60 46 44 Z" fill="rgba(255,100,100,.2)" stroke="rgba(255,200,200,.45)" stroke-width="1.2"/>
-  <!-- Raízes externas -->
-  <path d="M16 56 Q12 72 10 92" stroke="white" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-  <path d="M64 56 Q68 72 70 92" stroke="white" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-  <!-- Lima endodôntica -->
-  <line x1="40" y1="10" x2="40" y2="88" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
-  <!-- Espiral da lima -->
-  <path d="M37 22 Q43 24 37 28 Q43 30 37 34 Q43 36 37 40 Q43 42 37 46 Q43 48 37 52 Q43 54 37 58 Q43 60 37 64 Q43 66 37 70 Q43 72 37 76 Q43 78 37 82" stroke="rgba(255,255,255,.55)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-  <!-- Cabo da lima -->
-  <rect x="35" y="6" width="10" height="8" rx="3" fill="rgba(255,255,255,.7)" stroke="white" stroke-width="1"/>
-</svg>
-          </div>
-          <div class="spec-body">
-            <div class="spec-name">Endodontista</div>
-            <div class="spec-desc">Tratamento de canal, retratamento, dor aguda e casos de difícil instrumentação.</div>
-            <button class="btn-help" style="background:linear-gradient(135deg,#0f6e56,#1d9e75);color:white;"><i class="ti ti-send"></i> Consultar agora</button>
-          </div>
+          <div class="spec-top" style="background:linear-gradient(145deg,#0f6e56 0%,#0fb87a 100%);"><i class="ti ti-needle"></i></div>
+          <div class="spec-body"><div class="spec-name">Endodontista</div><div class="spec-desc">Tratamento de canal, retratamento, dor aguda e casos de difícil instrumentação.</div><button class="btn-help" style="background:linear-gradient(135deg,#0f6e56,#1d9e75);color:white;"><i class="ti ti-send"></i> Consultar agora</button></div>
         </div>
-
-        <!-- 5. Cirurgião Bucomaxilofacial -->
-        <div class="spec-card" onclick="openChat('Consulta — Bucomaxilofacial','Cirurgia oral e maxilofacial')">
-                              <div class="spec-top" style="background:linear-gradient(145deg,#7f1d1d 0%,#dc2626 100%);">
-            <svg width="100" height="88" viewBox="0 0 100 88" fill="none">
-  <!-- Arco maxilar superior -->
-  <path d="M8 38 Q8 10 50 8 Q92 10 92 38" stroke="white" stroke-width="2.6" fill="rgba(255,255,255,.10)" stroke-linecap="round"/>
-  <!-- Arco mandibular inferior -->
-  <path d="M8 44 Q8 76 50 78 Q92 76 92 44" stroke="white" stroke-width="2.6" fill="rgba(255,255,255,.08)" stroke-linecap="round"/>
-  <!-- Dentes superiores -->
-  <rect x="16" y="24" width="12" height="16" rx="4" fill="rgba(255,255,255,.35)" stroke="white" stroke-width="1.6"/>
-  <rect x="32" y="19" width="14" height="21" rx="4" fill="rgba(255,255,255,.40)" stroke="white" stroke-width="1.6"/>
-  <rect x="50" y="19" width="14" height="21" rx="4" fill="rgba(255,255,255,.40)" stroke="white" stroke-width="1.6"/>
-  <rect x="68" y="24" width="12" height="16" rx="4" fill="rgba(255,255,255,.35)" stroke="white" stroke-width="1.6"/>
-  <!-- Dentes inferiores -->
-  <rect x="16" y="46" width="12" height="15" rx="4" fill="rgba(255,255,255,.28)" stroke="white" stroke-width="1.4"/>
-  <rect x="32" y="46" width="14" height="17" rx="4" fill="rgba(255,255,255,.30)" stroke="white" stroke-width="1.4"/>
-  <rect x="50" y="46" width="14" height="17" rx="4" fill="rgba(255,255,255,.30)" stroke="white" stroke-width="1.4"/>
-  <rect x="68" y="46" width="12" height="15" rx="4" fill="rgba(255,255,255,.28)" stroke="white" stroke-width="1.4"/>
-  <!-- Bisturi cirúrgico -->
-  <rect x="72" y="4" width="5" height="22" rx="2" fill="rgba(255,255,255,.6)" stroke="white" stroke-width="1.2"/>
-  <path d="M72 24 L69 34 L77 28 Z" fill="white"/>
-  <!-- Linha de incisão -->
-  <path d="M69 35 Q74 40 79 35" stroke="white" stroke-width="1.5" stroke-dasharray="3 2" stroke-linecap="round" fill="none"/>
-  <!-- Pontos de sutura -->
-  <path d="M14 84 Q18 80 22 84" stroke="white" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-  <path d="M26 84 Q30 80 34 84" stroke="white" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-  <path d="M38 84 Q42 80 46 84" stroke="white" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-</svg>
-          </div>
-          <div class="spec-body">
-            <div class="spec-name">Bucomaxilofacial</div>
-            <div class="spec-desc">Cirurgias complexas, trauma facial, tumores, cistos e patologias da boca e face.</div>
-            <button class="btn-help" style="background:linear-gradient(135deg,#7f1d1d,#b91c1c);color:white;"><i class="ti ti-send"></i> Consultar agora</button>
-          </div>
-        </div>
-
-        <!-- 6. Protesista -->
-        <div class="spec-card" onclick="openChat('Consulta — Protesista','Próteses e reabilitação oral')">
-                              <div class="spec-top" style="background:linear-gradient(145deg,#185fa5 0%,#2ea8e0 100%);">
-            <svg width="100" height="82" viewBox="0 0 100 82" fill="none">
-  <!-- Base da prótese (acrílico/resina rosa) -->
-  <path d="M6 46 Q6 70 50 72 Q94 70 94 46 L94 38 Q94 18 50 16 Q6 18 6 38 Z" stroke="white" stroke-width="2.4" fill="rgba(255,255,255,.12)"/>
-  <!-- Palato (linha palatina) -->
-  <path d="M20 62 Q50 68 80 62" stroke="rgba(255,255,255,.4)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-  <path d="M30 66 Q50 70 70 66" stroke="rgba(255,255,255,.25)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-  <!-- Rugosidade palatina -->
-  <path d="M35 56 Q50 58 65 56" stroke="rgba(255,255,255,.2)" stroke-width="1" fill="none"/>
-  <path d="M33 51 Q50 53 67 51" stroke="rgba(255,255,255,.15)" stroke-width="1" fill="none"/>
-  <!-- Incisivo central esquerdo -->
-  <rect x="36" y="12" width="12" height="30" rx="5" fill="rgba(255,255,255,.45)" stroke="white" stroke-width="1.8"/>
-  <!-- Incisivo central direito -->
-  <rect x="52" y="12" width="12" height="30" rx="5" fill="rgba(255,255,255,.45)" stroke="white" stroke-width="1.8"/>
-  <!-- Canino esquerdo -->
-  <rect x="20" y="14" width="13" height="28" rx="5" fill="rgba(255,255,255,.38)" stroke="white" stroke-width="1.8"/>
-  <!-- Canino direito -->
-  <rect x="67" y="14" width="13" height="28" rx="5" fill="rgba(255,255,255,.38)" stroke="white" stroke-width="1.8"/>
-  <!-- Molar esquerdo -->
-  <rect x="6" y="18" width="12" height="24" rx="4" fill="rgba(255,255,255,.30)" stroke="white" stroke-width="1.6"/>
-  <!-- Molar direito -->
-  <rect x="82" y="18" width="12" height="24" rx="4" fill="rgba(255,255,255,.30)" stroke="white" stroke-width="1.6"/>
-  <!-- Sulcos nos dentes -->
-  <line x1="42" y1="24" x2="42" y2="36" stroke="rgba(255,255,255,.3)" stroke-width="1"/>
-  <line x1="58" y1="24" x2="58" y2="36" stroke="rgba(255,255,255,.3)" stroke-width="1"/>
-</svg>
-          </div>
-          <div class="spec-body">
-            <div class="spec-name">Prótese Dentária</div>
-            <div class="spec-desc">Próteses fixas, removíveis, sobre implantes e reabilitação oral completa.</div>
-            <button class="btn-help" style="background:linear-gradient(135deg,#185fa5,#378add);color:white;"><i class="ti ti-send"></i> Consultar agora</button>
-          </div>
-        </div>
-
-        <!-- 7. Periodontia -->
-        <div class="spec-card" onclick="openChat('Consulta — Periodontista','Gengiva e estrutura de suporte dental')">
-                              <div class="spec-top" style="background:linear-gradient(145deg,#3b6d11 0%,#5aaa1a 100%);">
-            <svg width="80" height="100" viewBox="0 0 80 100" fill="none">
-  <!-- Coroa do dente -->
-  <path d="M14 6 Q8 6 6 20 L5 40 Q10 48 40 48 Q70 48 75 40 L74 20 Q72 6 66 6 Z" stroke="white" stroke-width="2.4" fill="rgba(255,255,255,.18)"/>
-  <!-- Cúspides -->
-  <ellipse cx="20" cy="16" rx="5" ry="4.5" fill="rgba(255,255,255,.30)"/>
-  <ellipse cx="40" cy="11" rx="5" ry="4.5" fill="rgba(255,255,255,.30)"/>
-  <ellipse cx="60" cy="16" rx="5" ry="4.5" fill="rgba(255,255,255,.30)"/>
-  <!-- LINHA GENGIVAL (CEJ) -->
-  <path d="M4 46 Q40 56 76 46" stroke="white" stroke-width="3" stroke-linecap="round" fill="none"/>
-  <!-- Gengiva marginal (volume) -->
-  <path d="M4 46 Q20 52 40 54 Q60 52 76 46 L76 50 Q60 58 40 60 Q20 58 4 50 Z" fill="rgba(255,255,255,.12)" stroke="none"/>
-  <!-- Raiz esquerda -->
-  <path d="M20 48 Q16 64 14 80" stroke="white" stroke-width="2.4" stroke-linecap="round" fill="none"/>
-  <!-- Raiz direita -->
-  <path d="M60 48 Q64 64 66 80" stroke="white" stroke-width="2.4" stroke-linecap="round" fill="none"/>
-  <!-- Raiz central -->
-  <path d="M40 52 Q40 66 40 80" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
-  <!-- OSSO ALVEOLAR (linha sólida) -->
-  <path d="M2 66 Q40 74 78 66" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-  <!-- OSSO PERDIDO (tracejado — periodontite) -->
-  <path d="M2 76 Q40 84 78 76" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round" fill="none" stroke-dasharray="5 3"/>
-  <!-- Seta indicando bolsa periodontal -->
-  <line x1="6" y1="52" x2="6" y2="66" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-dasharray="2 2"/>
-  <path d="M3.5 64 L6 68 L8.5 64" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <text x="8" y="60" fill="rgba(255,255,255,.8)" font-size="7" font-family="sans-serif">bolsa</text>
-</svg>
-          </div>
-          <div class="spec-body">
-            <div class="spec-name">Periodontia</div>
-            <div class="spec-desc">Tratamento de gengivas, bolsa periodontal, gengivite, periodontite e suporte ósseo.</div>
-            <button class="btn-help" style="background:linear-gradient(135deg,#3b6d11,#639922);color:white;"><i class="ti ti-send"></i> Consultar agora</button>
-          </div>
-        </div>
-
-        <!-- 8. Harmonização Facial -->
         <div class="spec-card" onclick="openChat('Consulta — Harmonização Facial','Procedimentos estéticos faciais')">
-                              <div class="spec-top" style="background:linear-gradient(145deg,#9d174d 0%,#f43f8a 100%);">
-            <svg width="100" height="110" viewBox="0 0 100 110" fill="none">
-  <!-- Rosto oval mais definido -->
-  <ellipse cx="44" cy="52" rx="26" ry="33" stroke="white" stroke-width="2.2" fill="rgba(255,255,255,.10)"/>
-  <!-- Cabelo fluido -->
-  <path d="M18 40 Q16 16 44 11 Q72 16 70 40 Q68 28 44 26 Q20 28 18 40 Z" fill="rgba(255,255,255,.15)" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-  <!-- Sobrancelha esquerda (arqueada) -->
-  <path d="M24 34 Q31 30 38 33" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
-  <!-- Sobrancelha direita (arqueada) -->
-  <path d="M50 33 Q57 30 64 34" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
-  <!-- Olho esquerdo (amendoado) -->
-  <path d="M23 40 Q30 36 37 40 Q30 44 23 40 Z" stroke="white" stroke-width="1.5" fill="rgba(255,255,255,.18)"/>
-  <circle cx="30" cy="40" r="3" fill="rgba(255,255,255,.65)"/>
-  <circle cx="31" cy="39" r="1" fill="rgba(255,255,255,.9)"/>
-  <!-- Olho direito (amendoado) -->
-  <path d="M51 40 Q58 36 65 40 Q58 44 51 40 Z" stroke="white" stroke-width="1.5" fill="rgba(255,255,255,.18)"/>
-  <circle cx="58" cy="40" r="3" fill="rgba(255,255,255,.65)"/>
-  <circle cx="59" cy="39" r="1" fill="rgba(255,255,255,.9)"/>
-  <!-- Nariz delicado -->
-  <path d="M44 46 Q44 52 44 55" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-  <path d="M38 55 Q41 58 44 56 Q47 58 50 55" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-  <!-- Lábios volumosos (preenchimento) -->
-  <path d="M32 64 Q38 60 44 61 Q50 60 56 64" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-  <path d="M32 64 Q38 72 44 70 Q50 72 56 64" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="rgba(255,255,255,.2)"/>
-  <!-- Arco de cupido -->
-  <path d="M38 61 Q44 58 50 61" stroke="white" stroke-width="1.2" stroke-linecap="round" fill="none"/>
-  <!-- Ponto zigoma esquerdo -->
-  <circle cx="20" cy="50" r="4" fill="rgba(255,255,255,.3)" stroke="white" stroke-width="1.5"/>
-  <line x1="17" y1="50" x2="23" y2="50" stroke="white" stroke-width="1.5"/>
-  <line x1="20" y1="47" x2="20" y2="53" stroke="white" stroke-width="1.5"/>
-  <!-- Ponto zigoma direito -->
-  <circle cx="68" cy="50" r="4" fill="rgba(255,255,255,.3)" stroke="white" stroke-width="1.5"/>
-  <line x1="65" y1="50" x2="71" y2="50" stroke="white" stroke-width="1.5"/>
-  <line x1="68" y1="47" x2="68" y2="53" stroke="white" stroke-width="1.5"/>
-  <!-- Ponto queixo -->
-  <circle cx="44" cy="80" r="3.5" fill="rgba(255,255,255,.3)" stroke="white" stroke-width="1.5"/>
-  <line x1="41" y1="80" x2="47" y2="80" stroke="white" stroke-width="1.5"/>
-  <line x1="44" y1="77" x2="44" y2="83" stroke="white" stroke-width="1.5"/>
-
-  <!-- SERINGA GRANDE E DETALHADA (proeminente, aplicando no zigoma) -->
-  <!-- Corpo da seringa -->
-  <rect x="70" y="20" width="10" height="34" rx="3" fill="rgba(255,255,255,.35)" stroke="white" stroke-width="1.8"/>
-  <!-- Êmbolo (pistão) -->
-  <rect x="72" y="22" width="6" height="18" rx="1" fill="rgba(255,255,255,.5)"/>
-  <!-- Anel do êmbolo -->
-  <rect x="69" y="38" width="12" height="4" rx="1" fill="rgba(255,255,255,.6)" stroke="white" stroke-width="1"/>
-  <!-- Haste do êmbolo -->
-  <line x1="75" y1="42" x2="75" y2="52" stroke="white" stroke-width="2" stroke-linecap="round"/>
-  <!-- Anel de apoio dos dedos (topo) -->
-  <rect x="67" y="16" width="16" height="5" rx="2" fill="rgba(255,255,255,.5)" stroke="white" stroke-width="1.2"/>
-  <!-- Cânula/agulha -->
-  <line x1="75" y1="54" x2="68" y2="54" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-  <path d="M68 53 L64 54 L68 55 Z" fill="white"/>
-  <!-- Linha de aplicação (tracejado até o ponto) -->
-  <line x1="64" y1="54" x2="72" y2="50" stroke="rgba(255,255,255,.5)" stroke-width="1" stroke-dasharray="3 2"/>
-</svg>
-          </div>
-          <div class="spec-body">
-            <div class="spec-name">Harmonização Facial</div>
-            <div class="spec-desc">Toxina botulínica, preenchimentos, fios, bichectomia e estética facial integrativa.</div>
-            <button class="btn-help" style="background:linear-gradient(135deg,#9d174d,#db2777);color:white;"><i class="ti ti-send"></i> Consultar agora</button>
-          </div>
+          <div class="spec-top" style="background:linear-gradient(145deg,#9d174d 0%,#f43f8a 100%);"><i class="ti ti-sparkles"></i></div>
+          <div class="spec-body"><div class="spec-name">Harmonização Facial</div><div class="spec-desc">Toxina botulínica, preenchimentos, fios, bichectomia e estética facial integrativa.</div><button class="btn-help" style="background:linear-gradient(135deg,#9d174d,#db2777);color:white;"><i class="ti ti-send"></i> Consultar agora</button></div>
         </div>
-
-        <!-- 9. Gestão & Marketing -->
         <div class="spec-card" onclick="openChat('Consulta — Gestão & Marketing','Gestão de clínica e marketing odontológico')">
-                              <div class="spec-top" style="background:linear-gradient(145deg,#854f0b 0%,#f59e0b 100%);">
-            <svg width="96" height="88" viewBox="0 0 96 88" fill="none">
-  <!-- Monitor/tela -->
-  <rect x="8" y="8" width="80" height="56" rx="5" stroke="white" stroke-width="2.2" fill="rgba(255,255,255,.10)"/>
-  <rect x="14" y="14" width="68" height="44" rx="3" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
-  <!-- Barras do gráfico -->
-  <rect x="18" y="40" width="10" height="14" rx="2" fill="rgba(255,255,255,.35)"/>
-  <rect x="31" y="30" width="10" height="24" rx="2" fill="rgba(255,255,255,.45)"/>
-  <rect x="44" y="20" width="10" height="34" rx="2" fill="rgba(255,255,255,.55)"/>
-  <rect x="57" y="24" width="10" height="30" rx="2" fill="rgba(255,255,255,.50)"/>
-  <rect x="70" y="16" width="10" height="38" rx="2" fill="rgba(255,255,255,.65)"/>
-  <!-- Linha de tendência -->
-  <path d="M23 42 L36 33 L49 23 L62 27 L75 19" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <!-- Ponto destaque no topo -->
-  <circle cx="75" cy="19" r="4" fill="white"/>
-  <!-- Eixo X -->
-  <line x1="14" y1="58" x2="82" y2="58" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
-  <!-- Suporte monitor -->
-  <path d="M40 64 L42 72 L54 72 L56 64" stroke="white" stroke-width="1.8" fill="none"/>
-  <line x1="34" y1="72" x2="62" y2="72" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-  <!-- Ícone de like/engajamento -->
-  <path d="M20 74 Q20 70 24 70 Q26 70 27 72 Q28 70 30 70 Q34 70 34 74 Q34 78 27 82 Q20 78 20 74 Z" fill="rgba(255,255,255,.4)" stroke="white" stroke-width="1.4"/>
-  <!-- Sinal wi-fi / conectividade -->
-  <path d="M76 76 Q80 72 84 76" stroke="white" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-  <path d="M73 73 Q80 66 87 73" stroke="white" stroke-width="1.4" stroke-linecap="round" fill="none" opacity=".6"/>
-  <circle cx="80" cy="78" r="2" fill="white"/>
-</svg>
-          </div>
-          <div class="spec-body">
-            <div class="spec-name">Gestão & Marketing</div>
-            <div class="spec-desc">Administração de clínica, finanças, marketing digital, Instagram e captação de pacientes.</div>
-            <button class="btn-help" style="background:linear-gradient(135deg,#854f0b,#ef9f27);color:white;"><i class="ti ti-send"></i> Consultar agora</button>
-          </div>
-        </div>
-
-        <!-- 10. Perito Odontológico -->
-        <div class="spec-card" onclick="openChat('Consulta — Perito Odontológico','Laudos periciais e documentação legal')">
-                              <div class="spec-top" style="background:linear-gradient(145deg,#44403c 0%,#92928a 100%);">
-            <svg width="96" height="92" viewBox="0 0 96 92" fill="none">
-  <!-- Documento/laudo -->
-  <rect x="8" y="6" width="50" height="66" rx="5" stroke="white" stroke-width="2.2" fill="rgba(255,255,255,.12)"/>
-  <!-- Cabeçalho laudo -->
-  <rect x="14" y="12" width="38" height="6" rx="2" fill="rgba(255,255,255,.35)"/>
-  <!-- Linhas de texto -->
-  <line x1="14" y1="24" x2="52" y2="24" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
-  <line x1="14" y1="31" x2="52" y2="31" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
-  <line x1="14" y1="38" x2="44" y2="38" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
-  <!-- Mini arcada no documento -->
-  <path d="M14 48 Q33 44 52 48" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-  <rect x="16" y="44" width="6" height="8" rx="2" fill="rgba(255,255,255,.35)"/>
-  <rect x="24" y="42" width="7" height="10" rx="2" fill="rgba(255,255,255,.35)"/>
-  <rect x="33" y="42" width="7" height="10" rx="2" fill="rgba(255,255,255,.35)"/>
-  <rect x="42" y="44" width="6" height="8" rx="2" fill="rgba(255,255,255,.35)"/>
-  <!-- Assinatura -->
-  <path d="M16 62 Q24 58 32 62 Q36 64 40 60" stroke="rgba(255,255,255,.6)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-  <!-- Lupa -->
-  <circle cx="66" cy="60" r="22" stroke="white" stroke-width="3" fill="rgba(255,255,255,.08)"/>
-  <circle cx="66" cy="60" r="14" stroke="rgba(255,255,255,.4)" stroke-width="1.5" fill="rgba(255,255,255,.06)"/>
-  <!-- Cruz dentro da lupa (verificação) -->
-  <path d="M59 60 L64 65 L73 55" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <!-- Cabo da lupa -->
-  <line x1="82" y1="76" x2="92" y2="88" stroke="white" stroke-width="5" stroke-linecap="round"/>
-</svg>
-          </div>
-          <div class="spec-body">
-            <div class="spec-name">Perito Odontológico</div>
-            <div class="spec-desc">Laudos periciais, identificação humana por arcada dentária e documentação legal-forense.</div>
-            <button class="btn-help" style="background:linear-gradient(135deg,#44403c,#78716c);color:white;"><i class="ti ti-send"></i> Consultar agora</button>
-          </div>
-        </div>
-
-        <!-- 11. Advogado -->
-        <div class="spec-card" onclick="openChat('Consulta — Advogado','Questões jurídicas e defesa profissional')">
-                              <div class="spec-top" style="background:linear-gradient(145deg,#1e1b4b 0%,#4338ca 100%);">
-            <svg width="90" height="92" viewBox="0 0 90 92" fill="none">
-  <!-- Cabo central vertical -->
-  <rect x="43" y="8" width="4" height="64" rx="2" fill="rgba(255,255,255,.6)" stroke="white" stroke-width="1"/>
-  <!-- Topo / ornamento -->
-  <circle cx="45" cy="8" r="6" fill="white"/>
-  <circle cx="45" cy="8" r="3" fill="rgba(30,27,75,0.6)"/>
-  <!-- Viga horizontal -->
-  <rect x="10" y="24" width="70" height="4" rx="2" fill="rgba(255,255,255,.6)" stroke="white" stroke-width="1"/>
-  <!-- Correntes/fios esquerda -->
-  <line x1="14" y1="28" x2="10" y2="46" stroke="white" stroke-width="1.8"/>
-  <line x1="14" y1="28" x2="32" y2="46" stroke="white" stroke-width="1.8"/>
-  <!-- Prato esquerdo (equilibrado) -->
-  <path d="M8 46 Q21 58 34 46" stroke="white" stroke-width="2.6" fill="rgba(255,255,255,.18)" stroke-linecap="round"/>
-  <!-- Moeda no prato esq -->
-  <circle cx="21" cy="50" r="5" fill="rgba(255,255,255,.3)" stroke="white" stroke-width="1.2"/>
-  <text x="18" y="53" fill="white" font-size="6" font-family="sans-serif" font-weight="bold">R$</text>
-  <!-- Correntes/fios direita (levemente abaixo — diferença de peso) -->
-  <line x1="76" y1="28" x2="58" y2="50" stroke="white" stroke-width="1.8"/>
-  <line x1="76" y1="28" x2="82" y2="50" stroke="white" stroke-width="1.8"/>
-  <!-- Prato direito (levemente mais baixo) -->
-  <path d="M56 50 Q69 62 84 50" stroke="white" stroke-width="2.6" fill="rgba(255,255,255,.18)" stroke-linecap="round"/>
-  <!-- Livro no prato dir -->
-  <rect x="62" y="51" width="14" height="10" rx="2" fill="rgba(255,255,255,.4)" stroke="white" stroke-width="1.2"/>
-  <line x1="69" y1="51" x2="69" y2="61" stroke="rgba(30,27,75,.4)" stroke-width="1"/>
-  <!-- Base e pedestal -->
-  <path d="M28 72 L62 72" stroke="white" stroke-width="3" stroke-linecap="round"/>
-  <path d="M22 80 L68 80" stroke="white" stroke-width="3" stroke-linecap="round"/>
-  <rect x="38" y="72" width="14" height="8" rx="1" fill="rgba(255,255,255,.25)" stroke="white" stroke-width="1.2"/>
-  <!-- OAB text -->
-  <text x="30" y="90" fill="rgba(255,255,255,.7)" font-size="9" font-family="sans-serif" font-weight="bold" letter-spacing="2">OAB</text>
-</svg>
-          </div>
-          <div class="spec-body">
-            <div class="spec-name">Advogado</div>
-            <div class="spec-desc">Defesa em processos, ética profissional, prontuários e direitos do cirurgião-dentista.</div>
-            <button class="btn-help" style="background:linear-gradient(135deg,#1e1b4b,#3730a3);color:white;"><i class="ti ti-send"></i> Consultar agora</button>
-          </div>
-        </div>
-
-        <!-- 12. Odontopediatria -->
-        <div class="spec-card" onclick="openChat('Consulta — Odontopediatra','Saúde bucal infantil e adolescente')">
-                              <div class="spec-top" style="background:linear-gradient(145deg,#0e7490 0%,#22d3ee 100%);">
-            <svg width="90" height="96" viewBox="0 0 90 96" fill="none">
-  <!-- Dente de leite (mais arredondado, sem cúspides profundas) -->
-  <path d="M20 10 Q14 10 12 22 L10 44 Q14 52 32 54 Q38 54 40 48 Q42 54 48 54 Q66 54 70 44 L68 22 Q66 10 60 10 Z" stroke="white" stroke-width="2.4" fill="rgba(255,255,255,.20)"/>
-  <!-- Raízes curtas (leite) -->
-  <path d="M26 54 Q24 64 22 72" stroke="white" stroke-width="2.2" stroke-linecap="round" opacity=".75"/>
-  <path d="M54 54 Q56 64 58 72" stroke="white" stroke-width="2.2" stroke-linecap="round" opacity=".75"/>
-  <!-- ROSTO DENTRO DO DENTE -->
-  <!-- Olhos -->
-  <circle cx="32" cy="28" r="4" fill="rgba(255,255,255,.65)"/>
-  <circle cx="48" cy="28" r="4" fill="rgba(255,255,255,.65)"/>
-  <circle cx="33" cy="27" r="1.5" fill="rgba(14,116,144,.7)"/>
-  <circle cx="49" cy="27" r="1.5" fill="rgba(14,116,144,.7)"/>
-  <!-- Bochecha rosada -->
-  <ellipse cx="24" cy="38" rx="5" ry="3" fill="rgba(255,150,150,.25)"/>
-  <ellipse cx="56" cy="38" rx="5" ry="3" fill="rgba(255,150,150,.25)"/>
-  <!-- Sorriso -->
-  <path d="M28 40 Q40 50 52 40" stroke="white" stroke-width="2.4" stroke-linecap="round" fill="none"/>
-  <!-- Dentinhos no sorriso -->
-  <rect x="34" y="40" width="5" height="5" rx="1.5" fill="rgba(255,255,255,.7)"/>
-  <rect x="41" y="40" width="5" height="5" rx="1.5" fill="rgba(255,255,255,.7)"/>
-  <!-- Estrelinhas -->
-  <path d="M6 12 L7 16 L11 12 L7 15.5 Z" fill="white" opacity=".75"/>
-  <path d="M79 8 L80 12 L84 8 L80 11.5 Z" fill="white" opacity=".65"/>
-  <path d="M4 50 L5 54 L9 50 L5 53.5 Z" fill="white" opacity=".55"/>
-  <!-- Escova de dente -->
-  <rect x="22" y="76" width="46" height="9" rx="4.5" fill="rgba(255,255,255,.28)" stroke="white" stroke-width="1.8"/>
-  <!-- Cerdas -->
-  <line x1="30" y1="76" x2="30" y2="84" stroke="white" stroke-width="1.3" opacity=".6"/>
-  <line x1="36" y1="76" x2="36" y2="84" stroke="white" stroke-width="1.3" opacity=".6"/>
-  <line x1="42" y1="76" x2="42" y2="84" stroke="white" stroke-width="1.3" opacity=".6"/>
-  <line x1="48" y1="76" x2="48" y2="84" stroke="white" stroke-width="1.3" opacity=".6"/>
-  <line x1="54" y1="76" x2="54" y2="84" stroke="white" stroke-width="1.3" opacity=".6"/>
-  <!-- Cabo -->
-  <rect x="14" y="78" width="12" height="5" rx="2.5" fill="rgba(255,255,255,.22)" stroke="white" stroke-width="1.4"/>
-  <!-- Pasta de dente -->
-  <path d="M67 78 Q72 76 76 80 Q72 84 67 82 Z" fill="rgba(255,255,255,.4)" stroke="white" stroke-width="1.2"/>
-</svg>
-          </div>
-          <div class="spec-body">
-            <div class="spec-name">Odontopediatria</div>
-            <div class="spec-desc">Saúde bucal de bebês, crianças e adolescentes, dentes decíduos e prevenção precoce.</div>
-            <button class="btn-help" style="background:linear-gradient(135deg,#0e7490,#06b6d4);color:white;"><i class="ti ti-send"></i> Consultar agora</button>
-          </div>
-        </div>
-
-        <!-- Dentística -->
-        <div class="spec-card" onclick="openChat('Consulta — Dentística','Dentística restauradora e estética dental')">
-          <div class="spec-top" style="background:linear-gradient(145deg,#0e4d8a 0%,#1a7fd4 100%);">
-            <svg width="88" height="90" viewBox="0 0 88 90" fill="none">
-              <!-- Dente incisivo central -->
-              <path d="M22 8 Q16 8 14 20 L12 50 Q16 58 44 58 Q72 58 76 50 L74 20 Q72 8 66 8 Z" stroke="white" stroke-width="2.5" fill="rgba(255,255,255,.18)"/>
-              <!-- Superfície lisa do incisivo -->
-              <path d="M26 14 Q44 12 62 14 Q68 20 68 28 Q68 36 44 38 Q20 36 20 28 Q20 20 26 14 Z" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.25)" stroke-width="1"/>
-              <!-- Raiz única -->
-              <path d="M36 58 Q34 72 32 86" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M52 58 Q54 72 56 86" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-              <!-- Restauração (composto) na face vestibular -->
-              <rect x="28" y="22" width="32" height="16" rx="4" fill="rgba(255,255,255,.35)" stroke="white" stroke-width="1.5"/>
-              <!-- Espátula/instrumento restaurador -->
-              <path d="M70 8 L76 14 L58 40 L52 34 Z" fill="rgba(255,255,255,.5)" stroke="white" stroke-width="1.2"/>
-              <!-- Brilho da restauração estética -->
-              <circle cx="36" cy="28" r="3" fill="rgba(255,255,255,.6)"/>
-              <circle cx="48" cy="25" r="2" fill="rgba(255,255,255,.5)"/>
-            </svg>
-          </div>
-          <div class="spec-body">
-            <div class="spec-name">Dentística</div>
-            <div class="spec-desc">Restaurações estéticas, resina composta, facetas, clareamento e dentística restauradora.</div>
-            <button class="btn-help" style="background:linear-gradient(135deg,#0e4d8a,#1a7fd4);color:white;"><i class="ti ti-send"></i> Consultar agora</button>
-          </div>
-        </div>
-
-      </div><!-- /spec-grid -->
-
-      <div style="margin-top:20px;background:white;border-radius:var(--r);padding:16px 20px;border:1px solid var(--border);display:flex;align-items:center;gap:12px;box-shadow:var(--shadow);">
-        <i class="ti ti-shield-check" style="font-size:22px;color:var(--blue);flex-shrink:0;"></i>
-        <div>
-          <div style="font-size:13px;font-weight:700;color:var(--navy);">Consultas seguras e reservadas</div>
-          <div style="font-size:12px;color:var(--text3);margin-top:2px;">Conversas registradas entre você e o especialista. Todos têm CRO ou OAB verificados pela plataforma.</div>
-        </div>
-        <div style="margin-left:auto;flex-shrink:0;">
-          <div style="display:inline-flex;align-items:center;gap:5px;background:rgba(16,185,129,.1);color:#059669;font-size:11px;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid rgba(16,185,129,.25);">
-            <i class="ti ti-check" style="font-size:13px;"></i> Gratuito no beta
-          </div>
+          <div class="spec-top" style="background:linear-gradient(145deg,#854f0b 0%,#f59e0b 100%);"><i class="ti ti-chart-bar"></i></div>
+          <div class="spec-body"><div class="spec-name">Gestão & Marketing</div><div class="spec-desc">Administração de clínica, finanças, marketing digital e captação de pacientes.</div><button class="btn-help" style="background:linear-gradient(135deg,#854f0b,#ef9f27);color:white;"><i class="ti ti-send"></i> Consultar agora</button></div>
         </div>
       </div>
+    </div>
 
-    </div><!-- /screen-experts -->
-
-    <!-- ===== CURSOS ===== -->
+    <!-- CURSOS -->
     <div id="screen-cursos" class="page">
-
       <div class="welcome" style="margin-bottom:20px;">
-        <div>
-          <h2>📚 Anúncios de Cursos</h2>
-          <p>Divulgue seu curso para toda a comunidade ODONT HUB — filtre por especialidade e encontre sua próxima capacitação.</p>
-        </div>
+        <div><h2>📚 Anúncios de Cursos</h2><p>Divulgue seu curso para toda a comunidade ODONT HUB.</p></div>
         <button class="btn-white-outline" onclick="document.getElementById('modal-curso').classList.add('open')">+ Anunciar meu curso</button>
       </div>
-
       <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:20px;">
         <button class="filter-btn on" onclick="filterMkt(this)">Todos</button>
-        <button class="filter-btn" onclick="filterMkt(this)">Dentística</button>
-        <button class="filter-btn" onclick="filterMkt(this)">Clínica Geral</button>
         <button class="filter-btn" onclick="filterMkt(this)">Implantodontia</button>
         <button class="filter-btn" onclick="filterMkt(this)">Ortodontia</button>
         <button class="filter-btn" onclick="filterMkt(this)">Endodontia</button>
-        <button class="filter-btn" onclick="filterMkt(this)">Periodontia</button>
-        <button class="filter-btn" onclick="filterMkt(this)">Prótese</button>
-        <button class="filter-btn" onclick="filterMkt(this)">Bucomaxilofacial</button>
         <button class="filter-btn" onclick="filterMkt(this)">Harmonização</button>
-        <button class="filter-btn" onclick="filterMkt(this)">Odontopediatria</button>
         <button class="filter-btn" onclick="filterMkt(this)">Gestão & Marketing</button>
       </div>
-
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;" id="cursos-grid">
-
-        <div class="card" style="padding:0;overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(1,2,103,.13)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-          <div style="height:116px;background:linear-gradient(135deg,#542F62,#7a3d92);display:flex;align-items:center;justify-content:center;position:relative;">
-            <i class="ti ti-tooth" style="font-size:52px;color:rgba(255,255,255,.4);"></i>
-            <div style="position:absolute;top:10px;left:10px;background:rgba(255,255,255,.2);color:white;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">Implantodontia</div>
-            <div style="position:absolute;top:10px;right:10px;background:#f59e0b;color:white;font-size:10px;font-weight:800;padding:3px 8px;border-radius:5px;">NOVO</div>
-          </div>
-          <div style="padding:15px 16px 18px;">
-            <div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:5px;">Implantes Imediatos — Protocolo Avançado</div>
-            <div style="font-size:12px;color:var(--text3);margin-bottom:8px;display:flex;align-items:center;gap:5px;"><i class="ti ti-user" style="font-size:13px;"></i> Dr. Roberto Nunes · CRO/SP 44210</div>
-            <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:11px;">
-              <span style="background:rgba(84,47,98,.08);color:var(--purple);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(84,47,98,.2);">Presencial</span>
-              <span style="background:rgba(1,2,103,.06);color:var(--navy);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(1,2,103,.12);">São Paulo, SP</span>
-              <span style="background:rgba(51,102,153,.08);color:var(--blue);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(51,102,153,.2);">12h</span>
-            </div>
-            <div style="display:flex;align-items:center;justify-content:space-between;">
-              <div style="font-size:17px;font-weight:800;color:var(--navy);">R$ 1.800<span style="font-size:11px;font-weight:400;color:var(--text3);"> /p.</span></div>
-              <button class="btn-apply" onclick="alert('Inscrição enviada! ✅')">Inscrever-se</button>
-            </div>
-          </div>
+        <div style="text-align:center;padding:40px;color:var(--text3);grid-column:1/-1;">
+          <i class="ti ti-loader" style="font-size:32px;display:block;margin-bottom:10px;animation:spin 1s linear infinite;"></i>
+          Carregando cursos...
         </div>
-
-        <div class="card" style="padding:0;overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(1,2,103,.13)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-          <div style="height:116px;background:linear-gradient(135deg,#336699,#4d82b8);display:flex;align-items:center;justify-content:center;position:relative;">
-            <i class="ti ti-settings" style="font-size:52px;color:rgba(255,255,255,.4);"></i>
-            <div style="position:absolute;top:10px;left:10px;background:rgba(255,255,255,.2);color:white;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">Ortodontia</div>
-          </div>
-          <div style="padding:15px 16px 18px;">
-            <div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:5px;">Alinhadores Invisíveis — Zero ao Avançado</div>
-            <div style="font-size:12px;color:var(--text3);margin-bottom:8px;display:flex;align-items:center;gap:5px;"><i class="ti ti-user" style="font-size:13px;"></i> Dra. Camila Rocha · CRO/RJ 31887</div>
-            <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:11px;">
-              <span style="background:rgba(16,185,129,.1);color:#059669;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(16,185,129,.25);">Online</span>
-              <span style="background:rgba(51,102,153,.08);color:var(--blue);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(51,102,153,.2);">20h</span>
-            </div>
-            <div style="display:flex;align-items:center;justify-content:space-between;">
-              <div style="font-size:17px;font-weight:800;color:var(--navy);">R$ 950<span style="font-size:11px;font-weight:400;color:var(--text3);"> /p.</span></div>
-              <button class="btn-apply" onclick="alert('Inscrição enviada! ✅')">Inscrever-se</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" style="padding:0;overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(1,2,103,.13)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-          <div style="height:116px;background:linear-gradient(135deg,#9d174d,#db2777);display:flex;align-items:center;justify-content:center;position:relative;">
-            <i class="ti ti-sparkles" style="font-size:52px;color:rgba(255,255,255,.4);"></i>
-            <div style="position:absolute;top:10px;left:10px;background:rgba(255,255,255,.2);color:white;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">Harmonização Facial</div>
-          </div>
-          <div style="padding:15px 16px 18px;">
-            <div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:5px;">Toxina Botulínica & Preenchedores Faciais</div>
-            <div style="font-size:12px;color:var(--text3);margin-bottom:8px;display:flex;align-items:center;gap:5px;"><i class="ti ti-user" style="font-size:13px;"></i> Dra. Fernanda Melo · CRO/SP 55342</div>
-            <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:11px;">
-              <span style="background:rgba(84,47,98,.08);color:var(--purple);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(84,47,98,.2);">Presencial</span>
-              <span style="background:rgba(1,2,103,.06);color:var(--navy);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(1,2,103,.12);">Rio de Janeiro, RJ</span>
-              <span style="background:rgba(51,102,153,.08);color:var(--blue);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(51,102,153,.2);">16h</span>
-            </div>
-            <div style="display:flex;align-items:center;justify-content:space-between;">
-              <div style="font-size:17px;font-weight:800;color:var(--navy);">R$ 2.400<span style="font-size:11px;font-weight:400;color:var(--text3);"> /p.</span></div>
-              <button class="btn-apply" onclick="alert('Inscrição enviada! ✅')">Inscrever-se</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" style="padding:0;overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(1,2,103,.13)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-          <div style="height:116px;background:linear-gradient(135deg,#0f6e56,#1d9e75);display:flex;align-items:center;justify-content:center;position:relative;">
-            <i class="ti ti-needle" style="font-size:52px;color:rgba(255,255,255,.4);"></i>
-            <div style="position:absolute;top:10px;left:10px;background:rgba(255,255,255,.2);color:white;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">Endodontia</div>
-          </div>
-          <div style="padding:15px 16px 18px;">
-            <div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:5px;">Endodontia Reciprocante — Casos Complexos</div>
-            <div style="font-size:12px;color:var(--text3);margin-bottom:8px;display:flex;align-items:center;gap:5px;"><i class="ti ti-user" style="font-size:13px;"></i> Dr. Felipe Andrade · CRO/MG 22190</div>
-            <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:11px;">
-              <span style="background:rgba(16,185,129,.1);color:#059669;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(16,185,129,.25);">Online</span>
-              <span style="background:rgba(51,102,153,.08);color:var(--blue);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(51,102,153,.2);">10h</span>
-            </div>
-            <div style="display:flex;align-items:center;justify-content:space-between;">
-              <div style="font-size:17px;font-weight:800;color:var(--navy);">R$ 690<span style="font-size:11px;font-weight:400;color:var(--text3);"> /p.</span></div>
-              <button class="btn-apply" onclick="alert('Inscrição enviada! ✅')">Inscrever-se</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" style="padding:0;overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(1,2,103,.13)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-          <div style="height:116px;background:linear-gradient(135deg,#854f0b,#ef9f27);display:flex;align-items:center;justify-content:center;position:relative;">
-            <i class="ti ti-chart-bar" style="font-size:52px;color:rgba(255,255,255,.4);"></i>
-            <div style="position:absolute;top:10px;left:10px;background:rgba(255,255,255,.2);color:white;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">Gestão & Marketing</div>
-          </div>
-          <div style="padding:15px 16px 18px;">
-            <div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:5px;">Marketing Digital para Clínica Odontológica</div>
-            <div style="font-size:12px;color:var(--text3);margin-bottom:8px;display:flex;align-items:center;gap:5px;"><i class="ti ti-user" style="font-size:13px;"></i> Ana Souza · Especialista Marketing Saúde</div>
-            <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:11px;">
-              <span style="background:rgba(16,185,129,.1);color:#059669;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(16,185,129,.25);">Online</span>
-              <span style="background:rgba(51,102,153,.08);color:var(--blue);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(51,102,153,.2);">8h</span>
-            </div>
-            <div style="display:flex;align-items:center;justify-content:space-between;">
-              <div style="font-size:17px;font-weight:800;color:var(--navy);">R$ 490<span style="font-size:11px;font-weight:400;color:var(--text3);"> /p.</span></div>
-              <button class="btn-apply" onclick="alert('Inscrição enviada! ✅')">Inscrever-se</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" style="padding:0;overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(1,2,103,.13)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-          <div style="height:116px;background:linear-gradient(135deg,#0e7490,#06b6d4);display:flex;align-items:center;justify-content:center;position:relative;">
-            <i class="ti ti-mood-smile" style="font-size:52px;color:rgba(255,255,255,.4);"></i>
-            <div style="position:absolute;top:10px;left:10px;background:rgba(255,255,255,.2);color:white;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">Odontopediatria</div>
-            <div style="position:absolute;top:10px;right:10px;background:#ef4444;color:white;font-size:10px;font-weight:800;padding:3px 8px;border-radius:5px;">ÚLTIMAS VAGAS</div>
-          </div>
-          <div style="padding:15px 16px 18px;">
-            <div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:5px;">Odontopediatria Comportamental e Sedação</div>
-            <div style="font-size:12px;color:var(--text3);margin-bottom:8px;display:flex;align-items:center;gap:5px;"><i class="ti ti-user" style="font-size:13px;"></i> Dra. Lúcia Marques · CRO/SP 66712</div>
-            <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:11px;">
-              <span style="background:rgba(84,47,98,.08);color:var(--purple);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(84,47,98,.2);">Presencial</span>
-              <span style="background:rgba(1,2,103,.06);color:var(--navy);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(1,2,103,.12);">Curitiba, PR</span>
-              <span style="background:rgba(51,102,153,.08);color:var(--blue);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(51,102,153,.2);">14h</span>
-            </div>
-            <div style="display:flex;align-items:center;justify-content:space-between;">
-              <div style="font-size:17px;font-weight:800;color:var(--navy);">R$ 1.200<span style="font-size:11px;font-weight:400;color:var(--text3);"> /p.</span></div>
-              <button class="btn-apply" onclick="alert('Inscrição enviada! ✅')">Inscrever-se</button>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /cursos grid -->
-
+      </div>
       <div style="margin-top:24px;background:linear-gradient(135deg,#010267,#542F62);border-radius:var(--r);padding:22px 26px;display:flex;align-items:center;justify-content:space-between;">
-        <div>
-          <div style="font-size:16px;font-weight:800;color:white;margin-bottom:5px;">Quer divulgar seu curso aqui?</div>
-          <div style="font-size:13px;color:rgba(255,255,255,.7);">Gratuito durante o beta — alcance toda a comunidade ODONT HUB.</div>
-        </div>
+        <div><div style="font-size:16px;font-weight:800;color:white;margin-bottom:5px;">Quer divulgar seu curso aqui?</div><div style="font-size:13px;color:rgba(255,255,255,.7);">Gratuito durante o beta.</div></div>
         <button class="btn-white-outline" onclick="document.getElementById('modal-curso').classList.add('open')">+ Anunciar agora</button>
       </div>
-
-    </div><!-- /screen-cursos -->
+    </div>
 
   </div><!-- /main -->
 
-  <!-- ===== MODAL ANUNCIAR CURSO ===== -->
+  <!-- MODAL ANUNCIAR CURSO -->
   <div class="modal-overlay" id="modal-curso" onclick="if(event.target===this)this.classList.remove('open')" style="z-index:200;">
     <div class="modal" style="height:auto;max-height:90vh;overflow-y:auto;width:480px;">
       <div class="modal-hdr">
         <div style="font-size:20px;line-height:1;">📚</div>
-        <div class="modal-hdr-info">
-          <div class="modal-hdr-name">Anunciar Curso</div>
-          <div class="modal-hdr-spec">Preencha os dados do seu curso</div>
-        </div>
+        <div class="modal-hdr-info"><div class="modal-hdr-name">Anunciar Curso</div><div class="modal-hdr-spec">Preencha os dados do seu curso</div></div>
         <i class="ti ti-x modal-close" onclick="document.getElementById('modal-curso').classList.remove('open')"></i>
       </div>
       <div style="padding:20px;display:flex;flex-direction:column;gap:12px;">
-        <div><label class="lbl">Título do curso</label><input class="inp" style="margin-bottom:0;" placeholder="Ex: Implantes Imediatos — Avançado"></div>
+        <div><label class="lbl">Título do curso</label><input id="curso-title" class="inp" style="margin-bottom:0;" placeholder="Ex: Implantes Imediatos — Avançado"></div>
         <div><label class="lbl">Especialidade</label>
-          <select class="inp" style="margin-bottom:0;background:white;">
+          <select id="curso-specialty" class="inp" style="margin-bottom:0;background:white;">
             <option>Dentística</option><option>Clínica Geral</option><option>Implantodontia</option><option>Ortodontia</option>
             <option>Endodontia</option><option>Periodontia</option><option>Prótese</option>
             <option>Bucomaxilofacial</option><option>Harmonização Facial</option>
-            <option>Odontopediatria</option><option>Gestão & Marketing</option><option>Outro</option>
+            <option>Odontopediatria</option><option>Gestão & Marketing</option>
           </select>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <div><label class="lbl">Modalidade</label>
-            <select class="inp" style="margin-bottom:0;background:white;"><option>Presencial</option><option>Online</option><option>Híbrido</option></select>
-          </div>
-          <div><label class="lbl">Carga horária</label><input class="inp" style="margin-bottom:0;" placeholder="Ex: 12h"></div>
+          <div><label class="lbl">Modalidade</label><select id="curso-modality" class="inp" style="margin-bottom:0;background:white;"><option>Presencial</option><option>Online</option><option>Híbrido</option></select></div>
+          <div><label class="lbl">Carga horária</label><input id="curso-hours" class="inp" style="margin-bottom:0;" placeholder="Ex: 12"></div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <div><label class="lbl">Cidade / Estado</label><input class="inp" style="margin-bottom:0;" placeholder="São Paulo, SP"></div>
-          <div><label class="lbl">Valor (R$)</label><input class="inp" style="margin-bottom:0;" placeholder="1.800"></div>
+          <div><label class="lbl">Cidade</label><input id="curso-city" class="inp" style="margin-bottom:0;" placeholder="São Paulo"></div>
+          <div><label class="lbl">Valor (R$)</label><input id="curso-price" class="inp" style="margin-bottom:0;" placeholder="1800"></div>
         </div>
-        <div><label class="lbl">Data do curso</label><input class="inp" style="margin-bottom:0;" type="date"></div>
-        <div><label class="lbl">Descrição</label>
-          <textarea class="inp" style="margin-bottom:0;min-height:72px;resize:vertical;" placeholder="Conteúdo, público-alvo e diferenciais..."></textarea>
-        </div>
-        <div><label class="lbl">Foto de capa</label>
-          <div style="border:2px dashed var(--border);border-radius:var(--rs);padding:14px;text-align:center;font-size:12px;color:var(--text3);cursor:pointer;">
-            <i class="ti ti-cloud-upload" style="font-size:22px;display:block;margin-bottom:4px;"></i> Clique para enviar imagem
-          </div>
-        </div>
-        <button class="btn-primary" onclick="document.getElementById('modal-curso').classList.remove('open');alert('Curso publicado com sucesso! ✅')">
-          <i class="ti ti-check"></i> Publicar curso
-        </button>
+        <div><label class="lbl">WhatsApp para contato</label><input id="curso-whatsapp" class="inp" style="margin-bottom:0;" placeholder="11999999999"></div>
+        <div><label class="lbl">Descrição</label><textarea id="curso-desc" class="inp" style="margin-bottom:0;min-height:72px;resize:vertical;" placeholder="Conteúdo, público-alvo e diferenciais..."></textarea></div>
+        <button class="btn-primary" onclick="submitCurso()"><i class="ti ti-check"></i> Publicar curso</button>
       </div>
     </div>
   </div>
+
+  <!-- MODAL CHAT -->
   <div class="modal-overlay" id="chat-modal" onclick="closeChat(event)">
     <div class="modal">
       <div class="modal-hdr">
         <div class="av m av-grad-1">?</div>
-        <div class="modal-hdr-info">
-          <div class="modal-hdr-name" id="chat-name">Nome</div>
-          <div class="modal-hdr-spec" id="chat-spec">Especialidade</div>
-        </div>
+        <div class="modal-hdr-info"><div class="modal-hdr-name" id="chat-name">Nome</div><div class="modal-hdr-spec" id="chat-spec">Especialidade</div></div>
         <i class="ti ti-x modal-close" onclick="document.getElementById('chat-modal').classList.remove('open')"></i>
       </div>
       <div class="modal-msgs" id="chat-msgs">
-        <div class="msg them">
-          <div class="msg-bubble" id="chat-intro">Olá! Como posso ajudar?</div>
-          <div class="msg-time">agora</div>
-        </div>
+        <div class="msg them"><div class="msg-bubble">Olá! Como posso ajudar?</div><div class="msg-time">agora</div></div>
       </div>
       <div class="modal-input">
         <input type="text" id="chat-input" placeholder="Digite sua mensagem..." onkeydown="if(event.key==='Enter')sendMsg()">
@@ -1876,38 +640,32 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
       </div>
     </div>
   </div>
-<!-- ===== MODAL PERFIL ===== -->
-<div class="modal-overlay" id="profile-modal" onclick="if(event.target===this)this.classList.remove('open')">
-  <div class="modal" style="width:420px;height:auto;max-height:85vh;overflow-y:auto;">
-    <div class="modal-hdr">
-      <div class="modal-hdr-info">
-        <div class="modal-hdr-name">Perfil do Dentista</div>
+
+  <!-- MODAL PERFIL -->
+  <div class="modal-overlay" id="profile-modal" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="modal" style="width:420px;height:auto;max-height:85vh;overflow-y:auto;">
+      <div class="modal-hdr">
+        <div class="modal-hdr-info"><div class="modal-hdr-name">Perfil do Dentista</div></div>
+        <i class="ti ti-x modal-close" onclick="document.getElementById('profile-modal').classList.remove('open')"></i>
       </div>
-      <i class="ti ti-x modal-close" onclick="document.getElementById('profile-modal').classList.remove('open')"></i>
+      <div id="profile-content"></div>
     </div>
-    <div id="profile-content"></div>
   </div>
-</div>
+
 </div><!-- /app-screen -->
 
 <script>
-// ── CONFIG ─────────────────────────────────────────────────────────────────
 const API = 'https://odont-hub-backend-production.up.railway.app'
 let TOKEN = localStorage.getItem('odont_token') || ''
 let USER  = JSON.parse(localStorage.getItem('odont_user') || 'null')
 
-// ── HELPERS ────────────────────────────────────────────────────────────────
-// CORREÇÃO: timeout de 15s + retry automático (resolve "Load failed" Safari / cold-start Railway)
 async function api(method, path, body, _retries = 2) {
   const controller = new AbortController()
   const tid = setTimeout(() => controller.abort(), 15000)
   const opts = {
     method,
     signal: controller.signal,
-    headers: {
-      'Content-Type': 'application/json',
-      ...(TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {}),
-    },
+    headers: { 'Content-Type': 'application/json', ...(TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {}) },
   }
   if (body) opts.body = JSON.stringify(body)
   try {
@@ -1919,7 +677,6 @@ async function api(method, path, body, _retries = 2) {
   } catch (e) {
     clearTimeout(tid)
     if (_retries > 0 && (e.name === 'AbortError' || e.message.includes('Load failed') || e.message.includes('Failed to fetch'))) {
-      console.warn(`API retry (${_retries} left):`, e.message)
       await new Promise(r => setTimeout(r, 2000))
       return api(method, path, body, _retries - 1)
     }
@@ -1931,9 +688,7 @@ function setLoading(btnId, loading, text = '') {
   const btn = document.getElementById(btnId)
   if (!btn) return
   btn.disabled = loading
-  btn.innerHTML = loading
-    ? '<i class="ti ti-loader" style="animation:spin 1s linear infinite;display:inline-block;"></i> Aguarde...'
-    : text
+  btn.innerHTML = loading ? '<i class="ti ti-loader" style="animation:spin 1s linear infinite;display:inline-block;"></i> Aguarde...' : text
 }
 
 function showError(elId, msg) {
@@ -1944,15 +699,12 @@ function showError(elId, msg) {
   setTimeout(() => { el.style.display = 'none' }, 4000)
 }
 
-// ── LOGIN ──────────────────────────────────────────────────────────────────
 async function doLogin() {
   const email    = document.getElementById('login-email').value.trim()
   const password = document.getElementById('login-password').value
   if (!email || !password) { showError('login-error', 'Preencha e-mail e senha.'); return }
-
   setLoading('login-btn', true)
   try {
-    // CORREÇÃO: warmup acorda o Railway antes do login (elimina cold-start "Load failed")
     const res = await api('POST', '/api/auth/login', { email, password })
     TOKEN = res.token
     USER  = res.user
@@ -1966,7 +718,6 @@ async function doLogin() {
   }
 }
 
-// ── REGISTER ───────────────────────────────────────────────────────────────
 function showRegister() { document.getElementById('register-modal').style.display = 'flex' }
 function hideRegister() { document.getElementById('register-modal').style.display = 'none' }
 
@@ -1976,13 +727,10 @@ async function doRegister() {
   const password  = document.getElementById('reg-password').value
   const cro       = document.getElementById('reg-cro').value.trim()
   const specialty = document.getElementById('reg-specialty').value
-
   if (!name || !email || !password) { showError('reg-error', 'Nome, e-mail e senha são obrigatórios.'); return }
   if (password.length < 8) { showError('reg-error', 'Senha deve ter ao menos 8 caracteres.'); return }
-
   setLoading('reg-btn', true)
   try {
-    try { await fetch(API + '/health') } catch (_) {}
     const res = await api('POST', '/api/auth/register', { name, email, password, cro, specialty })
     TOKEN = res.token
     USER  = res.user
@@ -1997,7 +745,6 @@ async function doRegister() {
   }
 }
 
-// ── APP INIT ───────────────────────────────────────────────────────────────
 function goApp() {
   document.getElementById('login-screen').style.display = 'none'
   document.getElementById('app-screen').style.display   = 'flex'
@@ -2014,31 +761,18 @@ function goApp() {
   }
 }
 
-// Se já tem token válido, entra direto
 if (TOKEN && USER) {
-  window.addEventListener('DOMContentLoaded', () => {
-    goApp()
-    loadFeed()
-  })
+  window.addEventListener('DOMContentLoaded', () => { goApp(); loadFeed() })
 }
 
-// ── NAVEGAÇÃO ──────────────────────────────────────────────────────────────
 function nav(el, screen, title) {
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'))
   el.classList.add('active')
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'))
   document.getElementById('screen-' + screen).classList.add('active')
   document.getElementById('page-title').textContent = title
-  // CORREÇÃO: carrega feed real ao navegar para Comunidade
- if (screen === 'community') loadFeed()
-if (screen === 'cursos') loadCursos()
-}
-
-function like(btn, countId) {
-  const c = document.getElementById(countId)
-  const n = parseInt(c.textContent)
-  const on = btn.classList.toggle('liked')
-  c.textContent = on ? n + 1 : n - 1
+  if (screen === 'community') loadFeed()
+  if (screen === 'cursos') loadCursos()
 }
 
 function filterMkt(el) {
@@ -2061,14 +795,12 @@ function openChat(name, spec) {
   chatName = name
   document.getElementById('chat-name').textContent = name
   document.getElementById('chat-spec').textContent = spec
-  document.getElementById('chat-msgs').innerHTML =
-    `<div class="msg them"><div class="msg-bubble">Olá! Sou ${name}. Posso ajudar com dúvidas sobre ${spec}. O que você precisa?</div><div class="msg-time">agora</div></div>`
+  document.getElementById('chat-msgs').innerHTML = `<div class="msg them"><div class="msg-bubble">Olá! Sou ${name}. Como posso ajudar?</div><div class="msg-time">agora</div></div>`
   document.getElementById('chat-modal').classList.add('open')
   document.getElementById('chat-input').focus()
 }
 function closeChat(e) {
-  if (e.target === document.getElementById('chat-modal'))
-    document.getElementById('chat-modal').classList.remove('open')
+  if (e.target === document.getElementById('chat-modal')) document.getElementById('chat-modal').classList.remove('open')
 }
 function sendMsg() {
   const inp = document.getElementById('chat-input')
@@ -2079,7 +811,7 @@ function sendMsg() {
   inp.value = ''
   msgs.scrollTop = msgs.scrollHeight
   setTimeout(() => {
-    const replies = ['Entendido! Posso orientar sobre isso.', 'Ótima pergunta! Me manda mais detalhes.', 'Isso é muito comum na prática clínica.', 'Vou te ajudar com isso! Que tipo de caso?']
+    const replies = ['Entendido! Posso orientar sobre isso.', 'Ótima pergunta! Me manda mais detalhes.', 'Isso é muito comum na prática clínica.']
     const r = replies[Math.floor(Math.random() * replies.length)]
     const t = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
     msgs.innerHTML += `<div class="msg them"><div class="msg-bubble">${r}</div><div class="msg-time">${t}</div></div>`
@@ -2087,7 +819,6 @@ function sendMsg() {
   }, 1000)
 }
 
-// ── FEED REAL ──────────────────────────────────────────────────────────────
 function timeAgo(dateStr) {
   const diff = Date.now() - new Date(dateStr).getTime()
   const m = Math.floor(diff / 60000)
@@ -2107,11 +838,8 @@ function renderPost(post) {
   const ini = initials(author.name)
   const likes = post.likes_count?.[0]?.count || post.likes_count || 0
   const comments = post.comments_count?.[0]?.count || post.comments_count || 0
-  const userEmail = USER ? USER.email : (JSON.parse(localStorage.getItem('odont_user')||'{}').email || '')
   const userId = USER ? USER.id : (JSON.parse(localStorage.getItem('odont_user')||'{}').id || '')
   const isMe = (author.id && userId && author.id === userId) || (post.user_id && userId && post.user_id === userId)
-  const isAdmin = userEmail === 'odont.hub@gmail.com'
-  const canDelete = isMe || isAdmin
   const gradients = ['av-grad-1', 'av-grad-2', 'av-grad-3', 'av-grad-4', 'av-grad-5', 'av-grad-6']
   const grad = isMe ? 'av-grad-me' : gradients[Math.abs((ini.charCodeAt(0) || 65) - 65) % 6]
 
@@ -2127,43 +855,40 @@ function renderPost(post) {
         </div>
       </div>
       <div style="display:flex;gap:4px;">
-        ${(String(post.user_id) === String(USER?.id||'')) ? `<div style="border:none;background:#eef2ff;border-radius:6px;width:28px;height:28px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;" onclick="editPost('${post.id}','${post.content.replace(/'/g,"'")}')"><i class="ti ti-pencil" style="color:#336699;font-size:15px;"></i></div>` : ''}
-        ${(String(post.user_id) === String(USER?.id||'')) ? `<div style="border:none;background:#fff0f0;border-radius:6px;width:28px;height:28px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;" onclick="deletePost('${post.id}')"><i class="ti ti-trash" style="color:#ef4444;font-size:15px;"></i></div>` : ''}
+        ${isMe ? `<div style="border:none;background:#eef2ff;border-radius:6px;width:28px;height:28px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;" onclick="editPost('${post.id}','${post.content.replace(/'/g,"\\'")}')"><i class="ti ti-pencil" style="color:#336699;font-size:15px;"></i></div>` : ''}
+        ${isMe ? `<div style="border:none;background:#fff0f0;border-radius:6px;width:28px;height:28px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;" onclick="deletePost('${post.id}')"><i class="ti ti-trash" style="color:#ef4444;font-size:15px;"></i></div>` : ''}
       </div>
     </div>
     ${post.specialty_tag ? `<div class="tags"><span class="tag">#${post.specialty_tag}</span></div>` : ''}
     <div class="post-txt">${post.content.replace(/\n/g, '<br>')}</div>
+    ${post.image_url ? `<img src="${post.image_url}" style="width:100%;border-radius:8px;margin-bottom:11px;max-height:400px;object-fit:cover;">` : ''}
     <div class="post-acts">
       <button class="pact ${post.liked_by_me ? 'liked' : ''}" onclick="toggleLike(this,'${post.id}',${!!post.liked_by_me})">
         <i class="ti ti-heart"></i><span>${likes}</span>
       </button>
-     <button class="pact" onclick="toggleComments('${post.id}')"><i class="ti ti-message-circle"></i><span id="cmt-count-${post.id}">${comments}</span> comentários</button>
+      <button class="pact" onclick="toggleComments('${post.id}')"><i class="ti ti-message-circle"></i><span id="cmt-count-${post.id}">${comments}</span> comentários</button>
       <button class="pact"><i class="ti ti-share"></i>Compartilhar</button>
       <button class="pact ml"><i class="ti ti-bookmark"></i>Salvar</button>
     </div>
-  </div>`
-}
-<div id="comments-${post.id}" style="display:none;margin-top:12px;border-top:1px solid var(--border);padding-top:12px;">
+    <div id="comments-${post.id}" style="display:none;margin-top:12px;border-top:1px solid var(--border);padding-top:12px;">
       <div id="comments-list-${post.id}" style="margin-bottom:10px;"></div>
       <div style="display:flex;gap:8px;">
         <textarea id="comment-input-${post.id}" placeholder="Escreva um comentário..." style="flex:1;padding:8px 12px;border:1.5px solid var(--border);border-radius:var(--rs);font-family:inherit;font-size:13px;resize:none;height:36px;outline:none;" onfocus="this.style.height='72px'" onblur="if(!this.value)this.style.height='36px'"></textarea>
         <button onclick="submitComment('${post.id}')" style="background:var(--navy);color:white;border:none;padding:8px 14px;border-radius:var(--rs);font-size:12px;font-weight:700;cursor:pointer;">Enviar</button>
       </div>
     </div>
-  </div>\`
-}// ── CURSOS REAIS ──────────────────────────────────────────────────────────
+  </div>`
+}
+
+// CURSOS
 async function loadCursos() {
   const grid = document.getElementById('cursos-grid')
   if (!grid) return
-  grid.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text3);grid-column:1/-1;">
-    <i class="ti ti-loader" style="font-size:32px;display:block;margin-bottom:10px;animation:spin 1s linear infinite;"></i>
-    Carregando cursos...</div>`
+  grid.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text3);grid-column:1/-1;"><i class="ti ti-loader" style="font-size:32px;display:block;margin-bottom:10px;animation:spin 1s linear infinite;"></i>Carregando cursos...</div>`
   try {
     const cursos = await api('GET', '/api/courses')
     if (!cursos?.length) {
-      grid.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text3);grid-column:1/-1;">
-        <i class="ti ti-school" style="font-size:48px;display:block;margin-bottom:12px;"></i>
-        Nenhum curso publicado ainda. Seja o primeiro!</div>`
+      grid.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text3);grid-column:1/-1;"><i class="ti ti-school" style="font-size:48px;display:block;margin-bottom:12px;"></i>Nenhum curso publicado ainda. Seja o primeiro!</div>`
       return
     }
     grid.innerHTML = cursos.map(c => {
@@ -2177,17 +902,15 @@ async function loadCursos() {
         </div>
         <div style="padding:15px 16px 18px;">
           <div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:5px;">${c.title}</div>
-          <div style="font-size:12px;color:var(--text3);margin-bottom:8px;display:flex;align-items:center;gap:5px;">
-            <i class="ti ti-user" style="font-size:13px;"></i> ${c.instructor?.name || 'Professor'}
-          </div>
+          <div style="font-size:12px;color:var(--text3);margin-bottom:8px;display:flex;align-items:center;gap:5px;"><i class="ti ti-user" style="font-size:13px;"></i> ${c.instructor?.name || 'Professor'}</div>
           <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:11px;">
             <span style="background:rgba(84,47,98,.08);color:var(--purple);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(84,47,98,.2);">${c.modality}</span>
-            ${c.city ? `<span style="background:rgba(1,2,103,.06);color:var(--navy);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(1,2,103,.12);">${c.city}, ${c.state||''}</span>` : ''}
+            ${c.city ? `<span style="background:rgba(1,2,103,.06);color:var(--navy);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(1,2,103,.12);">${c.city}</span>` : ''}
             ${c.hours ? `<span style="background:rgba(51,102,153,.08);color:var(--blue);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(51,102,153,.2);">${c.hours}h</span>` : ''}
           </div>
           <div style="display:flex;align-items:center;justify-content:space-between;">
             <div style="font-size:17px;font-weight:800;color:var(--navy);">R$ ${Number(c.price||0).toLocaleString('pt-BR')}</div>
-            ${waLink ? `<a href="${waLink}" target="_blank" style="background:#25d366;color:white;border:none;padding:7px 14px;border-radius:var(--rs);font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px;text-decoration:none;"><i class="ti ti-brand-whatsapp" style="font-size:15px;"></i> WhatsApp</a>` : `<button class="btn-apply" onclick="alert('Contato não disponível.')">Inscrever-se</button>`}
+            ${waLink ? `<a href="${waLink}" target="_blank" style="background:#25d366;color:white;border:none;padding:7px 14px;border-radius:var(--rs);font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px;text-decoration:none;"><i class="ti ti-brand-whatsapp" style="font-size:15px;"></i> WhatsApp</a>` : `<button class="btn-apply">Inscrever-se</button>`}
           </div>
         </div>
       </div>`
@@ -2196,25 +919,42 @@ async function loadCursos() {
     grid.innerHTML = `<div style="text-align:center;padding:30px;color:var(--text3);grid-column:1/-1;">Erro ao carregar cursos: ${e.message}</div>`
   }
 }
+
+async function submitCurso() {
+  const title    = document.getElementById('curso-title').value.trim()
+  const specialty= document.getElementById('curso-specialty').value
+  const modality = document.getElementById('curso-modality').value
+  const hours    = document.getElementById('curso-hours').value
+  const city     = document.getElementById('curso-city').value.trim()
+  const price    = document.getElementById('curso-price').value
+  const whatsapp = document.getElementById('curso-whatsapp').value.trim()
+  const description = document.getElementById('curso-desc').value.trim()
+  if (!title) { alert('Preencha o título do curso.'); return }
+  try {
+    await api('POST', '/api/courses', { title, specialty, modality, hours: Number(hours)||null, city, price: Number(price)||0, whatsapp, description })
+    document.getElementById('modal-curso').classList.remove('open')
+    alert('Curso publicado com sucesso! ✅')
+    loadCursos()
+  } catch(e) {
+    alert('Erro ao publicar curso: ' + e.message)
+  }
+}
+
+// FEED
 async function loadFeed() {
   const list = document.getElementById('feed-list')
   if (!list) return
-  list.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text3);">
-    <i class="ti ti-loader" style="font-size:32px;display:block;margin-bottom:10px;animation:spin 1s linear infinite;"></i>
-    Carregando posts...</div>`
+  list.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text3);"><i class="ti ti-loader" style="font-size:32px;display:block;margin-bottom:10px;animation:spin 1s linear infinite;"></i>Carregando posts...</div>`
   try {
     const posts = await api('GET', '/api/feed?page=1')
     const arr = Array.isArray(posts) ? posts : (posts.posts || posts.data || [])
     if (!arr.length) {
-      list.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text3);">
-        <i class="ti ti-messages" style="font-size:48px;display:block;margin-bottom:12px;"></i>
-        Nenhum post ainda. Seja o primeiro a compartilhar! 🦷</div>`
+      list.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text3);"><i class="ti ti-messages" style="font-size:48px;display:block;margin-bottom:12px;"></i>Nenhum post ainda. Seja o primeiro! 🦷</div>`
       return
     }
     list.innerHTML = arr.map(renderPost).join('')
   } catch (e) {
-    list.innerHTML = `<div style="text-align:center;padding:30px;color:var(--text3);">
-      Erro ao carregar posts: ${e.message}</div>`
+    list.innerHTML = `<div style="text-align:center;padding:30px;color:var(--text3);">Erro ao carregar posts: ${e.message}</div>`
   }
 }
 
@@ -2222,47 +962,33 @@ async function submitPost() {
   const content   = document.getElementById('post-content').value.trim()
   const specialty = document.getElementById('post-specialty').value
   if (!content) { alert('Escreva algo antes de publicar!'); return }
-
   const btn = document.getElementById('btn-pub')
-  btn.disabled = true
-  btn.textContent = 'Publicando...'
+  btn.disabled = true; btn.textContent = 'Publicando...'
   try {
     let image_url = null
     if (selectedImageFile) {
       btn.textContent = 'Enviando foto...'
-      try {
-        image_url = await uploadImageToServer(selectedImageFile)
-      } catch(uploadErr) {
-        alert('Erro no upload da foto: ' + uploadErr.message)
-        btn.disabled = false
-        btn.textContent = 'Publicar'
-        return
-      }
+      try { image_url = await uploadImageToServer(selectedImageFile) }
+      catch(uploadErr) { alert('Erro no upload da foto: ' + uploadErr.message); btn.disabled = false; btn.textContent = 'Publicar'; return }
     }
     await api('POST', '/api/feed', { content, specialty_tag: specialty || undefined, image_url })
     document.getElementById('post-content').value = ''
     document.getElementById('post-specialty').value = ''
     removeImage()
     await loadFeed()
-  } catch (e) {
-    alert('Erro ao publicar: ' + e.message)
-  } finally {
-    btn.disabled = false
-    btn.textContent = 'Publicar'
-  }
+  } catch (e) { alert('Erro ao publicar: ' + e.message) }
+  finally { btn.disabled = false; btn.textContent = 'Publicar' }
 }
 
 async function toggleLike(btn, postId, currentlyLiked) {
   const countEl = btn.querySelector('span')
   const count = parseInt(countEl.textContent)
   if (currentlyLiked) {
-    btn.classList.remove('liked')
-    countEl.textContent = Math.max(0, count - 1)
+    btn.classList.remove('liked'); countEl.textContent = Math.max(0, count - 1)
     btn.onclick = () => toggleLike(btn, postId, false)
     await api('DELETE', `/api/feed/${postId}/like`).catch(() => {})
   } else {
-    btn.classList.add('liked')
-    countEl.textContent = count + 1
+    btn.classList.add('liked'); countEl.textContent = count + 1
     btn.onclick = () => toggleLike(btn, postId, true)
     await api('POST', `/api/feed/${postId}/like`).catch(() => {})
   }
@@ -2274,20 +1000,14 @@ async function deletePost(postId) {
   document.getElementById(`post-${postId}`)?.remove()
 }
 
-// ── DOMContentLoaded ───────────────────────────────────────────────────────
-
-// ── UPLOAD DE IMAGEM ──────────────────────────────────────────────────────
+// UPLOAD DE IMAGEM
 let selectedImageFile = null
 
 function previewImage(input) {
-  const file = input.files[0]
-  if (!file) return
+  const file = input.files[0]; if (!file) return
   selectedImageFile = file
   const reader = new FileReader()
-  reader.onload = e => {
-    document.getElementById('preview-img').src = e.target.result
-    document.getElementById('image-preview').style.display = 'block'
-  }
+  reader.onload = e => { document.getElementById('preview-img').src = e.target.result; document.getElementById('image-preview').style.display = 'block' }
   reader.readAsDataURL(file)
 }
 
@@ -2298,31 +1018,31 @@ function removeImage() {
   document.getElementById('preview-img').src = ''
 }
 
-async function compressImage(f){
-  return new Promise(function(r){
-    var img=new Image(),u=URL.createObjectURL(f);
-    img.onload=function(){
-      var c=document.createElement('canvas'),w=img.width,h=img.height;
-      if(w>800){h=Math.round(h*900/w);w=900;}
-      c.width=w;c.height=h;
-      c.getContext('2d').drawImage(img,0,0,w,h);
-      URL.revokeObjectURL(u);
-      c.toBlob(function(b){r(b)},'image/jpeg',0.50);
-    };
-    img.src=u;
-  });
-}
-async function uploadImageToServer(file){
-  var token=localStorage.getItem('odont_token')||TOKEN;
-  var fd=new FormData();
-  var comp=await compressImage(file);
-  fd.append('file',comp,'foto.jpg');
-  var res=await fetch(API+'/api/uploads/image',{method:'POST',headers:{Authorization:'Bearer '+token},body:fd});
-  var d=await res.json().catch(function(){return{};});
-  if(!res.ok)throw new Error(d.message||d.error||'Erro '+res.status);
-  return d.url;
+async function compressImage(f) {
+  return new Promise(function(r) {
+    var img = new Image(), u = URL.createObjectURL(f)
+    img.onload = function() {
+      var c = document.createElement('canvas'), w = img.width, h = img.height
+      if (w > 800) { h = Math.round(h * 900 / w); w = 900 }
+      c.width = w; c.height = h
+      c.getContext('2d').drawImage(img, 0, 0, w, h)
+      URL.revokeObjectURL(u)
+      c.toBlob(function(b) { r(b) }, 'image/jpeg', 0.50)
+    }
+    img.src = u
+  })
 }
 
+async function uploadImageToServer(file) {
+  var token = localStorage.getItem('odont_token') || TOKEN
+  var fd = new FormData()
+  var comp = await compressImage(file)
+  fd.append('file', comp, 'foto.jpg')
+  var res = await fetch(API + '/api/uploads/image', { method: 'POST', headers: { Authorization: 'Bearer ' + token }, body: fd })
+  var d = await res.json().catch(function() { return {} })
+  if (!res.ok) throw new Error(d.message || d.error || 'Erro ' + res.status)
+  return d.url
+}
 
 function editPost(postId, currentContent) {
   const novoTexto = window.prompt('Editar post:', currentContent)
@@ -2333,80 +1053,12 @@ function editPost(postId, currentContent) {
     .catch(e => alert('Erro ao editar: ' + e.message))
 }
 
-// ── PERFIL DO DENTISTA ─────────────────────────────────────────────────────
-async function openProfile(userId) {
-  if (!userId) return
-  document.getElementById('profile-modal').classList.add('open')
-  document.getElementById('profile-content').innerHTML = `
-    <div style="text-align:center;padding:40px;color:var(--text3);">
-      <i class="ti ti-loader" style="font-size:32px;display:block;margin-bottom:10px;animation:spin 1s linear infinite;"></i>
-      Carregando perfil...
-    </div>`
-  try {
-    const user = await api('GET', '/api/users/' + userId)
-    const ini = initials(user.name)
-    const isMe = String(userId) === String(USER?.id||'')
-    document.getElementById('profile-content').innerHTML = `
-      <div style="text-align:center;padding:24px 20px 16px;">
-        <div class="av xl av-grad-me" style="margin:0 auto 12px;font-size:22px;">${user.avatar_url ? '' : ini}</div>
-        <div style="font-size:18px;font-weight:800;color:var(--navy);">${user.name}</div>
-        ${user.specialty ? `<div style="font-size:13px;color:var(--purple);font-weight:600;margin-top:3px;">${user.specialty}</div>` : ''}
-        ${user.cro ? `<div style="display:inline-block;background:rgba(1,2,103,.07);color:var(--navy2);padding:2px 10px;border-radius:4px;font-size:11px;font-weight:600;margin-top:6px;">CRO/${user.cro_uf||''} ${user.cro}</div>` : ''}
-        ${user.city ? `<div style="font-size:12px;color:var(--text3);margin-top:6px;display:flex;align-items:center;justify-content:center;gap:4px;"><i class="ti ti-map-pin" style="font-size:13px;"></i>${user.city}${user.state ? ', '+user.state : ''}</div>` : ''}
-        ${user.bio ? `<div style="font-size:13px;color:var(--text2);margin-top:12px;line-height:1.6;text-align:left;background:var(--bg);padding:12px;border-radius:var(--rs);">${user.bio}</div>` : ''}
-        ${!isMe ? `
-        <div style="display:flex;gap:8px;margin-top:16px;">
-          <button onclick="startPrivateChat('${user.id}','${user.name}')" style="flex:1;background:var(--navy);color:white;border:none;padding:10px;border-radius:var(--rs);font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;font-family:inherit;">
-            <i class="ti ti-message"></i> Mensagem privada
-          </button>
-        </div>` : `
-        <div style="margin-top:16px;">
-          <button onclick="document.getElementById('profile-modal').classList.remove('open')" style="width:100%;background:var(--bg);border:1.5px solid var(--border);color:var(--text2);padding:10px;border-radius:var(--rs);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">
-            Este é seu perfil
-          </button>
-        </div>`}
-      </div>`
-  } catch(e) {
-    document.getElementById('profile-content').innerHTML = `<div style="text-align:center;padding:30px;color:#ef4444;">Erro ao carregar perfil.</div>`
-  }
-}
-
-function startPrivateChat(userId, userName) {
-  document.getElementById('profile-modal').classList.remove('open')
-  openChat(userName, 'Chat privado')
-}
-function toggleLogoutMenu() {
-  const menu = document.getElementById('logout-menu')
-  if (menu) menu.style.display = menu.style.display === 'none' ? 'block' : 'none'
-}
-
-function doLogout() {
-  localStorage.removeItem('odont_token')
-  localStorage.removeItem('odont_user')
-  TOKEN = ''
-  USER = null
-  document.getElementById('app-screen').style.display = 'none'
-  document.getElementById('login-screen').style.display = 'flex'
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('login-password')?.addEventListener('keydown', e => {
-    if (e.key === 'Enter') doLogin()
-  })
-  document.getElementById('post-content')?.addEventListener('keydown', e => {
-    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') submitPost()
-  })
-})
-// ── COMENTÁRIOS ────────────────────────────────────────────────────────────
+// COMENTÁRIOS
 async function toggleComments(postId) {
   const div = document.getElementById('comments-' + postId)
   if (!div) return
-  if (div.style.display === 'none') {
-    div.style.display = 'block'
-    await loadComments(postId)
-  } else {
-    div.style.display = 'none'
-  }
+  if (div.style.display === 'none') { div.style.display = 'block'; await loadComments(postId) }
+  else { div.style.display = 'none' }
 }
 
 async function loadComments(postId) {
@@ -2415,10 +1067,7 @@ async function loadComments(postId) {
   list.innerHTML = '<div style="color:var(--text3);font-size:12px;padding:4px 0;">Carregando...</div>'
   try {
     const comments = await api('GET', '/api/feed/' + postId + '/comments')
-    if (!comments.length) {
-      list.innerHTML = '<div style="color:var(--text3);font-size:12px;padding:4px 0;">Nenhum comentário ainda.</div>'
-      return
-    }
+    if (!comments.length) { list.innerHTML = '<div style="color:var(--text3);font-size:12px;padding:4px 0;">Nenhum comentário ainda.</div>'; return }
     list.innerHTML = comments.map(c => {
       const ini = initials(c.author?.name)
       const isMe = String(c.user_id) === String(USER?.id||'')
@@ -2434,25 +1083,19 @@ async function loadComments(postId) {
         </div>
       </div>`
     }).join('')
-  } catch(e) {
-    list.innerHTML = '<div style="color:#ef4444;font-size:12px;">Erro ao carregar comentários.</div>'
-  }
+  } catch(e) { list.innerHTML = '<div style="color:#ef4444;font-size:12px;">Erro ao carregar comentários.</div>' }
 }
 
 async function submitComment(postId) {
   const input = document.getElementById('comment-input-' + postId)
-  const content = input?.value?.trim()
-  if (!content) return
+  const content = input?.value?.trim(); if (!content) return
   try {
     await api('POST', '/api/feed/' + postId + '/comments', { content })
-    input.value = ''
-    input.style.height = '36px'
+    input.value = ''; input.style.height = '36px'
     await loadComments(postId)
     const countEl = document.getElementById('cmt-count-' + postId)
     if (countEl) countEl.textContent = parseInt(countEl.textContent || 0) + 1
-  } catch(e) {
-    alert('Erro ao enviar comentário: ' + e.message)
-  }
+  } catch(e) { alert('Erro ao enviar comentário: ' + e.message) }
 }
 
 async function deleteComment(postId, commentId) {
@@ -2462,11 +1105,57 @@ async function deleteComment(postId, commentId) {
   const countEl = document.getElementById('cmt-count-' + postId)
   if (countEl) countEl.textContent = Math.max(0, parseInt(countEl.textContent || 0) - 1)
 }
-// CSS para spin
+
+// PERFIL
+async function openProfile(userId) {
+  if (!userId) return
+  document.getElementById('profile-modal').classList.add('open')
+  document.getElementById('profile-content').innerHTML = `<div style="text-align:center;padding:40px;color:var(--text3);"><i class="ti ti-loader" style="font-size:32px;display:block;margin-bottom:10px;animation:spin 1s linear infinite;"></i>Carregando perfil...</div>`
+  try {
+    const user = await api('GET', '/api/users/' + userId)
+    const ini = initials(user.name)
+    const isMe = String(userId) === String(USER?.id||'')
+    document.getElementById('profile-content').innerHTML = `
+      <div style="text-align:center;padding:24px 20px 16px;">
+        <div class="av xl av-grad-me" style="margin:0 auto 12px;font-size:22px;">${ini}</div>
+        <div style="font-size:18px;font-weight:800;color:var(--navy);">${user.name}</div>
+        ${user.specialty ? `<div style="font-size:13px;color:var(--purple);font-weight:600;margin-top:3px;">${user.specialty}</div>` : ''}
+        ${user.cro ? `<div style="display:inline-block;background:rgba(1,2,103,.07);color:var(--navy2);padding:2px 10px;border-radius:4px;font-size:11px;font-weight:600;margin-top:6px;">CRO/${user.cro_uf||''} ${user.cro}</div>` : ''}
+        ${user.city ? `<div style="font-size:12px;color:var(--text3);margin-top:6px;display:flex;align-items:center;justify-content:center;gap:4px;"><i class="ti ti-map-pin" style="font-size:13px;"></i>${user.city}${user.state ? ', '+user.state : ''}</div>` : ''}
+        ${user.bio ? `<div style="font-size:13px;color:var(--text2);margin-top:12px;line-height:1.6;text-align:left;background:var(--bg);padding:12px;border-radius:var(--rs);">${user.bio}</div>` : ''}
+        ${!isMe ? `<div style="display:flex;gap:8px;margin-top:16px;"><button onclick="startPrivateChat('${user.id}','${user.name}')" style="flex:1;background:var(--navy);color:white;border:none;padding:10px;border-radius:var(--rs);font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;font-family:inherit;"><i class="ti ti-message"></i> Mensagem privada</button></div>` : `<div style="margin-top:16px;"><button onclick="document.getElementById('profile-modal').classList.remove('open')" style="width:100%;background:var(--bg);border:1.5px solid var(--border);color:var(--text2);padding:10px;border-radius:var(--rs);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">Este é seu perfil</button></div>`}
+      </div>`
+  } catch(e) {
+    document.getElementById('profile-content').innerHTML = `<div style="text-align:center;padding:30px;color:#ef4444;">Erro ao carregar perfil.</div>`
+  }
+}
+
+function startPrivateChat(userId, userName) {
+  document.getElementById('profile-modal').classList.remove('open')
+  openChat(userName, 'Chat privado')
+}
+
+function toggleLogoutMenu() {
+  const menu = document.getElementById('logout-menu')
+  if (menu) menu.style.display = menu.style.display === 'none' ? 'block' : 'none'
+}
+
+function doLogout() {
+  localStorage.removeItem('odont_token')
+  localStorage.removeItem('odont_user')
+  TOKEN = ''; USER = null
+  document.getElementById('app-screen').style.display = 'none'
+  document.getElementById('login-screen').style.display = 'flex'
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('login-password')?.addEventListener('keydown', e => { if (e.key === 'Enter') doLogin() })
+  document.getElementById('post-content')?.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') submitPost() })
+})
+
 const _style = document.createElement('style')
 _style.textContent = '@keyframes spin { to { transform: rotate(360deg) } }'
 document.head.appendChild(_style)
-
 </script>
 </body>
 </html>

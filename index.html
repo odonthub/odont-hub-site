@@ -935,7 +935,10 @@ async function loadCursos() {
           </div>
           <div style="display:flex;align-items:center;justify-content:space-between;">
             <div style="font-size:17px;font-weight:800;color:var(--navy);">R$ ${Number(c.price||0).toLocaleString('pt-BR')}</div>
-            ${waLink ? `<a href="${waLink}" target="_blank" style="background:#25d366;color:white;border:none;padding:7px 14px;border-radius:var(--rs);font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px;text-decoration:none;"><i class="ti ti-brand-whatsapp" style="font-size:15px;"></i> WhatsApp</a>` : `<button class="btn-apply">Inscrever-se</button>`}
+            <div style="display:flex;gap:6px;align-items:center;">
+              ${waLink ? `<a href="${waLink}" target="_blank" style="background:#25d366;color:white;border:none;padding:7px 14px;border-radius:var(--rs);font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px;text-decoration:none;"><i class="ti ti-brand-whatsapp" style="font-size:15px;"></i> WhatsApp</a>` : `<button class="btn-apply">Inscrever-se</button>`}
+              ${String(c.user_id) === String(USER?.id||'') ? `<button onclick="deleteCurso('${c.id}')" style="background:#fff0f0;border:1.5px solid #fecaca;color:#ef4444;border-radius:var(--rs);padding:7px 10px;font-size:12px;cursor:pointer;"><i class="ti ti-trash" style="font-size:14px;"></i></button>` : ''}
+            </div>
           </div>
         </div>
       </div>`

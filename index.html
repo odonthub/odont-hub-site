@@ -745,27 +745,54 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
   </div>
 <!-- MENU MOBILE -->
 <nav class="mobile-nav" id="mobile-nav">
-  <div class="mobile-nav-item active" onclick="nav(this,'dashboard','Dashboard');setMobileNav(this)">
+  <div class="mobile-nav-item active" id="mnav-dashboard" onclick="nav(this,'dashboard','Dashboard');setMobileNav('mnav-dashboard')">
     <i class="ti ti-layout-dashboard"></i>
-    <span>Dashboard</span>
+    <span>Início</span>
   </div>
-  <div class="mobile-nav-item" onclick="nav(this,'community','Comunidade');setMobileNav(this)">
+  <div class="mobile-nav-item" id="mnav-community" onclick="nav(this,'community','Comunidade');setMobileNav('mnav-community')">
     <i class="ti ti-messages"></i>
-    <span>Comunidade</span>
+    <span>Feed</span>
   </div>
-  <div class="mobile-nav-item" onclick="nav(this,'market','Marketplace');setMobileNav(this)">
-    <i class="ti ti-shopping-cart"></i>
-    <span>Mercado</span>
+  <div class="mobile-nav-item" id="mnav-experts" onclick="nav(this,'experts','Ajuda do Especialista');setMobileNav('mnav-experts')">
+    <i class="ti ti-user-circle"></i>
+    <span>Especialistas</span>
   </div>
-  <div class="mobile-nav-item" onclick="nav(this,'cursos','Cursos');setMobileNav(this)">
-    <i class="ti ti-school"></i>
-    <span>Cursos</span>
+  <div class="mobile-nav-item" id="mnav-jobs" onclick="nav(this,'jobs','Vagas & Oportunidades');setMobileNav('mnav-jobs')">
+    <i class="ti ti-briefcase"></i>
+    <span>Vagas</span>
   </div>
-  <div class="mobile-nav-item" onclick="nav(this,'experts','Especialistas');setMobileNav(this)">
-    <i class="ti ti-stethoscope"></i>
-    <span>Ajuda</span>
+  <div class="mobile-nav-item" id="mnav-more" onclick="toggleMobileDrawer()">
+    <i class="ti ti-dots"></i>
+    <span>Mais</span>
   </div>
 </nav>
+
+<!-- DRAWER MOBILE -->
+<div id="mobile-drawer-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:98;" onclick="toggleMobileDrawer()"></div>
+<div id="mobile-drawer" style="display:none;position:fixed;bottom:64px;left:0;right:0;background:white;border-radius:16px 16px 0 0;z-index:99;padding:16px;box-shadow:0 -4px 24px rgba(0,0,0,.15);">
+  <div style="width:40px;height:4px;background:#e3e5f0;border-radius:2px;margin:0 auto 16px;"></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+    <div onclick="nav(document.querySelector('[data-s=market]'),'market','Marketplace');toggleMobileDrawer();setMobileNav('')" style="display:flex;align-items:center;gap:10px;padding:14px;background:#f3f4f9;border-radius:12px;cursor:pointer;">
+      <i class="ti ti-shopping-cart" style="font-size:22px;color:#010267;"></i>
+      <span style="font-size:13px;font-weight:600;color:#010267;">Marketplace</span>
+    </div>
+    <div onclick="nav(document.querySelector('[data-s=cursos]'),'cursos','Cursos');toggleMobileDrawer();setMobileNav('')" style="display:flex;align-items:center;gap:10px;padding:14px;background:#f3f4f9;border-radius:12px;cursor:pointer;">
+      <i class="ti ti-school" style="font-size:22px;color:#010267;"></i>
+      <span style="font-size:13px;font-weight:600;color:#010267;">Cursos</span>
+    </div>
+    <div onclick="toggleMobileDrawer();alert('Perfil em breve!')" style="display:flex;align-items:center;gap:10px;padding:14px;background:#f3f4f9;border-radius:12px;cursor:pointer;">
+      <i class="ti ti-user" style="font-size:22px;color:#010267;"></i>
+      <span style="font-size:13px;font-weight:600;color:#010267;">Meu Perfil</span>
+    </div>
+    <div onclick="toggleMobileDrawer();alert('Configurações em breve!')" style="display:flex;align-items:center;gap:10px;padding:14px;background:#f3f4f9;border-radius:12px;cursor:pointer;">
+      <i class="ti ti-settings" style="font-size:22px;color:#010267;"></i>
+      <span style="font-size:13px;font-weight:600;color:#010267;">Configurações</span>
+    </div>
+    <div onclick="toggleMobileDrawer();doLogout()" style="display:flex;align-items:center;gap:10px;padding:14px;background:#fff0f0;border-radius:12px;cursor:pointer;grid-column:1/-1;">
+      <i class="ti ti-logout" style="font-size:22px;color:#ef4444;"></i>
+      <span style="font-size:13px;font-weight:600;color:#ef4444;">Sair da conta</span>
+    </div>
+  </div>
 </div><!-- /app-screen -->
 
 <script>
@@ -1284,7 +1311,19 @@ function startPrivateChat(userId, userName) {
   document.getElementById('profile-modal').classList.remove('open')
   openChat(userName, 'Chat privado')
 }
-function setMobileNav(el) {
+function setMobileNav(id) {
+  document.querySelectorAll('.mobile-nav-item').forEach(n => n.classList.remove('active'))
+  if (id) { const el = document.getElementById(id); if (el) el.classList.add('active') }
+}
+
+function toggleMobileDrawer() {
+  const drawer = document.getElementById('mobile-drawer')
+  const overlay = document.getElementById('mobile-drawer-overlay')
+  if (!drawer || !overlay) return
+  const isOpen = drawer.style.display !== 'none'
+  drawer.style.display = isOpen ? 'none' : 'block'
+  overlay.style.display = isOpen ? 'none' : 'block'
+} {
   document.querySelectorAll('.mobile-nav-item').forEach(n => n.classList.remove('active'))
   el.classList.add('active')
 }

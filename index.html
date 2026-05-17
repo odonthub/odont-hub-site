@@ -1284,7 +1284,10 @@ function startPrivateChat(userId, userName) {
   document.getElementById('profile-modal').classList.remove('open')
   openChat(userName, 'Chat privado')
 }
-
+function setMobileNav(el) {
+  document.querySelectorAll('.mobile-nav-item').forEach(n => n.classList.remove('active'))
+  el.classList.add('active')
+}
 function toggleLogoutMenu() {
   const menu = document.getElementById('logout-menu')
   if (menu) menu.style.display = menu.style.display === 'none' ? 'block' : 'none'

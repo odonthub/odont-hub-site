@@ -280,20 +280,24 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
 .proto{position:fixed;bottom:14px;right:14px;z-index:200;background:rgba(84,47,98,.92);color:white;font-size:10px;font-weight:700;letter-spacing:.07em;padding:5px 11px;border-radius:6px;pointer-events:none;}
 
 /* ===== MOBILE ===== */
-.mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:white;z-index:50;padding:6px 0 20px;justify-content:space-around;border-top:1px solid var(--border);box-shadow:0 -2px 12px rgba(1,2,103,.08);}
-.mobile-nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--text3);cursor:pointer;font-size:10px;font-weight:600;padding:4px 10px;border-radius:8px;transition:all .15s;min-width:56px;}
-.mobile-nav-item.active{color:var(--navy);}
+.mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:white;z-index:50;padding:10px 0 20px;justify-content:space-around;border-top:1px solid #e3e5f0;box-shadow:0 -4px 16px rgba(1,2,103,.08);}
+.mobile-nav::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1.5px;background:linear-gradient(90deg,transparent,#542F62,#336699,transparent);}
+.mobile-nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;color:#c0c2d8;cursor:pointer;font-size:9px;font-weight:600;padding:4px 10px;border-radius:8px;transition:all .15s;min-width:56px;}
+.mobile-nav-item.active{color:#542F62;}
+.mobile-nav-item.active i{filter:drop-shadow(0 0 4px rgba(84,47,98,.6));}
 .mobile-nav-item i{font-size:22px;}
+.mobile-nav-dot{width:5px;height:5px;background:linear-gradient(135deg,#542F62,#336699);border-radius:50%;margin-top:2px;box-shadow:0 0 6px #542F62;display:none;}
+.mobile-nav-item.active .mobile-nav-dot{display:block;}
 .mobile-topbar{display:none;background:white;border-bottom:1px solid var(--border);padding:10px 16px;align-items:center;gap:10px;position:sticky;top:0;z-index:5;}
 #mobile-drawer-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:98;}
 #mobile-drawer{display:none;position:fixed;bottom:65px;left:0;right:0;background:white;border-radius:16px 16px 0 0;z-index:99;padding:16px;box-shadow:0 -4px 24px rgba(0,0,0,.15);}
 @media (max-width:768px){
-  .sidebar{display:none !important;}
-  .main{margin-left:0 !important;}
+  .sidebar{display:none !important;width:0 !important;}
+  .main{margin-left:0 !important;width:100% !important;}
   .topbar{display:none !important;}
   .free-bar{display:none !important;}
   .proto{display:none;}
-  .page{padding:12px 14px 80px !important;}
+  .page{padding:12px 14px 80px !important;width:100% !important;}
   .mobile-nav{display:flex !important;}
   .mobile-topbar{display:flex !important;}
   .stats{grid-template-columns:1fr 1fr !important;gap:10px;}
@@ -303,7 +307,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
   .spec-grid{grid-template-columns:1fr 1fr !important;gap:10px;}
   .jobs-layout{grid-template-columns:1fr !important;}
   .jobs-layout > div:last-child{display:none;}
-  #cursos-grid{grid-template-columns:1fr 1fr !important;gap:10px;}
+  #cursos-grid{grid-template-columns:1fr 1fr !important;gap:10px;} #recursos-grid{grid-template-columns:1fr 1fr !important;gap:10px;}
   .grid2{grid-template-columns:1fr !important;}
   .welcome{flex-direction:column;gap:12px;padding:16px !important;}
   .welcome .btn-white-outline{width:100%;text-align:center;}
@@ -311,6 +315,9 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
   .login-card{width:90vw;padding:32px 24px;}
   .stat-val{font-size:20px;}
   .welcome h2{font-size:15px;}
+  #app-screen{flex-direction:column !important;}
+  div[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr 1fr !important;}
+  .card-neon{min-width:0 !important;}
 }
 </style>
 </head>
@@ -331,15 +338,15 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
               <stop offset="100%" stop-color="#336699"/>
             </linearGradient>
           </defs>
-          <path d="M 130,42 C 142,16 184,8 202,28 C 220,48 208,76 188,84 C 168,92 142,78 130,60 C 118,42 92,14 72,22 C 52,30 40,58 56,78 C 72,98 106,92 130,60"
+          <path d="M 130,51 C 138,36 148,12 180,10 C 210,8 228,32 224,56 C 220,76 204,90 182,86 C 158,82 140,64 130,51 C 120,38 102,14 72,14 C 44,14 30,36 34,60 C 38,82 62,96 88,90 C 116,84 124,66 130,51 Z"
                 stroke="#7a3d92" stroke-width="18" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.2"/>
-          <path d="M 130,42 C 142,16 184,8 202,28 C 220,48 208,76 188,84 C 168,92 142,78 130,60 C 118,42 92,14 72,22 C 52,30 40,58 56,78 C 72,98 106,92 130,60"
+          <path d="M 130,51 C 138,36 148,12 180,10 C 210,8 228,32 224,56 C 220,76 204,90 182,86 C 158,82 140,64 130,51 C 120,38 102,14 72,14 C 44,14 30,36 34,60 C 38,82 62,96 88,90 C 116,84 124,66 130,51 Z"
                 stroke="url(#lg1)" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M 130,42 C 142,16 184,8 202,28 C 220,48 208,76 188,84 C 168,92 142,78 130,60 C 118,42 92,14 72,22 C 52,30 40,58 56,78 C 72,98 106,92 130,60"
-                stroke="rgba(255,255,255,0.4)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 20" stroke-dashoffset="4"/>
-          <circle cx="56" cy="78" r="6" fill="#542F62" opacity="0.8"/>
-          <circle cx="202" cy="28" r="6" fill="#336699" opacity="0.8"/>
-          <circle cx="130" cy="51" r="4" fill="#7a3d92" opacity="0.6"/>
+          <path d="M 130,51 C 138,36 148,12 180,10 C 210,8 228,32 224,56 C 220,76 204,90 182,86 C 158,82 140,64 130,51 C 120,38 102,14 72,14 C 44,14 30,36 34,60 C 38,82 62,96 88,90 C 116,84 124,66 130,51 Z"
+                stroke="rgba(255,255,255,0.4)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+          
+          
+          
         </svg>
       </div>
       <h1>ODONT <span>HUB</span></h1>
@@ -391,17 +398,20 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
           <stop offset="100%" stop-color="#336699"/>
         </linearGradient>
       </defs>
-      <path d="M 130,42 C 142,16 184,8 202,28 C 220,48 208,76 188,84 C 168,92 142,78 130,60 C 118,42 92,14 72,22 C 52,30 40,58 56,78 C 72,98 106,92 130,60"
+      <path d="M 130,51 C 138,36 148,12 180,10 C 210,8 228,32 224,56 C 220,76 204,90 182,86 C 158,82 140,64 130,51 C 120,38 102,14 72,14 C 44,14 30,36 34,60 C 38,82 62,96 88,90 C 116,84 124,66 130,51 Z"
             stroke="#7a3d92" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.2"/>
-      <path d="M 130,42 C 142,16 184,8 202,28 C 220,48 208,76 188,84 C 168,92 142,78 130,60 C 118,42 92,14 72,22 C 52,30 40,58 56,78 C 72,98 106,92 130,60"
+      <path d="M 130,51 C 138,36 148,12 180,10 C 210,8 228,32 224,56 C 220,76 204,90 182,86 C 158,82 140,64 130,51 C 120,38 102,14 72,14 C 44,14 30,36 34,60 C 38,82 62,96 88,90 C 116,84 124,66 130,51 Z"
             stroke="url(#mg1)" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M 130,42 C 142,16 184,8 202,28 C 220,48 208,76 188,84 C 168,92 142,78 130,60 C 118,42 92,14 72,22 C 52,30 40,58 56,78 C 72,98 106,92 130,60"
-            stroke="rgba(255,255,255,0.3)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 20" stroke-dashoffset="4"/>
-      <circle cx="56" cy="78" r="5" fill="#542F62" opacity="0.8"/>
-      <circle cx="202" cy="28" r="5" fill="#336699" opacity="0.8"/>
-      <circle cx="130" cy="51" r="3.5" fill="#7a3d92" opacity="0.6"/>
+      <path d="M 130,51 C 138,36 148,12 180,10 C 210,8 228,32 224,56 C 220,76 204,90 182,86 C 158,82 140,64 130,51 C 120,38 102,14 72,14 C 44,14 30,36 34,60 C 38,82 62,96 88,90 C 116,84 124,66 130,51 Z"
+            stroke="rgba(255,255,255,0.3)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+      
+      
+      
     </svg>
-    <span style="color:var(--navy);font-weight:800;font-size:15px;flex:1;">ODONT HUB</span>
+    <div style="flex:1;">
+      <div style="font-size:20px;font-weight:900;letter-spacing:-.5px;line-height:1.1;"><span style="color:#010267;">ODONT </span><span style="background:linear-gradient(90deg,#542F62,#336699);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">HUB</span></div>
+      <div style="font-size:9px;font-weight:600;color:#8889aa;letter-spacing:.08em;">O ecossistema digital para dentistas</div>
+    </div>
     <div style="display:flex;align-items:center;gap:10px;">
       <i class="ti ti-bell" style="font-size:20px;color:var(--text2);"></i>
       <div class="av s av-grad-me" id="mobile-av">TM</div>
@@ -464,39 +474,39 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
         <div><h2>Bom dia! 👋</h2><p>Sua comunidade tem novas interações.</p></div>
         <button class="btn-white-outline" onclick="nav(document.querySelector('[data-s=community]'),'community','Comunidade')">Ver Comunidade →</button>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px;">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px;" id="recursos-grid">
         <div class="card-neon card-neon-purple" onclick="nav(document.querySelector('[data-s=community]'),'community','Comunidade')" style="cursor:pointer;">
-          <div class="stat-ico ic-neon-purple" style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;"><i class="ti ti-messages"></i></div>
+          <div style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;background:linear-gradient(135deg,#f0eaf6,#e8d8f0);color:#542F62;box-shadow:0 0 14px rgba(84,47,98,.2);" style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;"><i class="ti ti-messages"></i></div>
           <div style="font-size:13px;font-weight:700;color:#12133a;margin-bottom:2px;">Comunidade</div>
           <div style="font-size:11px;color:#8889aa;">3 novas interações</div>
           <div class="btn-electric btn-electric-purple" style="margin-top:10px;"><i class="ti ti-arrow-right" style="font-size:11px;"></i> Ver feed</div>
         </div>
         <div class="card-neon card-neon-blue" onclick="nav(document.querySelector('[data-s=experts]'),'experts','Ajuda do Especialista')" style="cursor:pointer;">
-          <div class="stat-ico ic-neon-blue" style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;"><i class="ti ti-message-question"></i></div>
+          <div style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;background:linear-gradient(135deg,#e8eeff,#d8e8ff);color:#336699;box-shadow:0 0 14px rgba(51,102,153,.2);" style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;"><i class="ti ti-message-question"></i></div>
           <div style="font-size:12px;font-weight:700;color:#12133a;margin-bottom:2px;">Dúvidas com<br>Especialistas</div>
           <div style="font-size:11px;color:#8889aa;">Planej. e ajuda</div>
           <div class="btn-electric btn-electric-blue" style="margin-top:10px;"><i class="ti ti-arrow-right" style="font-size:11px;"></i> Consultar</div>
         </div>
         <div class="card-neon card-neon-navy" onclick="nav(document.querySelector('[data-s=jobs]'),'jobs','Vagas & Oportunidades')" style="cursor:pointer;">
-          <div class="stat-ico ic-neon-navy" style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;"><i class="ti ti-briefcase"></i></div>
+          <div style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;background:linear-gradient(135deg,#e8eaf8,#d8dcf5);color:#010267;box-shadow:0 0 14px rgba(1,2,103,.15);" style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;"><i class="ti ti-briefcase"></i></div>
           <div style="font-size:13px;font-weight:700;color:#12133a;margin-bottom:2px;">Vagas</div>
           <div style="font-size:11px;color:#8889aa;">7 vagas abertas</div>
           <div class="btn-electric btn-electric-navy" style="margin-top:10px;"><i class="ti ti-arrow-right" style="font-size:11px;"></i> Ver vagas</div>
         </div>
         <div class="card-neon card-neon-violet" onclick="nav(document.querySelector('[data-s=cursos]'),'cursos','Anúncios de Cursos')" style="cursor:pointer;">
-          <div class="stat-ico ic-neon-violet" style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;"><i class="ti ti-school"></i></div>
+          <div style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;background:linear-gradient(135deg,#f5eeff,#ead8ff);color:#7a3d92;box-shadow:0 0 14px rgba(122,61,146,.2);" style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;"><i class="ti ti-school"></i></div>
           <div style="font-size:13px;font-weight:700;color:#12133a;margin-bottom:2px;">Cursos</div>
           <div style="font-size:11px;color:#8889aa;">12 disponíveis</div>
           <div class="btn-electric btn-electric-violet" style="margin-top:10px;"><i class="ti ti-arrow-right" style="font-size:11px;"></i> Explorar</div>
         </div>
         <div class="card-neon card-neon-teal" onclick="nav(document.querySelector('[data-s=market]'),'market','Marketplace')" style="cursor:pointer;">
-          <div class="stat-ico ic-neon-teal" style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;"><i class="ti ti-shopping-cart"></i></div>
+          <div style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;background:linear-gradient(135deg,#e8f4ff,#d8eeff);color:#4d82b8;box-shadow:0 0 14px rgba(77,130,184,.2);" style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;"><i class="ti ti-shopping-cart"></i></div>
           <div style="font-size:13px;font-weight:700;color:#12133a;margin-bottom:2px;">Marketplace</div>
           <div style="font-size:11px;color:#8889aa;">Equip. e materiais</div>
           <div class="btn-electric btn-electric-teal" style="margin-top:10px;"><i class="ti ti-arrow-right" style="font-size:11px;"></i> Anúncios</div>
         </div>
         <div class="card-neon card-neon-purple" style="border-color:#e3e5f0;box-shadow:0 2px 8px rgba(0,0,0,.04);">
-          <div class="stat-ico" style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;background:#f3f4f9;color:#8889aa;"><i class="ti ti-calendar"></i></div>
+          <div style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;background:#f3f4f9;color:#8889aa;" style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px;background:#f3f4f9;color:#8889aa;"><i class="ti ti-calendar"></i></div>
           <div style="font-size:13px;font-weight:700;color:#12133a;margin-bottom:2px;">Agenda</div>
           <div style="font-size:11px;color:#8889aa;">Em breve</div>
           <div style="font-size:10px;color:#c0c2d8;margin-top:10px;font-weight:600;">Brevemente</div>
@@ -797,22 +807,27 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
   <div class="mobile-nav-item active" id="mnav-dashboard" onclick="nav(this,'dashboard','Dashboard');setMobileNav('mnav-dashboard')">
     <i class="ti ti-layout-dashboard"></i>
     <span>Início</span>
+    <div class="mobile-nav-dot"></div>
   </div>
   <div class="mobile-nav-item" id="mnav-community" onclick="nav(this,'community','Comunidade');setMobileNav('mnav-community')">
     <i class="ti ti-messages"></i>
     <span>Feed</span>
+    <div class="mobile-nav-dot"></div>
   </div>
   <div class="mobile-nav-item" id="mnav-experts" onclick="nav(this,'experts','Ajuda do Especialista');setMobileNav('mnav-experts')">
-    <i class="ti ti-user-circle"></i>
+    <i class="ti ti-message-question"></i>
     <span>Especialistas</span>
+    <div class="mobile-nav-dot"></div>
   </div>
   <div class="mobile-nav-item" id="mnav-jobs" onclick="nav(this,'jobs','Vagas & Oportunidades');setMobileNav('mnav-jobs')">
     <i class="ti ti-briefcase"></i>
     <span>Vagas</span>
+    <div class="mobile-nav-dot"></div>
   </div>
   <div class="mobile-nav-item" id="mnav-more" onclick="toggleMobileDrawer()">
     <i class="ti ti-dots"></i>
     <span>Mais</span>
+    <div class="mobile-nav-dot"></div>
   </div>
 </nav>
 

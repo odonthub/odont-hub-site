@@ -250,52 +250,45 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
 .spec-desc{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:14px;min-height:38px;}
 .btn-help{width:100%;padding:10px;border-radius:var(--rs);border:none;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:opacity .15s,transform .1s;}
 .btn-help:hover{opacity:.88;transform:translateY(-1px);}
-.btn-help i{font-size:16px;}/* ===== MOBILE ===== */
-@media (max-width: 768px) {
-  :root { --sidebar: 0px; }
-  .sidebar { display: none; }
-  .main { margin-left: 0; }
-  .page { padding: 14px 16px; }
-  .topbar { padding: 10px 16px; }
-  .search { display: none; }
-  .stats { grid-template-columns: 1fr 1fr; gap: 10px; }
-  .comm-layout { grid-template-columns: 1fr; }
-  .comm-layout > div:last-child { display: none; }
-  .mkt-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .spec-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .jobs-layout { grid-template-columns: 1fr; }
-  .jobs-layout > div:last-child { display: none; }
-  #cursos-grid { grid-template-columns: 1fr 1fr !important; gap: 12px; }
-  .grid2 { grid-template-columns: 1fr; }
-  .welcome { flex-direction: column; gap: 12px; }
-  .welcome .btn-white-outline { width: 100%; text-align: center; }
-  .modal { width: 95vw !important; max-height: 90vh; }
-
-  /* MENU INFERIOR MOBILE */
-  .mobile-nav { display: flex !important; } }
-}
-
-.mobile-nav {
-  display: none;
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  background: var(--navy);
-  z-index: 50;
-  padding: 8px 0 12px;
-  justify-content: space-around;
-  border-top: 1px solid rgba(255,255,255,.1);
-}
-.mobile-nav-item {
-  display: flex; flex-direction: column; align-items: center; gap: 3px;
-  color: rgba(255,255,255,.5); cursor: pointer; font-size: 10px; font-weight: 600;
-  padding: 4px 12px; border-radius: 8px; transition: all .15s;
-}
-.mobile-nav-item.active, .mobile-nav-item:hover { color: white; }
-.mobile-nav-item i { font-size: 22px; }
+.btn-help i{font-size:16px;}
 ::-webkit-scrollbar{width:5px;}
 ::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px;}
 .proto{position:fixed;bottom:14px;right:14px;z-index:200;background:rgba(84,47,98,.92);color:white;font-size:10px;font-weight:700;letter-spacing:.07em;padding:5px 11px;border-radius:6px;pointer-events:none;}
+
+/* ===== MOBILE ===== */
+.mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:white;z-index:50;padding:6px 0 20px;justify-content:space-around;border-top:1px solid var(--border);box-shadow:0 -2px 12px rgba(1,2,103,.08);}
+.mobile-nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--text3);cursor:pointer;font-size:10px;font-weight:600;padding:4px 10px;border-radius:8px;transition:all .15s;min-width:56px;}
+.mobile-nav-item.active{color:var(--navy);}
+.mobile-nav-item i{font-size:22px;}
+.mobile-topbar{display:none;background:white;border-bottom:1px solid var(--border);padding:10px 16px;align-items:center;gap:10px;position:sticky;top:0;z-index:5;}
+#mobile-drawer-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:98;}
+#mobile-drawer{display:none;position:fixed;bottom:65px;left:0;right:0;background:white;border-radius:16px 16px 0 0;z-index:99;padding:16px;box-shadow:0 -4px 24px rgba(0,0,0,.15);}
+@media (max-width:768px){
+  .sidebar{display:none !important;}
+  .main{margin-left:0 !important;}
+  .topbar{display:none !important;}
+  .free-bar{display:none !important;}
+  .proto{display:none;}
+  .page{padding:12px 14px 80px !important;}
+  .mobile-nav{display:flex !important;}
+  .mobile-topbar{display:flex !important;}
+  .stats{grid-template-columns:1fr 1fr !important;gap:10px;}
+  .comm-layout{grid-template-columns:1fr !important;}
+  .comm-layout > div:last-child{display:none;}
+  .mkt-grid{grid-template-columns:1fr 1fr !important;gap:10px;}
+  .spec-grid{grid-template-columns:1fr 1fr !important;gap:10px;}
+  .jobs-layout{grid-template-columns:1fr !important;}
+  .jobs-layout > div:last-child{display:none;}
+  #cursos-grid{grid-template-columns:1fr 1fr !important;gap:10px;}
+  .grid2{grid-template-columns:1fr !important;}
+  .welcome{flex-direction:column;gap:12px;padding:16px !important;}
+  .welcome .btn-white-outline{width:100%;text-align:center;}
+  .modal{width:95vw !important;max-height:90vh !important;}
+  .login-card{width:90vw;padding:32px 24px;}
+  .stat-val{font-size:20px;}
+  .welcome h2{font-size:15px;}
+}
 </style>
 </head>
 <body>
@@ -335,30 +328,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
         <label class="lbl">Especialidade</label>
         <select id="reg-specialty" class="inp" style="background:white;">
           <option value="">Selecione...</option>
-          <option>Cirurgia e Traumatologia Bucomaxilofacial</option>
-<option>Clínica Geral</option>
-<option>Dentística Restauradora</option>
-<option>Disfunção Temporomandibular e Dor Orofacial</option>
-<option>Endodontia</option>
-<option>Estomatologia</option>
-<option>Fotobiomodulação</option>
-<option>Gerontologia</option>
-<option>Implantodontia</option>
-<option>Odontologia do Esporte</option>
-<option>Odontologia do Trabalho</option>
-<option>Odontologia Legal</option>
-<option>Odontologia para Pacientes com Necessidades Especiais</option>
-<option>Odontopediatria</option>
-<option>Ortodontia</option>
-<option>Odontogeriatria</option>
-<option>Patologia Bucal e Maxilofacial</option>
-<option>Periodontia</option>
-<option>Prótese Buco-Maxilo-Facial</option>
-<option>Prótese Dentária</option>
-<option>Radiologia e Diagnóstico por Imagem</option>
-<option>Saúde Coletiva e Saúde da Família</option>
-<option>Harmonização Orofacial</option>
-<option>Gestão & Marketing em Odontologia</option><option>Clínica Geral</option><option>Implantodontia</option><option>Ortodontia</option>
+          <option>Dentística</option><option>Clínica Geral</option><option>Implantodontia</option><option>Ortodontia</option>
           <option>Endodontia</option><option>Periodontia</option><option>Prótese Dentária</option>
           <option>Bucomaxilofacial</option><option>Harmonização Facial</option><option>Odontopediatria</option>
         </select>
@@ -373,6 +343,16 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
 
 <!-- APP -->
 <div id="app-screen" style="display:none;">
+  <!-- MOBILE TOPBAR -->
+  <div class="mobile-topbar" id="mobile-topbar">
+    <svg width="28" height="13" viewBox="0 0 200 92" fill="none"><path d="M 100,36 C 110,14 148,8 162,26 C 176,44 166,68 148,74 C 130,80 108,68 100,52 C 92,36 70,12 52,18 C 34,24 24,48 38,66 C 52,84 82,80 100,52" stroke="#010267" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span style="color:var(--navy);font-weight:800;font-size:15px;flex:1;">ODONT HUB</span>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <i class="ti ti-bell" style="font-size:20px;color:var(--text2);"></i>
+      <div class="av s av-grad-me" id="mobile-av">TM</div>
+    </div>
+  </div>
+
   <aside class="sidebar">
     <div class="sb-logo">
       <div class="sb-logo-row">
@@ -469,31 +449,11 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
             </div>
             <div class="comp-ftr">
               <select id="post-specialty" style="padding:6px 10px;border-radius:var(--rs);border:1.5px solid var(--border);font-size:12px;font-family:inherit;color:var(--text2);background:white;outline:none;">
-<option value="">Especialidade (opcional)</option>
-<option>Cirurgia e Traumatologia Bucomaxilofacial</option>
-<option>Clínica Geral</option>
-<option>Dentística Restauradora</option>
-<option>Disfunção Temporomandibular e Dor Orofacial</option>
-<option>Endodontia</option>
-<option>Estomatologia</option>
-<option>Fotobiomodulação</option>
-<option>Gerontologia</option>
-<option>Implantodontia</option>
-<option>Odontologia do Esporte</option>
-<option>Odontologia do Trabalho</option>
-<option>Odontologia Legal</option>
-<option>Odontologia para Pacientes com Necessidades Especiais</option>
-<option>Odontopediatria</option>
-<option>Ortodontia</option>
-<option>Odontogeriatria</option>
-<option>Patologia Bucal e Maxilofacial</option>
-<option>Periodontia</option>
-<option>Prótese Buco-Maxilo-Facial</option>
-<option>Prótese Dentária</option>
-<option>Radiologia e Diagnóstico por Imagem</option>
-<option>Saúde Coletiva e Saúde da Família</option>
-<option>Harmonização Orofacial</option>
-<option>Gestão & Marketing em Odontologia</option>
+                <option value="">Especialidade (opcional)</option>
+                <option>Dentística</option><option>Clínica Geral</option><option>Implantodontia</option>
+                <option>Ortodontia</option><option>Endodontia</option><option>Periodontia</option>
+                <option>Prótese Dentária</option><option>Bucomaxilofacial</option>
+                <option>Harmonização Facial</option><option>Odontopediatria</option><option>Gestão & Marketing</option>
               </select>
               <label style="display:flex;align-items:center;gap:5px;padding:6px 11px;border-radius:var(--rs);border:1.5px solid var(--border);background:transparent;font-size:12px;color:var(--text2);cursor:pointer;font-weight:500;">
                 <i class="ti ti-photo" style="font-size:15px;"></i> Foto
@@ -693,7 +653,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
           </select>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <div><label class="lbl">Modalidade</label><select id="curso-modality" class="inp" style="margin-bottom:0;background:white;"><option value="in_person">Presencial</option><option value="online">Online</option><option value="hybrid">Híbrido</option>
+          <div><label class="lbl">Modalidade</label><select id="curso-modality" class="inp" style="margin-bottom:0;background:white;"><option>Presencial</option><option>Online</option><option>Híbrido</option></select></div>
           <div><label class="lbl">Carga horária</label><input id="curso-hours" class="inp" style="margin-bottom:0;" placeholder="Ex: 12"></div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
@@ -743,6 +703,8 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
       <div id="profile-content"></div>
     </div>
   </div>
+
+
 <!-- MENU MOBILE -->
 <nav class="mobile-nav" id="mobile-nav">
   <div class="mobile-nav-item active" id="mnav-dashboard" onclick="nav(this,'dashboard','Dashboard');setMobileNav('mnav-dashboard')">
@@ -768,8 +730,8 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
 </nav>
 
 <!-- DRAWER MOBILE -->
-<div id="mobile-drawer-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:98;" onclick="toggleMobileDrawer()"></div>
-<div id="mobile-drawer" style="display:none;position:fixed;bottom:64px;left:0;right:0;background:white;border-radius:16px 16px 0 0;z-index:99;padding:16px;box-shadow:0 -4px 24px rgba(0,0,0,.15);">
+<div id="mobile-drawer-overlay" onclick="toggleMobileDrawer()"></div>
+<div id="mobile-drawer">
   <div style="width:40px;height:4px;background:#e3e5f0;border-radius:2px;margin:0 auto 16px;"></div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
     <div onclick="nav(document.querySelector('[data-s=market]'),'market','Marketplace');toggleMobileDrawer();setMobileNav('')" style="display:flex;align-items:center;gap:10px;padding:14px;background:#f3f4f9;border-radius:12px;cursor:pointer;">
@@ -793,6 +755,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
       <span style="font-size:13px;font-weight:600;color:#ef4444;">Sair da conta</span>
     </div>
   </div>
+</div>
 </div><!-- /app-screen -->
 
 <script>
@@ -899,6 +862,8 @@ function goApp() {
     avEls.forEach(el => { el.textContent = ini })
     const feedAv = document.getElementById('feed-av')
     if (feedAv) feedAv.textContent = ini
+    const mobileAv = document.getElementById('mobile-av')
+    if (mobileAv) mobileAv.textContent = ini
   }
 }
 
@@ -1045,7 +1010,7 @@ async function loadCursos() {
           <div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:5px;">${c.title}</div>
           <div style="font-size:12px;color:var(--text3);margin-bottom:8px;display:flex;align-items:center;gap:5px;"><i class="ti ti-user" style="font-size:13px;"></i> ${c.instructor?.name || 'Professor'}</div>
           <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:11px;">
-            <span style="background:rgba(84,47,98,.08);color:var(--purple);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(84,47,98,.2);">${c.modality === 'in_person' ? 'Presencial' : c.modality === 'online' ? 'Online' : c.modality === 'hybrid' ? 'Híbrido' : c.modality}</span>
+            <span style="background:rgba(84,47,98,.08);color:var(--purple);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(84,47,98,.2);">${c.modality}</span>
             ${c.city ? `<span style="background:rgba(1,2,103,.06);color:var(--navy);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(1,2,103,.12);">${c.city}</span>` : ''}
             ${c.hours ? `<span style="background:rgba(51,102,153,.08);color:var(--blue);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(51,102,153,.2);">${c.hours}h</span>` : ''}
           </div>
@@ -1053,7 +1018,7 @@ async function loadCursos() {
             <div style="font-size:17px;font-weight:800;color:var(--navy);">R$ ${Number(c.price||0).toLocaleString('pt-BR')}</div>
             <div style="display:flex;gap:6px;align-items:center;">
               ${waLink ? `<a href="${waLink}" target="_blank" style="background:#25d366;color:white;border:none;padding:7px 14px;border-radius:var(--rs);font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px;text-decoration:none;"><i class="ti ti-brand-whatsapp" style="font-size:15px;"></i> WhatsApp</a>` : `<button class="btn-apply">Inscrever-se</button>`}
-              <button onclick="deleteCurso('${c.id}')" style="background:#fff0f0;border:1.5px solid #fecaca;color:#ef4444;border-radius:var(--rs);padding:7px 10px;font-size:12px;cursor:pointer;"><i class="ti ti-trash" style="font-size:14px;"></i></button>
+              ${String(c.user_id) === String(USER?.id||'') ? `<button onclick="deleteCurso('${c.id}')" style="background:#fff0f0;border:1.5px solid #fecaca;color:#ef4444;border-radius:var(--rs);padding:7px 10px;font-size:12px;cursor:pointer;"><i class="ti ti-trash" style="font-size:14px;"></i></button>` : ''}
             </div>
           </div>
         </div>
@@ -1311,6 +1276,13 @@ function startPrivateChat(userId, userName) {
   document.getElementById('profile-modal').classList.remove('open')
   openChat(userName, 'Chat privado')
 }
+
+function toggleLogoutMenu() {
+  const menu = document.getElementById('logout-menu')
+  if (menu) menu.style.display = menu.style.display === 'none' ? 'block' : 'none'
+}
+
+
 function setMobileNav(id) {
   document.querySelectorAll('.mobile-nav-item').forEach(n => n.classList.remove('active'))
   if (id) { const el = document.getElementById(id); if (el) el.classList.add('active') }
@@ -1320,18 +1292,10 @@ function toggleMobileDrawer() {
   const drawer = document.getElementById('mobile-drawer')
   const overlay = document.getElementById('mobile-drawer-overlay')
   if (!drawer || !overlay) return
-  const isOpen = drawer.style.display !== 'none'
+  const isOpen = drawer.style.display === 'block'
   drawer.style.display = isOpen ? 'none' : 'block'
   overlay.style.display = isOpen ? 'none' : 'block'
-} {
-  document.querySelectorAll('.mobile-nav-item').forEach(n => n.classList.remove('active'))
-  el.classList.add('active')
 }
-function toggleLogoutMenu() {
-  const menu = document.getElementById('logout-menu')
-  if (menu) menu.style.display = menu.style.display === 'none' ? 'block' : 'none'
-}
-
 function doLogout() {
   localStorage.removeItem('odont_token')
   localStorage.removeItem('odont_user')

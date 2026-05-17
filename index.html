@@ -973,7 +973,15 @@ async function submitCurso() {
     alert('Erro ao publicar curso: ' + e.message)
   }
 }
-
+async function deleteCurso(cursoId) {
+  if (!confirm('Remover este curso?')) return
+  try {
+    await api('DELETE', '/api/courses/' + cursoId)
+    document.getElementById('curso-' + cursoId)?.remove()
+  } catch(e) {
+    alert('Erro ao remover curso: ' + e.message)
+  }
+}
 function previewCursoCover(input) {
   const file = input.files[0]; if (!file) return
   const reader = new FileReader()

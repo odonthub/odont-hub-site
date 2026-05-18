@@ -301,23 +301,30 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
   .mobile-nav{display:flex !important;}
   .mobile-topbar{display:flex !important;}
   .stats{grid-template-columns:1fr 1fr !important;gap:10px;}
-  .comm-layout{grid-template-columns:1fr !important;max-width:100%;}
+  .comm-layout{grid-template-columns:1fr !important;max-width:100vw;overflow:hidden;}
   .comm-layout > div:last-child{display:none !important;}
-  .comm-left{width:100%;min-width:0;max-width:100%;}
-  .post,.post-card{margin-bottom:10px;border-radius:12px;width:100%;max-width:100%;}
-  .comp{border-radius:12px;margin-bottom:10px;width:100%;}
+  .comm-layout > div:first-child{width:100% !important;min-width:0;max-width:100%;}
+  .post,.post-card{margin-bottom:10px;border-radius:12px;width:100% !important;max-width:100% !important;box-sizing:border-box;}
+  .comp{border-radius:12px;margin-bottom:10px;width:100% !important;box-sizing:border-box;}
   .comp .comp-ftr{flex-wrap:wrap;gap:6px;}
-  .post img{max-width:100% !important;width:100% !important;}
+  .post img,.post-card img{max-width:100% !important;width:100% !important;border-radius:8px;}
+  .post-acts{flex-wrap:wrap;gap:8px;}
   .mkt-grid{grid-template-columns:1fr 1fr !important;gap:10px;}
-  .spec-grid{grid-template-columns:1fr 1fr !important;gap:8px !important;width:100%;}
-  .spec-card{width:100%;min-width:0;}
+  .spec-grid{grid-template-columns:1fr 1fr !important;gap:8px !important;width:100% !important;max-width:100% !important;}
+  .spec-card{width:100% !important;min-width:0 !important;box-sizing:border-box;}
   .spec-top{height:90px !important;}
-  .spec-body{padding:10px !important;}
+  .spec-body{padding:8px !important;}
   .spec-name{font-size:12px !important;}
   .spec-desc{font-size:10px !important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-  .btn-help{font-size:11px !important;padding:8px !important;}
+  .btn-help{font-size:11px !important;padding:8px !important;width:100%;}
   .jobs-layout{grid-template-columns:1fr !important;}
   .jobs-layout > div:last-child{display:none;}
+  .tabs-wrap{flex-wrap:nowrap;overflow-x:auto;gap:5px;padding-bottom:2px;}
+  .tabs-wrap::-webkit-scrollbar{display:none;}
+  .tab{font-size:11px !important;padding:7px 10px !important;white-space:nowrap;flex-shrink:0;}
+  .job{padding:12px !important;}
+  .job-ftr{flex-direction:column;gap:8px;align-items:flex-start;}
+  .btn-apply{width:100%;justify-content:center;}
   #cursos-grid{grid-template-columns:1fr 1fr !important;gap:10px;}
   #recursos-grid{grid-template-columns:1fr 1fr !important;gap:10px;}
   .grid2{grid-template-columns:1fr !important;}
@@ -458,7 +465,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
       <div class="sb-section">Recursos</div>
       <div class="nav-item" data-s="market" onclick="nav(this,'market','Marketplace')"><i class="ti ti-shopping-cart"></i> Marketplace</div>
       <div class="nav-item" data-s="jobs" onclick="nav(this,'jobs','Vagas & Oportunidades')"><i class="ti ti-briefcase"></i> Vagas <span class="nb">2</span></div>
-      <div class="nav-item" onclick="showLabs()" style="cursor:pointer;"><i class="ti ti-flask"></i> Labs & Técnicos</div>
+      <div class="nav-item" onclick="showLabs()" style="cursor:pointer;display:flex;align-items:center;gap:8px;"><i class="ti ti-flask"></i> Labs & Técnicos</div>
       <div class="nav-item" data-s="experts" onclick="nav(this,'experts','Ajuda do Especialista')"><i class="ti ti-message-question"></i> Especialistas</div>
       <div class="nav-item" data-s="cursos" onclick="nav(this,'cursos','Anúncios de Cursos')"><i class="ti ti-school"></i> Cursos <span class="nb" style="background:#f59e0b;">N</span></div>
       <div class="sb-section">Conta</div>
@@ -850,10 +857,10 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
 
 
     <!-- LABS & TECNICOS -->
-    <div id="screen-labs" class="page" style="display:none;">
+    <div id="screen-labs" class="page">
       <div class="welcome" style="margin-bottom:16px;background:linear-gradient(135deg,#010267,#336699);border-radius:var(--r);padding:20px 24px;">
         <div><h2 style="color:white;">🔬 Labs & Técnicos</h2><p style="color:rgba(255,255,255,.7);">Avalie e encontre os melhores parceiros</p></div>
-        <button class="btn-white-outline" onclick="document.getElementById('modal-lab').classList.add('open')">+ Quero me cadastrar</button>
+        <button class="btn-white-outline" style="cursor:pointer;white-space:nowrap;" onclick="document.getElementById('modal-lab').classList.add('open')">+ Quero me cadastrar</button>
       </div>
       <div class="tabs-wrap" style="margin-bottom:16px;">
         <button class="tab on" id="tab-labs" onclick="switchLabTab('labs')">🔬 Laboratórios</button>
@@ -1063,7 +1070,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
       <i class="ti ti-flask" style="font-size:22px;color:#010267;"></i>
       <span style="font-size:13px;font-weight:600;color:#010267;">Labs & Técnicos</span>
     </div>
-    <div onclick="nav(document.querySelector('[data-s=cursos]'),'cursos','Cursos');toggleMobileDrawer();setMobileNav('')" style="display:flex;align-items:center;gap:10px;padding:14px;background:#f3f4f9;border-radius:12px;cursor:pointer;">
+    <div onclick="nav(document.querySelector('[data-s=cursos]'),'cursos','Cursos');toggleMobileDrawer();setMobileNav('');setTimeout(loadCursos,100)" style="display:flex;align-items:center;gap:10px;padding:14px;background:#f3f4f9;border-radius:12px;cursor:pointer;">
       <i class="ti ti-school" style="font-size:22px;color:#010267;"></i>
       <span style="font-size:13px;font-weight:600;color:#010267;">Cursos</span>
     </div>
@@ -1205,6 +1212,7 @@ function nav(el, screen, title) {
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'))
   el.classList.add('active')
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'))
+  const labsScreen = document.getElementById('screen-labs'); if(labsScreen) labsScreen.classList.remove('active')
   document.getElementById('screen-' + screen).classList.add('active')
   document.getElementById('page-title').textContent = title
   if (screen === 'community') loadFeed()

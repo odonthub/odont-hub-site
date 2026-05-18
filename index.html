@@ -147,7 +147,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
 .bar-track{flex:1;background:var(--bg);border-radius:4px;height:8px;overflow:hidden;}
 .bar-fill{height:100%;border-radius:4px;}
 .bar-pct{font-size:11px;color:var(--text3);width:30px;text-align:right;}
-.comm-layout{display:grid;grid-template-columns:1fr 290px;gap:18px;}
+.comm-layout{display:grid;grid-template-columns:1fr 290px;gap:18px;} .comm-left{min-width:0;}
 .composer{background:white;border-radius:var(--r);padding:16px;box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:14px;}
 .comp-top{display:flex;gap:12px;align-items:flex-start;}
 .comp-ta{flex:1;min-height:72px;border:1.5px solid var(--border);border-radius:var(--rs);padding:10px 14px;font-family:inherit;font-size:13px;color:var(--text);resize:none;outline:none;transition:border-color .2s;}
@@ -301,10 +301,21 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
   .mobile-nav{display:flex !important;}
   .mobile-topbar{display:flex !important;}
   .stats{grid-template-columns:1fr 1fr !important;gap:10px;}
-  .comm-layout{grid-template-columns:1fr !important;} .comm-right{display:none;} .post-card{margin-bottom:10px;border-radius:12px;} .comp{border-radius:12px;margin-bottom:10px;}
-  .comm-layout > div:last-child{display:none;}
+  .comm-layout{grid-template-columns:1fr !important;max-width:100%;}
+  .comm-layout > div:last-child{display:none !important;}
+  .comm-left{width:100%;min-width:0;max-width:100%;}
+  .post,.post-card{margin-bottom:10px;border-radius:12px;width:100%;max-width:100%;}
+  .comp{border-radius:12px;margin-bottom:10px;width:100%;}
+  .comp .comp-ftr{flex-wrap:wrap;gap:6px;}
+  .post img{max-width:100% !important;width:100% !important;}
   .mkt-grid{grid-template-columns:1fr 1fr !important;gap:10px;}
-  .spec-grid{grid-template-columns:1fr 1fr !important;gap:10px;}
+  .spec-grid{grid-template-columns:1fr 1fr !important;gap:8px !important;width:100%;}
+  .spec-card{width:100%;min-width:0;}
+  .spec-top{height:90px !important;}
+  .spec-body{padding:10px !important;}
+  .spec-name{font-size:12px !important;}
+  .spec-desc{font-size:10px !important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .btn-help{font-size:11px !important;padding:8px !important;}
   .jobs-layout{grid-template-columns:1fr !important;}
   .jobs-layout > div:last-child{display:none;}
   #cursos-grid{grid-template-columns:1fr 1fr !important;gap:10px;}
@@ -447,6 +458,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
       <div class="sb-section">Recursos</div>
       <div class="nav-item" data-s="market" onclick="nav(this,'market','Marketplace')"><i class="ti ti-shopping-cart"></i> Marketplace</div>
       <div class="nav-item" data-s="jobs" onclick="nav(this,'jobs','Vagas & Oportunidades')"><i class="ti ti-briefcase"></i> Vagas <span class="nb">2</span></div>
+      <div class="nav-item" onclick="showLabs()" style="cursor:pointer;"><i class="ti ti-flask"></i> Labs & Técnicos</div>
       <div class="nav-item" data-s="experts" onclick="nav(this,'experts','Ajuda do Especialista')"><i class="ti ti-message-question"></i> Especialistas</div>
       <div class="nav-item" data-s="cursos" onclick="nav(this,'cursos','Anúncios de Cursos')"><i class="ti ti-school"></i> Cursos <span class="nb" style="background:#f59e0b;">N</span></div>
       <div class="sb-section">Conta</div>
@@ -490,7 +502,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
           <div style="width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:8px;background:linear-gradient(135deg,#f0eaf6,#e8d8f0);color:#542F62;"><i class="ti ti-messages"></i></div>
           <div style="font-size:12px;font-weight:700;color:#12133a;margin-bottom:2px;">Comunidade</div>
           <div style="font-size:10px;color:#8889aa;">Feed de dentistas</div>
-          <div style="background:linear-gradient(135deg,#542F62,#7a3d92);color:white;font-size:10px;font-weight:800;margin-top:8px;display:inline-flex;align-items:center;gap:3px;padding:5px 8px;border-radius:20px;box-shadow:0 2px 10px rgba(84,47,98,.5);"><i class="ti ti-arrow-right" style="font-size:10px;"></i> Ver</div>
+          <div style="background:linear-gradient(135deg,#542F62,#7a3d92);color:white;font-size:10px;font-weight:800;margin-top:8px;display:inline-flex;align-items:center;gap:3px;padding:5px 8px;border-radius:20px;box-shadow:0 2px 10px rgba(84,47,98,.5);"><i class="ti ti-arrow-right" style="font-size:10px;"></i> Ver feed</div>
         </div>
         <div onclick="nav(document.querySelector('[data-s=experts]'),'experts','Ajuda do Especialista')" style="cursor:pointer;padding:12px;background:white;border-radius:14px;border:1.5px solid rgba(51,102,153,.3);box-shadow:0 4px 16px rgba(51,102,153,.12);position:relative;overflow:hidden;">
           <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#336699,transparent);"></div>
@@ -511,7 +523,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
           <div style="width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:8px;background:linear-gradient(135deg,#f5eeff,#ead8ff);color:#7a3d92;"><i class="ti ti-school"></i></div>
           <div style="font-size:12px;font-weight:700;color:#12133a;margin-bottom:2px;">Cursos</div>
           <div style="font-size:10px;color:#8889aa;">12 disponíveis</div>
-          <div style="background:linear-gradient(135deg,#7a3d92,#9b5db5);color:white;font-size:10px;font-weight:800;margin-top:8px;display:inline-flex;align-items:center;gap:3px;padding:5px 8px;border-radius:20px;box-shadow:0 2px 10px rgba(122,61,146,.5);"><i class="ti ti-arrow-right" style="font-size:10px;"></i> Se inscrever</div>
+          <div style="background:linear-gradient(135deg,#7a3d92,#9b5db5);color:white;font-size:10px;font-weight:800;margin-top:8px;display:inline-flex;align-items:center;gap:3px;padding:5px 8px;border-radius:20px;box-shadow:0 2px 10px rgba(122,61,146,.5);"><i class="ti ti-arrow-right" style="font-size:10px;"></i> Explorar</div>
         </div>
         <div onclick="nav(document.querySelector('[data-s=market]'),'market','Marketplace')" style="cursor:pointer;padding:12px;background:white;border-radius:14px;border:1.5px solid rgba(77,130,184,.3);box-shadow:0 4px 16px rgba(77,130,184,.12);position:relative;overflow:hidden;">
           <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#4d82b8,transparent);"></div>
@@ -628,6 +640,10 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
 
     <!-- VAGAS -->
     <div id="screen-jobs" class="page">
+      <div class="welcome" style="margin-bottom:16px;">
+        <div><h2>💼 Vagas & Oportunidades</h2><p>Clínicas e dentistas conectados.</p></div>
+        <button class="btn-white-outline" onclick="document.getElementById('modal-vaga').classList.add('open')">+ Publicar vaga</button>
+      </div>
       <div class="tabs-wrap">
         <button class="tab on" id="tab-vagas" onclick="switchTab('vagas')">Vagas abertas</button>
         <button class="tab" id="tab-offer" onclick="switchTab('offer')">Estou disponível</button>
@@ -640,13 +656,13 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
               <div class="job-top"><div class="clinic-av" style="background:linear-gradient(135deg,#010267,#336699);">OP</div><div><div class="job-ttl">Ortodontista — CLT ou PJ</div><div class="job-clinic">Clínica OdontoPrime · 2 dias atrás</div></div><div class="job-loc">São Paulo, SP</div></div>
               <div class="jtags"><span class="jtag sp">Ortodontia</span><span class="jtag ct">CLT ou PJ</span><span class="jtag lc">SP Capital</span></div>
               <div class="job-desc">Buscamos ortodontista para integrar nossa equipe. Carteira de pacientes já formada. Espaço moderno com scanner intraoral.</div>
-              <div class="job-ftr"><div class="job-sal">A combinar · <strong>Clínica est. 2008</strong></div><button class="btn-apply" onclick="alert('Candidatura enviada! ✅')">Candidatar-se</button></div>
+              <div class="job-ftr"><div class="job-sal">A combinar · <strong>Clínica est. 2008</strong></div><div style="display:flex;gap:6px;align-items:center;"><button class="btn-apply" onclick="registrarCandidatura(this)">✅ Candidatar-se</button></div></div>
             </div>
             <div class="job">
               <div class="job-top"><div class="clinic-av" style="background:linear-gradient(135deg,#542F62,#7a3d92);">DS</div><div><div class="job-ttl">Auxiliar em Saúde Bucal (ASB)</div><div class="job-clinic">Dr. Sorriso Clínicas · Publicado hoje</div></div><div class="job-loc">Campinas, SP</div></div>
               <div class="jtags"><span class="jtag sp">ASB</span><span class="jtag ct">CLT</span><span class="jtag lc">Campinas</span></div>
               <div class="job-desc">Vaga para ASB com certificado SENAC. Horário: seg a sex, 8h às 18h. Benefícios: VT, VR, plano de saúde.</div>
-              <div class="job-ftr"><div class="job-sal"><strong>R$ 2.100 – R$ 2.600/mês</strong></div><button class="btn-apply" onclick="alert('Candidatura enviada! ✅')">Candidatar-se</button></div>
+              <div class="job-ftr"><div class="job-sal"><strong>R$ 2.100 – R$ 2.600/mês</strong></div><div style="display:flex;gap:6px;align-items:center;"><button class="btn-apply" onclick="registrarCandidatura(this)">✅ Candidatar-se</button></div></div>
             </div>
           </div>
           <div id="tab-content-offer" style="display:none;">
@@ -832,7 +848,126 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
   </div>
 
 
-<!-- MENU MOBILE -->
+
+    <!-- LABS & TECNICOS -->
+    <div id="screen-labs" class="page" style="display:none;">
+      <div class="welcome" style="margin-bottom:16px;background:linear-gradient(135deg,#010267,#336699);border-radius:var(--r);padding:20px 24px;">
+        <div><h2 style="color:white;">🔬 Labs & Técnicos</h2><p style="color:rgba(255,255,255,.7);">Avalie e encontre os melhores parceiros</p></div>
+        <button class="btn-white-outline" onclick="document.getElementById('modal-lab').classList.add('open')">+ Quero me cadastrar</button>
+      </div>
+      <div class="tabs-wrap" style="margin-bottom:16px;">
+        <button class="tab on" id="tab-labs" onclick="switchLabTab('labs')">🔬 Laboratórios</button>
+        <button class="tab" id="tab-tecs" onclick="switchLabTab('tecs')">🔧 Técnicos</button>
+      </div>
+
+      <div id="tab-content-labs">
+        <div id="labs-list">
+          <div class="card" style="margin-bottom:12px;padding:16px;">
+            <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;">
+              <div class="av l" style="background:linear-gradient(135deg,#010267,#336699);border-radius:10px;width:44px;height:44px;font-size:13px;">LG</div>
+              <div style="flex:1;">
+                <div style="font-size:15px;font-weight:800;color:var(--navy);">Lab. Prótese Gold</div>
+                <div style="font-size:12px;color:var(--text3);">📍 São Paulo, SP · Prótese Cerâmica</div>
+                <div style="display:flex;align-items:center;gap:6px;margin-top:4px;">
+                  <span style="color:#f59e0b;font-size:16px;">★★★★★</span>
+                  <span style="font-size:12px;color:var(--text3);">4.8 (32 avaliações)</span>
+                </div>
+              </div>
+            </div>
+            <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:10px;">Próteses cerâmicas, zircônia e protocolo sobre implantes. Entrega em 5 dias úteis.</p>
+            <div style="background:var(--bg);border-radius:8px;padding:10px;margin-bottom:10px;">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+                <div class="av s av-grad-me" style="width:24px;height:24px;font-size:9px;">TM</div>
+                <span style="font-size:12px;font-weight:700;color:var(--text);">Dra. Taisa</span>
+                <span style="color:#f59e0b;">★★★★★</span>
+              </div>
+              <p style="font-size:12px;color:var(--text2);">Excelente qualidade! Entrega rápida e precisa.</p>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <button onclick="avaliarParceiro('Lab. Prótese Gold')" style="flex:1;padding:9px;border-radius:8px;font-size:12px;font-weight:700;color:var(--purple);border:1.5px solid var(--border);background:white;cursor:pointer;">⭐ Avaliar</button>
+              <a href="https://wa.me/5511999990000" target="_blank" style="background:#25d366;color:white;padding:9px 14px;border-radius:8px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px;text-decoration:none;box-shadow:0 3px 10px rgba(37,211,102,.3);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="tab-content-tecs" style="display:none;">
+        <div class="card" style="padding:16px;">
+          <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;">
+            <div class="av l" style="background:linear-gradient(135deg,#336699,#4d82b8);border-radius:10px;width:44px;height:44px;font-size:13px;">CT</div>
+            <div style="flex:1;">
+              <div style="font-size:15px;font-weight:800;color:var(--navy);">Carlos Técnico</div>
+              <div style="font-size:12px;color:var(--text3);">📍 Rio de Janeiro, RJ</div>
+              <div style="display:flex;align-items:center;gap:6px;margin-top:4px;">
+                <span style="color:#f59e0b;font-size:16px;">★★★★</span><span style="color:#ddd;font-size:16px;">★</span>
+                <span style="font-size:12px;color:var(--text3);">4.2 (18 avaliações)</span>
+              </div>
+            </div>
+          </div>
+          <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:10px;">Especialista em aparelhos removíveis e placa miorrelaxante. 12 anos de experiência.</p>
+          <div style="display:flex;gap:8px;">
+            <button onclick="avaliarParceiro('Carlos Técnico')" style="flex:1;padding:9px;border-radius:8px;font-size:12px;font-weight:700;color:var(--purple);border:1.5px solid var(--border);background:white;cursor:pointer;">⭐ Avaliar</button>
+            <a href="https://wa.me/5521999990000" target="_blank" style="background:#25d366;color:white;padding:9px 14px;border-radius:8px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px;text-decoration:none;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
+  <!-- MODAL PUBLICAR VAGA -->
+  <div class="modal-overlay" id="modal-vaga" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="modal" style="width:480px;height:auto;max-height:90vh;overflow-y:auto;">
+      <div class="modal-hdr">
+        <div class="modal-hdr-info"><div class="modal-hdr-name">📋 Publicar Vaga</div></div>
+        <i class="ti ti-x modal-close" onclick="document.getElementById('modal-vaga').classList.remove('open')"></i>
+      </div>
+      <div style="padding:4px 0 16px;display:flex;flex-direction:column;gap:10px;">
+        <div><label class="lbl">Título da vaga *</label><input id="vaga-title" class="inp" placeholder="Ex: Dentista Clínico para clínica em SP"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div><label class="lbl">Especialidade</label><select id="vaga-specialty" class="inp" style="margin-bottom:0;background:white;"><option value="">Selecione</option><option>Clínico Geral</option><option>Implantodontia</option><option>Ortodontia</option><option>Endodontia</option><option>Periodontia</option><option>Harmonização Orofacial</option><option>Prótese Dentária</option><option>Odontopediatria</option><option>Outro</option></select></div>
+          <div><label class="lbl">Tipo de contrato</label><select id="vaga-tipo" class="inp" style="margin-bottom:0;background:white;"><option>CLT</option><option>PJ</option><option>Freelance</option><option>Sócio</option><option>A combinar</option></select></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div><label class="lbl">Cidade *</label><input id="vaga-city" class="inp" placeholder="São Paulo" style="margin-bottom:0;"></div>
+          <div><label class="lbl">Estado</label><input id="vaga-state" class="inp" placeholder="SP" style="margin-bottom:0;"></div>
+        </div>
+        <div><label class="lbl">Salário / Remuneração</label><input id="vaga-salario" class="inp" placeholder="Ex: R$ 4.000 ou A combinar"></div>
+        <div><label class="lbl">Nome da clínica / Empresa</label><input id="vaga-clinica" class="inp" placeholder="Clínica Sorriso Perfeito"></div>
+        <div><label class="lbl">WhatsApp para contato *</label><input id="vaga-whatsapp" class="inp" placeholder="11 99999-9999"></div>
+        <div><label class="lbl">Descrição da vaga</label><textarea id="vaga-desc" class="inp" style="min-height:80px;resize:vertical;" placeholder="Requisitos, benefícios, horários, diferenciais..."></textarea></div>
+        <button class="btn-primary" onclick="submitVaga()"><i class="ti ti-send"></i> Publicar vaga</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL CADASTRO LAB/TECNICO -->
+  <div class="modal-overlay" id="modal-lab" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="modal" style="width:480px;height:auto;max-height:90vh;overflow-y:auto;">
+      <div class="modal-hdr">
+        <div class="modal-hdr-info"><div class="modal-hdr-name">🔬 Quero me cadastrar</div></div>
+        <i class="ti ti-x modal-close" onclick="document.getElementById('modal-lab').classList.remove('open')"></i>
+      </div>
+      <div style="padding:4px 0 16px;display:flex;flex-direction:column;gap:10px;">
+        <div><label class="lbl">Tipo de cadastro</label><select id="lab-tipo" class="inp" style="background:white;"><option>Laboratório de Prótese</option><option>Técnico em Prótese</option><option>Laboratório de Radiologia</option><option>Técnico em Radiologia</option><option>Outro</option></select></div>
+        <div><label class="lbl">Nome / Razão social *</label><input id="lab-nome" class="inp" placeholder="Lab. Prótese Gold"></div>
+        <div><label class="lbl">Especialidades oferecidas</label><input id="lab-specs" class="inp" placeholder="Ex: Zircônia, E-max, protocolo, removível..."></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div><label class="lbl">Cidade *</label><input id="lab-city" class="inp" placeholder="São Paulo" style="margin-bottom:0;"></div>
+          <div><label class="lbl">Estado</label><input id="lab-state" class="inp" placeholder="SP" style="margin-bottom:0;"></div>
+        </div>
+        <div><label class="lbl">WhatsApp para contato *</label><input id="lab-whatsapp" class="inp" placeholder="11 99999-9999"></div>
+        <div><label class="lbl">Descrição e diferenciais</label><textarea id="lab-desc" class="inp" style="min-height:80px;resize:vertical;" placeholder="Prazo de entrega, materiais usados, experiência..."></textarea></div>
+        <button class="btn-primary" onclick="submitLab()"><i class="ti ti-check"></i> Enviar cadastro</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENU MOBILE -->
 <nav class="mobile-nav" id="mobile-nav">
   <div class="mobile-nav-item active" id="mnav-dashboard" onclick="nav(this,'dashboard','Dashboard');setMobileNav('mnav-dashboard')">
     <i class="ti ti-layout-dashboard"></i>
@@ -869,6 +1004,10 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
     <div onclick="nav(document.querySelector('[data-s=market]'),'market','Marketplace');toggleMobileDrawer();setMobileNav('')" style="display:flex;align-items:center;gap:10px;padding:14px;background:#f3f4f9;border-radius:12px;cursor:pointer;">
       <i class="ti ti-shopping-cart" style="font-size:22px;color:#010267;"></i>
       <span style="font-size:13px;font-weight:600;color:#010267;">Marketplace</span>
+    </div>
+    <div onclick="showLabs();toggleMobileDrawer();" style="display:flex;align-items:center;gap:10px;padding:14px;background:#f3f4f9;border-radius:12px;cursor:pointer;">
+      <i class="ti ti-flask" style="font-size:22px;color:#010267;"></i>
+      <span style="font-size:13px;font-weight:600;color:#010267;">Labs & Técnicos</span>
     </div>
     <div onclick="nav(document.querySelector('[data-s=cursos]'),'cursos','Cursos');toggleMobileDrawer();setMobileNav('')" style="display:flex;align-items:center;gap:10px;padding:14px;background:#f3f4f9;border-radius:12px;cursor:pointer;">
       <i class="ti ti-school" style="font-size:22px;color:#010267;"></i>
@@ -1124,6 +1263,37 @@ function renderPost(post) {
 }
 
 // CURSOS
+function openCursoDetail(c) {
+  const wa = c.whatsapp ? c.whatsapp.replace(/\D/g,'') : null
+  const waLink = wa ? `https://wa.me/55${wa}?text=Olá! Vi seu curso "${c.title}" no ODONT HUB e tenho interesse!` : null
+  const modLabel = c.modality === 'in_person' ? 'Presencial' : c.modality === 'online' ? 'Online' : c.modality === 'hybrid' ? 'Híbrido' : c.modality
+  const overlay = document.createElement('div')
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:flex;align-items:flex-end;'
+  overlay.innerHTML = `
+    <div style="background:white;width:100%;border-radius:20px 20px 0 0;padding:20px;max-height:85vh;overflow-y:auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+        <div style="font-size:16px;font-weight:800;color:#010267;">${c.title}</div>
+        <button onclick="this.closest('[style*=fixed]').remove()" style="background:#f3f4f9;border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;">✕</button>
+      </div>
+      ${c.cover_url ? `<img src="${c.cover_url}" style="width:100%;height:160px;object-fit:cover;border-radius:12px;margin-bottom:14px;">` : ''}
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
+        <span style="background:#f0eaf6;color:#542F62;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;">${c.specialty}</span>
+        <span style="background:#e8eaf8;color:#010267;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;">${modLabel}</span>
+        ${c.city ? `<span style="background:#e8f4ff;color:#336699;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;">📍 ${c.city}</span>` : ''}
+        ${c.hours ? `<span style="background:#f3f4f9;color:#4a4b6a;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;">⏱ ${c.hours}h</span>` : ''}
+      </div>
+      ${c.description ? `<div style="font-size:13px;color:#4a4b6a;line-height:1.6;margin-bottom:14px;">${c.description}</div>` : ''}
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+        <div style="font-size:22px;font-weight:900;color:#010267;">R$ ${Number(c.price||0).toLocaleString('pt-BR')}</div>
+        <div style="font-size:12px;color:#8889aa;">por ${c.instructor?.name || 'Professor'}</div>
+      </div>
+      ${waLink ? `<a href="${waLink}" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;background:#25d366;color:white;padding:14px;border-radius:12px;font-size:15px;font-weight:800;text-decoration:none;box-shadow:0 4px 12px rgba(37,211,102,.4);">📱 Falar no WhatsApp</a>` : '<div style="text-align:center;padding:14px;background:#f3f4f9;border-radius:12px;color:#8889aa;font-size:13px;">Sem WhatsApp cadastrado</div>'}
+    </div>
+  `
+  overlay.onclick = e => { if(e.target === overlay) overlay.remove() }
+  document.body.appendChild(overlay)
+}
+
 async function loadCursos() {
   const grid = document.getElementById('cursos-grid')
   if (!grid) return
@@ -1138,7 +1308,7 @@ async function loadCursos() {
       const wa = c.whatsapp ? c.whatsapp.replace(/\D/g,'') : null
       const waLink = wa ? `https://wa.me/55${wa}?text=Olá! Vi seu curso "${c.title}" no ODONT HUB e tenho interesse.` : null
       return `
-      <div class="card" id="curso-card-${c.id}" style="padding:0;overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(1,2,103,.13)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div class="card" id="curso-card-${c.id}" style="padding:0;overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .2s;" onclick="openCursoDetail(${JSON.stringify(c).replace(/'/g,'&#39;')})" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(1,2,103,.13)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
         <div style="height:116px;background:linear-gradient(135deg,#542F62,#7a3d92);display:flex;align-items:center;justify-content:center;position:relative;">
           ${c.cover_url ? `<img src="${c.cover_url}" style="width:100%;height:100%;object-fit:cover;">` : `<i class="ti ti-school" style="font-size:52px;color:rgba(255,255,255,.4);"></i>`}
           <div style="position:absolute;top:10px;left:10px;background:rgba(255,255,255,.2);color:white;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;">${c.specialty}</div>
@@ -1147,7 +1317,7 @@ async function loadCursos() {
           <div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:5px;">${c.title}</div>
           <div style="font-size:12px;color:var(--text3);margin-bottom:8px;display:flex;align-items:center;gap:5px;"><i class="ti ti-user" style="font-size:13px;"></i> ${c.instructor?.name || 'Professor'}</div>
           <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:11px;">
-            <span style="background:rgba(84,47,98,.08);color:var(--purple);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(84,47,98,.2);">${c.modality}</span>
+            <span style="background:rgba(84,47,98,.08);color:var(--purple);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(84,47,98,.2);">${c.modality === "in_person" ? "Presencial" : c.modality === "online" ? "Online" : c.modality === "hybrid" ? "Híbrido" : c.modality}</span>
             ${c.city ? `<span style="background:rgba(1,2,103,.06);color:var(--navy);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(1,2,103,.12);">${c.city}</span>` : ''}
             ${c.hours ? `<span style="background:rgba(51,102,153,.08);color:var(--blue);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(51,102,153,.2);">${c.hours}h</span>` : ''}
           </div>

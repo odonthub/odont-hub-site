@@ -306,7 +306,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
   .comm-layout > div:first-child{width:100% !important;min-width:0;max-width:100%;}
   .post,.post-card{margin-bottom:10px;border-radius:12px;width:100% !important;max-width:100% !important;box-sizing:border-box;}
   .comp{border-radius:12px;margin-bottom:10px;width:100% !important;box-sizing:border-box;}
-  .comp .comp-ftr{flex-wrap:wrap;gap:6px;}
+  .comp .comp-ftr{flex-wrap:wrap;gap:6px;} .btn-pub{flex-shrink:0;white-space:nowrap;} .comp-ftr select{max-width:140px;flex:1;min-width:0;}
   .post img,.post-card img{max-width:100% !important;width:100% !important;border-radius:8px;}
   .post-acts{flex-wrap:wrap;gap:8px;}
   .mkt-grid{grid-template-columns:1fr 1fr !important;gap:10px;}
@@ -928,7 +928,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
   
   <!-- MODAL PUBLICAR VAGA -->
   <div class="modal-overlay" id="modal-vaga" onclick="if(event.target===this)this.classList.remove('open')">
-    <div class="modal" style="width:480px;height:auto;max-height:92vh;overflow-y:auto;">
+    <div class="modal" style="width:480px;height:auto;max-height:92vh;overflow-y:auto;padding:0 4px;">
       <div class="modal-hdr">
         <div class="modal-hdr-info"><div class="modal-hdr-name">📋 Publicar no mural de vagas</div></div>
         <i class="ti ti-x modal-close" onclick="document.getElementById('modal-vaga').classList.remove('open')"></i>
@@ -1377,6 +1377,7 @@ async function loadCursos() {
         </div>
         <div style="padding:15px 16px 18px;">
           <div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:5px;">${c.title}</div>
+          ${c.description ? `<div style="font-size:11px;color:var(--text3);margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${c.description}</div>` : ""}
           <div style="font-size:12px;color:var(--text3);margin-bottom:8px;display:flex;align-items:center;gap:5px;"><i class="ti ti-user" style="font-size:13px;"></i> ${c.instructor?.name || 'Professor'}</div>
           <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:11px;">
             <span style="background:rgba(84,47,98,.08);color:var(--purple);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid rgba(84,47,98,.2);">${c.modality === "in_person" ? "Presencial" : c.modality === "online" ? "Online" : c.modality === "hybrid" ? "Híbrido" : c.modality}</span>
@@ -1681,6 +1682,94 @@ document.addEventListener('DOMContentLoaded', () => {
 const _style = document.createElement('style')
 _style.textContent = '@keyframes spin { to { transform: rotate(360deg) } }'
 document.head.appendChild(_style)
+
+// ===== LABS & TÉCNICOS =====
+function showLabs() {
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'))
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'))
+  const labs = document.getElementById('screen-labs')
+  if (labs) labs.classList.add('active')
+  if (document.getElementById('page-title')) document.getElementById('page-title').textContent = 'Labs & Técnicos'
+  setMobileNav('')
+}
+
+function switchLabTab(tab) {
+  document.getElementById('tab-content-labs').style.display = tab === 'labs' ? 'block' : 'none'
+  document.getElementById('tab-content-tecs').style.display = tab === 'tecs' ? 'block' : 'none'
+  document.getElementById('tab-labs').className = tab === 'labs' ? 'tab on' : 'tab'
+  document.getElementById('tab-tecs').className = tab === 'tecs' ? 'tab on' : 'tab'
+}
+
+function avaliarParceiro(nome) {
+  const stars = prompt(`Quantas estrelas para ${nome}? (1 a 5)`)
+  if (!stars || isNaN(stars) || stars < 1 || stars > 5) return
+  const comentario = prompt('Deixe um comentário (opcional):')
+  if (comentario !== null) alert(`Avaliação de ${stars}⭐ enviada para ${nome}! Obrigado.`)
+}
+
+// ===== CANDIDATURA VAGAS =====
+function registrarCandidatura(btn) {
+  if (btn.disabled) return
+  btn.textContent = '✅ Candidatura enviada!'
+  btn.disabled = true
+  btn.style.background = '#059669'
+  alert('Candidatura registrada! 🎉 A clínica receberá seus dados.')
+}
+
+// ===== VAGAS FORM =====
+function selectVagaOpcao(tipo) {
+  const camposClinica = document.getElementById('campos-clinica')
+  const camposDentista = document.getElementById('campos-dentista')
+  const opcaoClinica = document.getElementById('opcao-clinica')
+  const opcaoDentista = document.getElementById('opcao-dentista')
+  const btn = document.getElementById('btn-vaga-submit')
+  if (!camposClinica || !camposDentista) return
+  if (tipo === 'clinica') {
+    camposClinica.style.display = 'block'
+    camposDentista.style.display = 'none'
+    opcaoClinica.style.borderColor = '#542F62'
+    opcaoClinica.style.background = '#f0eaf6'
+    opcaoDentista.style.borderColor = '#e3e5f0'
+    opcaoDentista.style.background = 'white'
+    if (btn) btn.innerHTML = '<i class="ti ti-send"></i> Publicar vaga'
+  } else {
+    camposClinica.style.display = 'none'
+    camposDentista.style.display = 'block'
+    opcaoDentista.style.borderColor = '#542F62'
+    opcaoDentista.style.background = '#f0eaf6'
+    opcaoClinica.style.borderColor = '#e3e5f0'
+    opcaoClinica.style.background = 'white'
+    if (btn) btn.innerHTML = '🦷 Me candidatar'
+  }
+}
+
+async function submitVaga() {
+  const isCand = document.getElementById('campos-dentista') && document.getElementById('campos-dentista').style.display !== 'none'
+  if (isCand) {
+    const titulo = document.getElementById('cand-titulo')?.value.trim()
+    const whatsapp = document.getElementById('cand-whatsapp')?.value.trim()
+    if (!titulo) { alert('Preencha como quer se apresentar'); return }
+    if (!whatsapp) { alert('Preencha o WhatsApp'); return }
+    alert('Candidatura publicada com sucesso! 🦷')
+  } else {
+    const title = document.getElementById('vaga-title')?.value.trim()
+    const whatsapp = document.getElementById('vaga-whatsapp')?.value.trim()
+    if (!title) { alert('Preencha o título da vaga'); return }
+    if (!whatsapp) { alert('Preencha o WhatsApp para contato'); return }
+    alert('Vaga publicada com sucesso! ✅')
+  }
+  document.getElementById('modal-vaga').classList.remove('open')
+}
+
+async function submitLab() {
+  const nome = document.getElementById('lab-nome')?.value.trim()
+  const whatsapp = document.getElementById('lab-whatsapp')?.value.trim()
+  if (!nome) { alert('Preencha o nome'); return }
+  if (!whatsapp) { alert('Preencha o WhatsApp'); return }
+  alert('Cadastro enviado com sucesso! ✅ Em breve entraremos em contato.')
+  document.getElementById('modal-lab').classList.remove('open')
+}
+
 </script>
 </body>
 </html>

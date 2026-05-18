@@ -921,26 +921,80 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
   
   <!-- MODAL PUBLICAR VAGA -->
   <div class="modal-overlay" id="modal-vaga" onclick="if(event.target===this)this.classList.remove('open')">
-    <div class="modal" style="width:480px;height:auto;max-height:90vh;overflow-y:auto;">
+    <div class="modal" style="width:480px;height:auto;max-height:92vh;overflow-y:auto;">
       <div class="modal-hdr">
-        <div class="modal-hdr-info"><div class="modal-hdr-name">📋 Publicar Vaga</div></div>
+        <div class="modal-hdr-info"><div class="modal-hdr-name">📋 Publicar no mural de vagas</div></div>
         <i class="ti ti-x modal-close" onclick="document.getElementById('modal-vaga').classList.remove('open')"></i>
       </div>
       <div style="padding:4px 0 16px;display:flex;flex-direction:column;gap:10px;">
-        <div><label class="lbl">Título da vaga *</label><input id="vaga-title" class="inp" placeholder="Ex: Dentista Clínico para clínica em SP"></div>
+
+        <!-- OPÇÕES -->
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <div><label class="lbl">Especialidade</label><select id="vaga-specialty" class="inp" style="margin-bottom:0;background:white;"><option value="">Selecione</option><option>Clínico Geral</option><option>Implantodontia</option><option>Ortodontia</option><option>Endodontia</option><option>Periodontia</option><option>Harmonização Orofacial</option><option>Prótese Dentária</option><option>Odontopediatria</option><option>Outro</option></select></div>
-          <div><label class="lbl">Tipo de contrato</label><select id="vaga-tipo" class="inp" style="margin-bottom:0;background:white;"><option>CLT</option><option>PJ</option><option>Freelance</option><option>Sócio</option><option>A combinar</option></select></div>
+          <div id="opcao-clinica" onclick="selectVagaOpcao('clinica')" style="border:2px solid #542F62;border-radius:12px;padding:14px;text-align:center;cursor:pointer;background:#f0eaf6;box-shadow:0 0 14px rgba(84,47,98,.12);">
+            <svg viewBox="0 0 80 72" width="56" height="50" fill="none">
+              <rect x="10" y="28" width="60" height="40" rx="3" fill="#e8eaf8" stroke="#010267" stroke-width="2"/>
+              <path d="M6 30 L40 10 L74 30" fill="#010267" opacity=".12" stroke="#010267" stroke-width="2" stroke-linejoin="round"/>
+              <rect x="18" y="36" width="12" height="10" rx="2" fill="white" stroke="#010267" stroke-width="1.5"/>
+              <rect x="50" y="36" width="12" height="10" rx="2" fill="white" stroke="#010267" stroke-width="1.5"/>
+              <rect x="31" y="48" width="18" height="20" rx="2" fill="white" stroke="#010267" stroke-width="1.5"/>
+              <text x="40" y="70" text-anchor="middle" font-size="7" font-weight="800" fill="#010267" font-family="system-ui">ODONTO</text>
+            </svg>
+            <div style="font-size:12px;font-weight:800;color:#12133a;margin-top:7px;">Busco um profissional</div>
+            <div style="font-size:10px;color:#8889aa;margin-top:2px;">Clínica procura dentista</div>
+          </div>
+          <div id="opcao-dentista" onclick="selectVagaOpcao('dentista')" style="border:2px solid #e3e5f0;border-radius:12px;padding:14px;text-align:center;cursor:pointer;background:white;">
+            <svg viewBox="0 0 100 100" width="52" height="52" fill="none">
+              <path d="M50 15 C38 15 28 22 26 34 C24 44 28 52 30 60 C32 68 34 78 38 82 C40 86 44 86 46 82 C48 78 50 70 50 70 C50 70 52 78 54 82 C56 86 60 86 62 82 C66 78 68 68 70 60 C72 52 76 44 74 34 C72 22 62 15 50 15Z" fill="#e8d8f0" stroke="#542F62" stroke-width="2.5"/>
+              <path d="M42 70 C40 78 38 86 38 90" stroke="#542F62" stroke-width="2" stroke-linecap="round"/>
+              <path d="M50 70 L50 92" stroke="#542F62" stroke-width="2" stroke-linecap="round"/>
+              <path d="M58 70 C60 78 62 86 62 90" stroke="#542F62" stroke-width="2" stroke-linecap="round"/>
+              <path d="M36 28 Q40 24 46 26" stroke="#4d82b8" stroke-width="2" stroke-linecap="round" opacity=".6"/>
+              <circle cx="38" cy="32" r="2" fill="#4d82b8" opacity=".4"/>
+            </svg>
+            <div style="font-size:12px;font-weight:800;color:#12133a;margin-top:7px;">Quero me candidatar</div>
+            <div style="font-size:10px;color:#8889aa;margin-top:2px;">Dentista disponível</div>
+          </div>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <div><label class="lbl">Cidade *</label><input id="vaga-city" class="inp" placeholder="São Paulo" style="margin-bottom:0;"></div>
-          <div><label class="lbl">Estado</label><input id="vaga-state" class="inp" placeholder="SP" style="margin-bottom:0;"></div>
+
+        <div style="display:flex;align-items:center;gap:8px;"><div style="flex:1;height:1px;background:#e3e5f0;"></div><span style="font-size:10px;font-weight:700;color:#8889aa;text-transform:uppercase;letter-spacing:.08em;">Preencha os dados</span><div style="flex:1;height:1px;background:#e3e5f0;"></div></div>
+
+        <!-- CAMPOS CLÍNICA -->
+        <div id="campos-clinica">
+          <div><label class="lbl">Título da vaga *</label><input id="vaga-title" class="inp" placeholder="Ex: Dentista Clínico para clínica em SP"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div><label class="lbl">Especialidade</label><select id="vaga-specialty" class="inp" style="margin-bottom:0;background:white;"><option value="">Selecione</option><option>Clínico Geral</option><option>Implantodontia</option><option>Ortodontia</option><option>Endodontia</option><option>Periodontia</option><option>Harmonização Orofacial</option><option>Prótese Dentária</option><option>Odontopediatria</option><option>Outro</option></select></div>
+            <div><label class="lbl">Tipo de contrato</label><select id="vaga-tipo" class="inp" style="margin-bottom:0;background:white;"><option>CLT</option><option>PJ</option><option>Freelance</option><option>Sócio</option><option>A combinar</option></select></div>
+          </div>
+          <div style="height:8px;"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div><label class="lbl">Cidade *</label><input id="vaga-city" class="inp" placeholder="São Paulo" style="margin-bottom:0;"></div>
+            <div><label class="lbl">Estado</label><input id="vaga-state" class="inp" placeholder="SP" style="margin-bottom:0;"></div>
+          </div>
+          <div style="height:8px;"></div>
+          <div><label class="lbl">Salário / Remuneração</label><input id="vaga-salario" class="inp" placeholder="Ex: R$ 4.000 ou A combinar"></div>
+          <div><label class="lbl">Nome da clínica</label><input id="vaga-clinica" class="inp" placeholder="Clínica Sorriso Perfeito"></div>
+          <div><label class="lbl">WhatsApp para contato *</label><input id="vaga-whatsapp" class="inp" placeholder="11 99999-9999"></div>
+          <div><label class="lbl">Descrição da vaga</label><textarea id="vaga-desc" class="inp" style="min-height:80px;resize:vertical;" placeholder="Requisitos, benefícios, horários..."></textarea></div>
         </div>
-        <div><label class="lbl">Salário / Remuneração</label><input id="vaga-salario" class="inp" placeholder="Ex: R$ 4.000 ou A combinar"></div>
-        <div><label class="lbl">Nome da clínica / Empresa</label><input id="vaga-clinica" class="inp" placeholder="Clínica Sorriso Perfeito"></div>
-        <div><label class="lbl">WhatsApp para contato *</label><input id="vaga-whatsapp" class="inp" placeholder="11 99999-9999"></div>
-        <div><label class="lbl">Descrição da vaga</label><textarea id="vaga-desc" class="inp" style="min-height:80px;resize:vertical;" placeholder="Requisitos, benefícios, horários, diferenciais..."></textarea></div>
-        <button class="btn-primary" onclick="submitVaga()"><i class="ti ti-send"></i> Publicar vaga</button>
+
+        <!-- CAMPOS DENTISTA -->
+        <div id="campos-dentista" style="display:none;">
+          <div><label class="lbl">Como quer se apresentar? *</label><input id="cand-titulo" class="inp" placeholder="Ex: Ortodontista disponível para sócio em SP"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div><label class="lbl">Especialidade</label><select id="cand-specialty" class="inp" style="margin-bottom:0;background:white;"><option>Clínico Geral</option><option>Implantodontia</option><option>Ortodontia</option><option>Endodontia</option><option>Periodontia</option><option>Harmonização Orofacial</option><option>Prótese Dentária</option><option>Odontopediatria</option></select></div>
+            <div><label class="lbl">Tipo</label><select id="cand-tipo" class="inp" style="margin-bottom:0;background:white;"><option>CLT</option><option>PJ</option><option>Freelance</option><option>Sócio</option><option>A combinar</option></select></div>
+          </div>
+          <div style="height:8px;"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div><label class="lbl">Cidade</label><input id="cand-city" class="inp" placeholder="São Paulo" style="margin-bottom:0;"></div>
+            <div><label class="lbl">Anos de experiência</label><input id="cand-exp" class="inp" placeholder="Ex: 5 anos" style="margin-bottom:0;"></div>
+          </div>
+          <div style="height:8px;"></div>
+          <div><label class="lbl">WhatsApp para contato *</label><input id="cand-whatsapp" class="inp" placeholder="11 99999-9999"></div>
+          <div><label class="lbl">Sobre você</label><textarea id="cand-desc" class="inp" style="min-height:80px;resize:vertical;" placeholder="Experiência, diferenciais, disponibilidade..."></textarea></div>
+        </div>
+
+        <button class="btn-primary" id="btn-vaga-submit" onclick="submitVaga()"><i class="ti ti-send"></i> Publicar vaga</button>
       </div>
     </div>
   </div>

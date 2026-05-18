@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<div class="spec-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#854f0b22,#ef9f2733);"><i class="ti ti-chart-line" style="font-size:48px;color:#854f0b;opacity:0.85;"></i></div><div class="spec-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#9d174d22,#db277733);"><i class="ti ti-sparkles" style="font-size:48px;color:#9d174d;opacity:0.85;"></i></div><div class="spec-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0f6e5622,#1d9e7533);"><i class="ti ti-needle" style="font-size:48px;color:#0f6e56;opacity:0.85;"></i></div><div class="spec-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#33669922,#4d82b833);"><i class="ti ti-layout-rows" style="font-size:48px;color:#336699;opacity:0.85;"></i></div><div class="spec-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#542F6222,#7a3d9233);"><i class="ti ti-tooth" style="font-size:48px;color:#542F62;opacity:0.85;"></i></div><div class="spec-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#01026722,#0d1faa33);"><i class="ti ti-user-check" style="font-size:48px;color:#010267;opacity:0.85;"></i></div><!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -282,7 +282,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
 /* ===== MOBILE ===== */
 .mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:white;z-index:50;padding:10px 0 20px;justify-content:space-around;border-top:1px solid #e3e5f0;box-shadow:0 -4px 16px rgba(1,2,103,.08);}
 .mobile-nav::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1.5px;background:linear-gradient(90deg,transparent,#542F62,#336699,transparent);}
-.mobile-nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;color:#c0c2d8;cursor:pointer;font-size:9px;font-weight:600;padding:4px 10px;border-radius:8px;transition:all .15s;min-width:56px;}
+.mobile-nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;color:#c0c2d8;cursor:pointer;font-size:11px;font-weight:700;padding:4px 10px;border-radius:8px;transition:all .15s;min-width:56px;}
 .mobile-nav-item.active{color:#542F62;}
 .mobile-nav-item.active i{filter:drop-shadow(0 0 4px rgba(84,47,98,.6));}
 .mobile-nav-item i{font-size:22px;}
@@ -437,7 +437,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
       <div class="sb-section">Recursos</div>
       <div class="nav-item" data-s="market" onclick="nav(this,'market','Marketplace')"><i class="ti ti-shopping-cart"></i> Marketplace</div>
       <div class="nav-item" data-s="jobs" onclick="nav(this,'jobs','Vagas & Oportunidades')"><i class="ti ti-briefcase"></i> Vagas <span class="nb">2</span></div>
-      <div class="nav-item" data-s="experts" onclick="nav(this,'experts','Ajuda do Especialista')"><i class="ti ti-stethoscope"></i> Especialistas</div>
+      <div class="nav-item" data-s="experts" onclick="nav(this,'experts','Ajuda do Especialista')"><i class="ti ti-message-question"></i> Especialistas</div>
       <div class="nav-item" data-s="cursos" onclick="nav(this,'cursos','Anúncios de Cursos')"><i class="ti ti-school"></i> Cursos <span class="nb" style="background:#f59e0b;">N</span></div>
       <div class="sb-section">Conta</div>
       <div class="nav-item" onclick="alert('Perfil em construção! 🚧')"><i class="ti ti-user"></i> Meu perfil</div>
@@ -673,7 +673,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
     <div id="screen-experts" class="page">
       <div class="help-banner">
         <div class="help-banner-ico">🆘</div>
-        <div><h2>🩺 Ajuda do Especialista</h2><p>Escolha a especialidade e inicie uma consulta para segunda opinião, diagnóstico e planejamento.</p></div>
+        <div><h2>Ajuda do Especialista</h2><p>Escolha a especialidade e inicie uma consulta para segunda opinião, diagnóstico e planejamento.</p></div>
       </div>
       <div class="spec-grid">
         <div class="spec-card" onclick="openChat('Consulta — Clínico Geral','Diagnóstico e dúvidas clínicas gerais')">

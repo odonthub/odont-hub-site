@@ -301,7 +301,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
   .mobile-nav{display:flex !important;}
   .mobile-topbar{display:flex !important;}
   .stats{grid-template-columns:1fr 1fr !important;gap:10px;}
-  .comm-layout{grid-template-columns:1fr !important;}
+  .comm-layout{grid-template-columns:1fr !important;} .comm-right{display:none;} .post-card{margin-bottom:10px;border-radius:12px;} .comp{border-radius:12px;margin-bottom:10px;}
   .comm-layout > div:last-child{display:none;}
   .mkt-grid{grid-template-columns:1fr 1fr !important;gap:10px;}
   .spec-grid{grid-template-columns:1fr 1fr !important;gap:10px;}
@@ -312,7 +312,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
   .grid2{grid-template-columns:1fr !important;}
   .welcome{flex-direction:column;gap:10px;padding:14px !important;}
   .welcome .btn-white-outline{width:100%;text-align:center;}
-  .modal{width:96vw !important;max-height:92vh !important;margin:0 auto;}
+  .modal-overlay{align-items:flex-end !important;padding-bottom:0 !important;} #chat-modal .modal, #chat-modal.open ~ .modal{border-radius:20px 20px 0 0 !important;} .modal{width:100vw !important;height:82vh !important;max-height:82vh !important;border-radius:20px 20px 0 0 !important;margin:0 !important;} .modal-input{padding:10px 12px 20px !important;}
   .login-card{width:92vw;padding:28px 20px;}
   .stat-val{font-size:20px;}
   .welcome h2{font-size:15px;}
@@ -496,7 +496,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
           <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#336699,transparent);"></div>
           <div style="width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:8px;background:linear-gradient(135deg,#e8eeff,#d8e8ff);color:#336699;"><i class="ti ti-message-question"></i></div>
           <div style="font-size:11px;font-weight:700;color:#12133a;margin-bottom:2px;">Dúvidas com<br>Especialistas</div>
-          <div style="font-size:10px;color:#8889aa;">Planejamentos</div>
+          <div style="font-size:10px;color:#8889aa;">Quero ajuda!</div>
           <div style="background:linear-gradient(135deg,#336699,#4d82b8);color:white;font-size:10px;font-weight:800;margin-top:8px;display:inline-flex;align-items:center;gap:3px;padding:5px 8px;border-radius:20px;box-shadow:0 2px 10px rgba(51,102,153,.5);"><i class="ti ti-arrow-right" style="font-size:10px;"></i> Consultar</div>
         </div>
         <div onclick="nav(document.querySelector('[data-s=jobs]'),'jobs','Vagas')" style="cursor:pointer;padding:12px;background:white;border-radius:14px;border:1.5px solid rgba(1,2,103,.25);box-shadow:0 4px 16px rgba(1,2,103,.1);position:relative;overflow:hidden;">
@@ -517,7 +517,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
           <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#4d82b8,transparent);"></div>
           <div style="width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:8px;background:linear-gradient(135deg,#e8f4ff,#d8eeff);color:#4d82b8;"><i class="ti ti-shopping-cart"></i></div>
           <div style="font-size:12px;font-weight:700;color:#12133a;margin-bottom:2px;">Marketplace</div>
-          <div style="font-size:10px;color:#8889aa;">Equip. usados</div>
+          <div style="font-size:10px;color:#8889aa;">Equip. e materiais</div>
           <div style="background:linear-gradient(135deg,#4d82b8,#336699);color:white;font-size:10px;font-weight:800;margin-top:8px;display:inline-flex;align-items:center;gap:3px;padding:5px 8px;border-radius:20px;box-shadow:0 2px 10px rgba(77,130,184,.5);"><i class="ti ti-arrow-right" style="font-size:10px;"></i> Ver anúncios</div>
         </div>
         <div style="padding:12px;background:white;border-radius:14px;border:1px solid #e3e5f0;box-shadow:0 2px 8px rgba(0,0,0,.04);">
@@ -1098,8 +1098,8 @@ function renderPost(post) {
         </div>
       </div>
       <div style="display:flex;gap:4px;">
-        ${isMe ? `<div style="border:none;background:#eef2ff;border-radius:6px;width:28px;height:28px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;" onclick="editPost('${post.id}','${post.content.replace(/'/g,"\\'")}')"><i class="ti ti-pencil" style="color:#336699;font-size:15px;"></i></div>` : ''}
-        ${isMe ? `<div style="border:none;background:#fff0f0;border-radius:6px;width:28px;height:28px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;" onclick="deletePost('${post.id}')"><i class="ti ti-trash" style="color:#ef4444;font-size:15px;"></i></div>` : ''}
+        ${isMe ? `<button onclick="editPost('${post.id}','${post.content.replace(/'/g,"\\'")}'.replace(/<br>/g,'\\n'))" style="width:30px;height:30px;border-radius:8px;background:#f0eaf6;border:1px solid #d4c0e0;color:#542F62;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;" title="Editar post"><i class="ti ti-pencil" style="font-size:14px;"></i></button>` : ''}
+        ${isMe ? `<button onclick="deletePost('${post.id}')" style="width:30px;height:30px;border-radius:8px;background:#fff0f0;border:1px solid #fecaca;color:#ef4444;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;" title="Excluir post"><i class="ti ti-x" style="font-size:14px;"></i></button>` : ''}
       </div>
     </div>
     ${post.specialty_tag ? `<div class="tags"><span class="tag">#${post.specialty_tag}</span></div>` : ''}
@@ -1273,6 +1273,14 @@ async function toggleLike(btn, postId, currentlyLiked) {
   }
 }
 
+function editPost(postId, currentContent) {
+  const newContent = prompt('Editar post:', currentContent)
+  if (!newContent || newContent === currentContent) return
+  api('PATCH', '/api/feed/' + postId, { content: newContent })
+    .then(() => loadFeed())
+    .catch(e => alert('Erro ao editar: ' + e.message))
+}
+
 async function deletePost(postId) {
   if (!confirm('Remover este post?')) return
   await api('DELETE', `/api/feed/${postId}`).catch(() => {})
@@ -1323,14 +1331,6 @@ async function uploadImageToServer(file) {
   return d.url
 }
 
-function editPost(postId, currentContent) {
-  const novoTexto = window.prompt('Editar post:', currentContent)
-  if (novoTexto === null) return
-  if (novoTexto.trim() === '') { alert('Post nao pode ser vazio.'); return }
-  api('PUT', '/api/feed/' + postId, { content: novoTexto.trim() })
-    .then(() => loadFeed())
-    .catch(e => alert('Erro ao editar: ' + e.message))
-}
 
 // COMENTÁRIOS
 async function toggleComments(postId) {

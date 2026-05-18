@@ -293,11 +293,11 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
 #mobile-drawer{display:none;position:fixed;bottom:65px;left:0;right:0;background:white;border-radius:16px 16px 0 0;z-index:99;padding:16px;box-shadow:0 -4px 24px rgba(0,0,0,.15);}
 @media (max-width:768px){
   .sidebar{display:none !important;width:0 !important;}
-  .main{margin-left:0 !important;width:100% !important;}
+  .main{margin-left:0 !important;width:100% !important;min-width:0;}
   .topbar{display:none !important;}
   .free-bar{display:none !important;}
   .proto{display:none;}
-  .page{padding:12px 14px 80px !important;width:100% !important;}
+  .page{padding:10px 12px 82px !important;width:100% !important;max-width:100vw;overflow-x:hidden;}
   .mobile-nav{display:flex !important;}
   .mobile-topbar{display:flex !important;}
   .stats{grid-template-columns:1fr 1fr !important;gap:10px;}
@@ -307,17 +307,27 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
   .spec-grid{grid-template-columns:1fr 1fr !important;gap:10px;}
   .jobs-layout{grid-template-columns:1fr !important;}
   .jobs-layout > div:last-child{display:none;}
-  #cursos-grid{grid-template-columns:1fr 1fr !important;gap:10px;} #recursos-grid{grid-template-columns:1fr 1fr !important;gap:10px;}
+  #cursos-grid{grid-template-columns:1fr 1fr !important;gap:10px;}
+  #recursos-grid{grid-template-columns:1fr 1fr !important;gap:10px;}
   .grid2{grid-template-columns:1fr !important;}
-  .welcome{flex-direction:column;gap:12px;padding:16px !important;}
+  .welcome{flex-direction:column;gap:10px;padding:14px !important;}
   .welcome .btn-white-outline{width:100%;text-align:center;}
-  .modal{width:95vw !important;max-height:90vh !important;}
-  .login-card{width:90vw;padding:32px 24px;}
+  .modal{width:96vw !important;max-height:92vh !important;margin:0 auto;}
+  .login-card{width:92vw;padding:28px 20px;}
   .stat-val{font-size:20px;}
   .welcome h2{font-size:15px;}
   #app-screen{flex-direction:column !important;}
-  div[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr 1fr !important;}
   .card-neon{min-width:0 !important;}
+  .comp{border-radius:12px;margin-bottom:12px;}
+  .post-card{border-radius:12px;margin-bottom:10px;}
+  .spec-card{border-radius:12px;}
+  .spec-top{height:90px !important;}
+  .spec-name{font-size:13px;}
+  .spec-desc{font-size:11px;}
+  img{max-width:100% !important;}
+  .topbar-right{gap:6px;}
+  .btn-electric{font-size:9px !important;padding:4px 7px !important;}
+  #recursos-grid > div{padding:10px !important;}
 }
 </style>
 </head>
@@ -487,28 +497,28 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
           <div style="width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:8px;background:linear-gradient(135deg,#e8eeff,#d8e8ff);color:#336699;"><i class="ti ti-message-question"></i></div>
           <div style="font-size:11px;font-weight:700;color:#12133a;margin-bottom:2px;">Dúvidas com<br>Especialistas</div>
           <div style="font-size:10px;color:#8889aa;">Planejamentos</div>
-          <div style="background:linear-gradient(135deg,#336699,#4d82b8);color:white;font-size:10px;font-weight:800;margin-top:8px;display:inline-flex;align-items:center;gap:3px;padding:5px 8px;border-radius:20px;box-shadow:0 2px 10px rgba(51,102,153,.5);"><i class="ti ti-arrow-right" style="font-size:10px;"></i> Ver</div>
+          <div style="background:linear-gradient(135deg,#336699,#4d82b8);color:white;font-size:10px;font-weight:800;margin-top:8px;display:inline-flex;align-items:center;gap:3px;padding:5px 8px;border-radius:20px;box-shadow:0 2px 10px rgba(51,102,153,.5);"><i class="ti ti-arrow-right" style="font-size:10px;"></i> Consultar</div>
         </div>
         <div onclick="nav(document.querySelector('[data-s=jobs]'),'jobs','Vagas')" style="cursor:pointer;padding:12px;background:white;border-radius:14px;border:1.5px solid rgba(1,2,103,.25);box-shadow:0 4px 16px rgba(1,2,103,.1);position:relative;overflow:hidden;">
           <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#010267,transparent);"></div>
           <div style="width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:8px;background:linear-gradient(135deg,#e8eaf8,#d8dcf5);color:#010267;"><i class="ti ti-briefcase"></i></div>
           <div style="font-size:12px;font-weight:700;color:#12133a;margin-bottom:2px;">Vagas</div>
           <div style="font-size:10px;color:#8889aa;">Oportunidades</div>
-          <div style="background:linear-gradient(135deg,#010267,#0a0e9a);color:white;font-size:10px;font-weight:800;margin-top:8px;display:inline-flex;align-items:center;gap:3px;padding:5px 8px;border-radius:20px;box-shadow:0 2px 10px rgba(1,2,103,.5);"><i class="ti ti-arrow-right" style="font-size:10px;"></i> Ver</div>
+          <div style="background:linear-gradient(135deg,#010267,#0a0e9a);color:white;font-size:10px;font-weight:800;margin-top:8px;display:inline-flex;align-items:center;gap:3px;padding:5px 8px;border-radius:20px;box-shadow:0 2px 10px rgba(1,2,103,.5);"><i class="ti ti-arrow-right" style="font-size:10px;"></i> Ver vagas</div>
         </div>
         <div onclick="nav(document.querySelector('[data-s=cursos]'),'cursos','Cursos')" style="cursor:pointer;padding:12px;background:white;border-radius:14px;border:1.5px solid rgba(122,61,146,.3);box-shadow:0 4px 16px rgba(122,61,146,.12);position:relative;overflow:hidden;">
           <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#7a3d92,transparent);"></div>
           <div style="width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:8px;background:linear-gradient(135deg,#f5eeff,#ead8ff);color:#7a3d92;"><i class="ti ti-school"></i></div>
           <div style="font-size:12px;font-weight:700;color:#12133a;margin-bottom:2px;">Cursos</div>
           <div style="font-size:10px;color:#8889aa;">12 disponíveis</div>
-          <div style="background:linear-gradient(135deg,#7a3d92,#9b5db5);color:white;font-size:10px;font-weight:800;margin-top:8px;display:inline-flex;align-items:center;gap:3px;padding:5px 8px;border-radius:20px;box-shadow:0 2px 10px rgba(122,61,146,.5);"><i class="ti ti-arrow-right" style="font-size:10px;"></i> Ver</div>
+          <div style="background:linear-gradient(135deg,#7a3d92,#9b5db5);color:white;font-size:10px;font-weight:800;margin-top:8px;display:inline-flex;align-items:center;gap:3px;padding:5px 8px;border-radius:20px;box-shadow:0 2px 10px rgba(122,61,146,.5);"><i class="ti ti-arrow-right" style="font-size:10px;"></i> Se inscrever</div>
         </div>
         <div onclick="nav(document.querySelector('[data-s=market]'),'market','Marketplace')" style="cursor:pointer;padding:12px;background:white;border-radius:14px;border:1.5px solid rgba(77,130,184,.3);box-shadow:0 4px 16px rgba(77,130,184,.12);position:relative;overflow:hidden;">
           <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#4d82b8,transparent);"></div>
           <div style="width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:8px;background:linear-gradient(135deg,#e8f4ff,#d8eeff);color:#4d82b8;"><i class="ti ti-shopping-cart"></i></div>
           <div style="font-size:12px;font-weight:700;color:#12133a;margin-bottom:2px;">Marketplace</div>
           <div style="font-size:10px;color:#8889aa;">Equip. usados</div>
-          <div style="background:linear-gradient(135deg,#4d82b8,#336699);color:white;font-size:10px;font-weight:800;margin-top:8px;display:inline-flex;align-items:center;gap:3px;padding:5px 8px;border-radius:20px;box-shadow:0 2px 10px rgba(77,130,184,.5);"><i class="ti ti-arrow-right" style="font-size:10px;"></i> Ver</div>
+          <div style="background:linear-gradient(135deg,#4d82b8,#336699);color:white;font-size:10px;font-weight:800;margin-top:8px;display:inline-flex;align-items:center;gap:3px;padding:5px 8px;border-radius:20px;box-shadow:0 2px 10px rgba(77,130,184,.5);"><i class="ti ti-arrow-right" style="font-size:10px;"></i> Ver anúncios</div>
         </div>
         <div style="padding:12px;background:white;border-radius:14px;border:1px solid #e3e5f0;box-shadow:0 2px 8px rgba(0,0,0,.04);">
           <div style="width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:8px;background:#f3f4f9;color:#c0c2d8;"><i class="ti ti-calendar"></i></div>

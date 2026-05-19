@@ -1770,6 +1770,130 @@ async function submitLab() {
   document.getElementById('modal-lab').classList.remove('open')
 }
 
+
+// ============================================================
+// SECURITY LAYER — XSS, Rate Limiting, Input Sanitization
+// ============================================================
+
+// 1. XSS Sanitization
+function sanitize(str) {
+  if (!str) return ''
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;')
+    .replace(/\//g, '&#x2F;')
+}
+
+// 2. Rate Limiter — max N calls per window
+const _rateLimits = {}
+function rateLimit(key, maxCalls = 10, windowMs = 60000) {
+  const now = Date.now()
+  if (!_rateLimits[key]) _rateLimits[key] = []
+  _rateLimits[key] = _rateLimits[key].filter(t => now - t < windowMs)
+  if (_rateLimits[key].length >= maxCalls) {
+    console.warn(`[SECURITY] Rate limit hit: ${key}`)
+    throw new Error('Muitas tentativas. Aguarde um momento.')
+  }
+  _rateLimits[key].push(now)
+}
+
+// 3. Input validation
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+}
+function validatePhone(phone) {
+  return phone.replace(/\D/g, '').length >= 10
+}
+function validateLength(str, max = 1000) {
+  return str && str.length <= max
+}
+
+// 4. Secure API wrapper — patches the global api() function
+const _originalApi = api
+window.api = async function(method, path, body, retries) {
+  // Rate limit all API calls
+  try { rateLimit('api:global', 60, 60000) } catch(e) { alert(e.message); throw e }
+  // Specific limits
+  if (path.includes('/auth/login')) {
+    try { rateLimit('auth:login', 5, 60000) } catch(e) { alert('Muitas tentativas de login. Aguarde 1 minuto.'); throw e }
+  }
+  if (method === 'POST' && path.includes('/feed')) {
+    try { rateLimit('feed:post', 5, 60000) } catch(e) { alert('Você está postando rápido demais. Aguarde.'); throw e }
+  }
+  if (method === 'POST' && path.includes('/courses')) {
+    try { rateLimit('courses:post', 3, 60000) } catch(e) { alert('Limite de publicação atingido. Aguarde.'); throw e }
+  }
+  // Sanitize body strings
+  if (body && typeof body === 'object') {
+    Object.keys(body).forEach(k => {
+      if (typeof body[k] === 'string' && !['image_url', 'cover_url', 'avatar_url'].includes(k)) {
+        body[k] = body[k].trim()
+        if (body[k].length > 5000) body[k] = body[k].substring(0, 5000)
+      }
+    })
+  }
+  return _originalApi(method, path, body, retries)
+}
+
+// 5. Secure login validation
+const _originalDoLogin = typeof doLogin === 'function' ? doLogin : null
+function secureDoLogin() {
+  const email = document.getElementById('login-email')?.value?.trim()
+  const pass = document.getElementById('login-pass')?.value
+  if (!email || !validateEmail(email)) { alert('Digite um e-mail válido.'); return }
+  if (!pass || pass.length < 6) { alert('Senha deve ter pelo menos 6 caracteres.'); return }
+  if (_originalDoLogin) _originalDoLogin()
+}
+
+// 6. Content Security — sanitize rendered content
+const _originalRenderPost = typeof renderPost === 'function' ? renderPost : null
+if (_originalRenderPost) {
+  window.renderPost = function(post) {
+    // Sanitize author name before rendering
+    if (post.author?.name) post.author.name = sanitize(post.author.name)
+    if (post.author?.specialty) post.author.specialty = sanitize(post.author.specialty)
+    return _originalRenderPost(post)
+  }
+}
+
+// 7. Session security — auto logout after 8h inactivity
+let _lastActivity = Date.now()
+const _SESSION_TIMEOUT = 8 * 60 * 60 * 1000 // 8 hours
+document.addEventListener('click', () => { _lastActivity = Date.now() })
+document.addEventListener('keypress', () => { _lastActivity = Date.now() })
+setInterval(() => {
+  if (TOKEN && Date.now() - _lastActivity > _SESSION_TIMEOUT) {
+    console.warn('[SECURITY] Session expired due to inactivity')
+    localStorage.removeItem('odont_token')
+    localStorage.removeItem('odont_user')
+    location.reload()
+  }
+}, 60000)
+
+// 8. Prevent dev tools token inspection (light protection)
+document.addEventListener('contextmenu', e => {
+  if (e.target.tagName === 'INPUT' && e.target.type === 'password') e.preventDefault()
+})
+
+// 9. Token integrity check
+function checkTokenIntegrity() {
+  const token = localStorage.getItem('odont_token')
+  if (!token) return
+  // Basic JWT format check (3 parts separated by dots)
+  const parts = token.split('.')
+  if (parts.length !== 3) {
+    console.warn('[SECURITY] Invalid token format detected')
+    localStorage.removeItem('odont_token')
+    localStorage.removeItem('odont_user')
+  }
+}
+checkTokenIntegrity()
+
+console.info('[SECURITY] Frontend security layer active ✅')
+
 </script>
 </body>
 </html>

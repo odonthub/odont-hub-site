@@ -263,7 +263,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
 .help-banner-ico{font-size:40px;line-height:1;}
 .help-banner h2{font-size:17px;font-weight:800;color:white;margin-bottom:4px;}
 .help-banner p{font-size:13px;color:rgba(255,255,255,.72);line-height:1.55;}
-.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 .spec-card{background:white;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--border);cursor:pointer;transition:box-shadow .22s,transform .22s;}
 .spec-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px);}
 .spec-top{height:148px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-direction:column;gap:6px;}
@@ -311,7 +311,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
   .post img,.post-card img{max-width:100% !important;width:100% !important;border-radius:8px;}
   .post-acts{flex-wrap:wrap;gap:8px;}
   .mkt-grid{grid-template-columns:1fr 1fr !important;gap:10px;}
-  .spec-grid{grid-template-columns:1fr 1fr !important;gap:8px !important;width:100% !important;max-width:100% !important;}
+  .spec-grid{grid-template-columns:1fr 1fr !important;gap:8px !important;width:100% !important;max-width:100% !important;box-sizing:border-box;}
   .spec-card{width:100% !important;min-width:0 !important;box-sizing:border-box;}
   .spec-top{height:90px !important;}
   .spec-body{padding:8px !important;}
@@ -1240,7 +1240,7 @@ function openChat(name, spec) {
   chatName = name
   document.getElementById('chat-name').textContent = name
   document.getElementById('chat-spec').textContent = spec
-  document.getElementById('chat-msgs').innerHTML = `<div class="msg them"><div class="msg-bubble">Olá! Sou ${name}. Como posso ajudar?</div><div class="msg-time">agora</div></div>`
+  document.getElementById('chat-msgs').innerHTML = `<div class="msg them"><div class="msg-bubble">Olá! Como posso te ajudar?</div><div class="msg-time">agora</div></div>`
   document.getElementById('chat-modal').classList.add('open')
   document.getElementById('chat-input').focus()
 }

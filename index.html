@@ -1358,7 +1358,8 @@ function openCursoDetail(c) {
 
 async function loadCursos() {
   const grid = document.getElementById('cursos-grid')
-  if (!grid) return
+  if (!grid) { console.error('cursos-grid not found!'); return }
+  console.log('loadCursos called, grid found:', grid)
   grid.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text3);grid-column:1/-1;"><i class="ti ti-loader" style="font-size:32px;display:block;margin-bottom:10px;animation:spin 1s linear infinite;"></i>Carregando cursos...</div>`
   try {
     const cursos = await api('GET', '/api/courses')

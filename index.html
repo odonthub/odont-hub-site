@@ -1216,7 +1216,7 @@ function nav(el, screen, title) {
   document.getElementById('screen-' + screen).classList.add('active')
   document.getElementById('page-title').textContent = title
   if (screen === 'community') loadFeed()
-  if (screen === 'cursos') loadCursos()
+  if (screen === 'cursos') setTimeout(loadCursos, 300)
 }
 
 function filterMkt(el) {

@@ -467,7 +467,7 @@ body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-h
       <div class="nav-item" data-s="jobs" onclick="nav(this,'jobs','Vagas & Oportunidades')"><i class="ti ti-briefcase"></i> Vagas <span class="nb">2</span></div>
       <div class="nav-item" onclick="showLabs()" style="cursor:pointer;display:flex;align-items:center;gap:8px;"><i class="ti ti-flask"></i> Labs & Técnicos</div>
       <div class="nav-item" data-s="experts" onclick="nav(this,'experts','Ajuda do Especialista')"><i class="ti ti-message-question"></i> Especialistas</div>
-      <div class="nav-item" data-s="cursos" onclick="nav(this,'cursos','Anúncios de Cursos')"><i class="ti ti-school"></i> Cursos <span class="nb" style="background:#f59e0b;">N</span></div>
+      <div class="nav-item" data-s="cursos" onclick="nav(this,'cursos','Anúncios de Cursos');setTimeout(loadCursos,200)"><i class="ti ti-school"></i> Cursos <span class="nb" style="background:#f59e0b;">N</span></div>
       <div class="sb-section">Conta</div>
       <div class="nav-item" onclick="alert('Perfil em construção! 🚧')"><i class="ti ti-user"></i> Meu perfil</div>
       <div class="nav-item" onclick="alert('Notificações em breve!')"><i class="ti ti-bell"></i> Notificações <span class="nb">5</span></div>
